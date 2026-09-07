@@ -48,12 +48,14 @@ const popularCategories = Object.entries(categoryCounts)
           <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent);"></span>
           Historical Web Archive & Timeline (since 2006)
         </span>
-        <h1 style="font-size: 2.25rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.85rem; color: var(--text-primary);">
-          selamat datang
+        <h1 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.85rem; color: var(--text-primary);">
+          selamat datang di blog hasil restorasi
         </h1>
-        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.5rem;">
-        Website ini berisi tulisanku dari jaman dulu yang pernah kupublikasikan di Internet dan yang berhasil aku kumpulkan lagi. Aku aktif ngeblog dari tahun 2006 sampai 2016. 10 tahun. Setelah itu masih nulis juga tapi di Facebook Notes, group maupun di status. Sudah 10 tahun juga sampai sekarang (2026). Sepertinya aku bakalan nulis lagi di sini. <a href="/about/" style="font-weight: 600; text-decoration: underline;">Selengkapnya</a>.
-        </p>
+        <div class="md:flex md:space-x-2 mb-10">
+        <img class="max-w-[350px]"   src="/images/uploads/1788770766155_ilustrasi-jejak-digital.jpg" alt="jejak digital" />
+        <p>
+        Website ini berisi tulisanku dari jaman dulu yang pernah kupublikasikan di Internet dan yang berhasil aku kumpulkan lagi. Aku aktif ngeblog dari tahun 2006 sampai 2016. Nyaris eh tepat 10 tahun. Setelah itu masih nulis juga tapi di Facebook Notes, group maupun di status. Sudah 10 tahun juga sampai sekarang (2026). Sepertinya aku bakalan nulis lagi di sini. <a href="/about/" style="font-weight: 600; text-decoration: underline;">Selengkapnya</a>.</p>
+        </div>
 
         <!-- Stats Chips -->
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
@@ -62,14 +64,14 @@ const popularCategories = Object.entries(categoryCounts)
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
             </svg>
-            <span><strong>{totalPosts}</strong> Konten & Catatan</span>
+            <span><strong>{totalPosts}</strong> Konten</span>
           </div>
 
           <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; background: var(--bg-card); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border);">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>
-            <span><strong>{totalComments}</strong> Komentar Pembaca</span>
+            <span><strong>{totalComments}</strong> Komentar</span>
           </div>
 
           <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; background: var(--bg-card); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border);">
