@@ -1,63 +1,16 @@
 ---
 title: "Waktu Itu Tahun 2007"
-date: "2007-12-31T00:00:00Z"
+date: "2007-12-31T00:00:00.000Z"
 categories: ["Umum"]
 tags: []
 slug: "2007/12/31/waktu-itu-tahun-2007"
-legacyUrls: ["211/waktu-itu-tahun-2007.php", "211/waktu-itu-tahun-2007", "blog/2007/12/31/waktu-itu-tahun-2007", "waktu-itu-tahun-2007"]
+legacyUrl: "/2007/12/31/waktu-itu-tahun-2007/"
+legacyUrls: ["211/waktu-itu-tahun-2007.php","211/waktu-itu-tahun-2007","blog/2007/12/31/waktu-itu-tahun-2007","waktu-itu-tahun-2007"]
 source: "takien.com"
-comments: [
-  {
-    "author": "hams",
-    "date": "",
-    "text": "wah..wahh..\njadi pengin kerja di warnet nie..\nkayaknya kok enak banget..\nmau donk..\nhwehee..\n&#8230;\ntapi aku disini juga &#8220;rasah mbayar&#8221; lohh..\ncuma lom punya forum and domain sendiri kayak kmu..\n&#8230;\nkapan-kapan minta ahhh..\n&#8230;\nbtw thanks udah ngedukung hams buat acara percintaan-nya yawhh..\nhalah..\nhwehe..\n&#8230;\nnice blog.."
-  },
-  {
-    "author": "great_ww",
-    "date": "",
-    "text": "Pengalaman pertama memang pengalaman yg tidak akan pernah terlupakan&#8230;.\nkeep up the good spirit &#8230;"
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "@hams\now itu kamu serius toh,\ntak kirain ecek-ecek wakakaka..\n@great_ww\niyup, betul sekali\nthanks buat yang dah komen"
-  },
-  {
-    "author": "pondokiklan.com",
-    "date": "",
-    "text": "waw&#8230;.\nini true story pak bos ya&#8230;\nkeren&#8230; salut pak&#8230;..\nkau banyak memberikanku tips2 untuk terus survive di duia internet ini&#8230;\nmakasih&#8230;"
-  },
-  {
-    "author": "hams",
-    "date": "",
-    "text": "bro..\nhabis baca artikel itu yap..??\nbagoes..\ngw juga ikutan nimbrung lagi ni bro..\n&#8230;\nheh..\nsapa juga yang ecek-ecek..\ngw serius nie..\ncuma kalo mo nglakuin yang gila-gilaan harus tetep mikir..\nlha dia tinggal di balikpapan..\ngw tinggal di jakarta..\ngimana coba mo kerjain secara serius..\ngw sih mo masukin video ke youtube..\ntapi lama juga..\nbaru masih 5 orang yang liat..\npadahal ini kan urgent..\nhadohh..\nbingung jadinya bro..\nada ide ngga&#8217;..??\n&#8230;"
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "@pondokiklan\nya pak ini true story kok,\nkalau saya banyak memberi tips sepertinya\nterbalik itu pak.\noh yah, saya lupa tahun 2007 juga\npertama kali saya kenal orang baik seperti bapak.."
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "@hams\nwaduh, ide? kalau udah urusan gitu agak rumit bro&#8230;\ngak ada e-book nya sih.. hiks hiks \ntapi aku salut kok dengan usaha mu&#8230;\npokoknya tetep usaha deh,\nsiap sukses yah, tapi inget kemungkinan buruk juga teteb ada&#8230;\nharus teteb lapang dada..  \nbtw thx dah balik lagi.."
-  },
-  {
-    "author": "pondokiklan.com",
-    "date": "",
-    "text": "@namakamu\nhehe, jangan di lebihkan lag&#8230; kan ente yang banyak memberi banyak masukan&#8230; ya ga&#8230;."
-  },
-  {
-    "author": "hams",
-    "date": "",
-    "text": "yup..\nsudah bro..\nthanks.."
-  },
-  {
-    "author": "dhe",
-    "date": "",
-    "text": "Salam Kenal  \ndaku cm mau minta izin gunain gambar di atas  \ndaku dapat pr ne dari teman :-$ , pr-nya aneh2.. asli, n cr jawabnnya berdasarkan gambar yang daku temukan di google image   , dah dapat ne, ya tepatnya gambar di atas, yang dirimu jg gunain..\nmohon izinnya yah :-$\ntrims sebelumnya"
-  }
-]
+author: "takien"
+nowNote: "Ralat ya, ternyata tahun 2007 bukan pertama kali aku buat akun Gmail. Soalnya yang pertama di tahun 2006 aku buat Gmail pertama, dulu masih by invite. Diinvite oleh temenku Ilham, kapasitasnya 1GB. Yang di tahun 2007 itu aku buat akun Gmail untuk warnetforum, bukan akun pribadi."
+nowDate: "7 September 2026"
+comments: [{"author":"hams","date":"","text":"wah..wahh..\njadi pengin kerja di warnet nie..\nkayaknya kok enak banget..\nmau donk..\nhwehee..\n&#8230;\ntapi aku disini juga &#8220;rasah mbayar&#8221; lohh..\ncuma lom punya forum and domain sendiri kayak kmu..\n&#8230;\nkapan-kapan minta ahhh..\n&#8230;\nbtw thanks udah ngedukung hams buat acara percintaan-nya yawhh..\nhalah..\nhwehe..\n&#8230;\nnice blog.."},{"author":"great_ww","date":"","text":"Pengalaman pertama memang pengalaman yg tidak akan pernah terlupakan&#8230;.\nkeep up the good spirit &#8230;"},{"author":"takien.com","date":"","text":"@hams\now itu kamu serius toh,\ntak kirain ecek-ecek wakakaka..\n@great_ww\niyup, betul sekali\nthanks buat yang dah komen"},{"author":"pondokiklan.com","date":"","text":"waw&#8230;.\nini true story pak bos ya&#8230;\nkeren&#8230; salut pak&#8230;..\nkau banyak memberikanku tips2 untuk terus survive di duia internet ini&#8230;\nmakasih&#8230;"},{"author":"hams","date":"","text":"bro..\nhabis baca artikel itu yap..??\nbagoes..\ngw juga ikutan nimbrung lagi ni bro..\n&#8230;\nheh..\nsapa juga yang ecek-ecek..\ngw serius nie..\ncuma kalo mo nglakuin yang gila-gilaan harus tetep mikir..\nlha dia tinggal di balikpapan..\ngw tinggal di jakarta..\ngimana coba mo kerjain secara serius..\ngw sih mo masukin video ke youtube..\ntapi lama juga..\nbaru masih 5 orang yang liat..\npadahal ini kan urgent..\nhadohh..\nbingung jadinya bro..\nada ide ngga&#8217;..??\n&#8230;"},{"author":"takien.com","date":"","text":"@pondokiklan\nya pak ini true story kok,\nkalau saya banyak memberi tips sepertinya\nterbalik itu pak.\noh yah, saya lupa tahun 2007 juga\npertama kali saya kenal orang baik seperti bapak.."},{"author":"takien.com","date":"","text":"@hams\nwaduh, ide? kalau udah urusan gitu agak rumit bro&#8230;\ngak ada e-book nya sih.. hiks hiks \ntapi aku salut kok dengan usaha mu&#8230;\npokoknya tetep usaha deh,\nsiap sukses yah, tapi inget kemungkinan buruk juga teteb ada&#8230;\nharus teteb lapang dada..  \nbtw thx dah balik lagi.."},{"author":"pondokiklan.com","date":"","text":"@namakamu\nhehe, jangan di lebihkan lag&#8230; kan ente yang banyak memberi banyak masukan&#8230; ya ga&#8230;."},{"author":"hams","date":"","text":"yup..\nsudah bro..\nthanks.."},{"author":"dhe","date":"","text":"Salam Kenal  \ndaku cm mau minta izin gunain gambar di atas  \ndaku dapat pr ne dari teman :-$ , pr-nya aneh2.. asli, n cr jawabnnya berdasarkan gambar yang daku temukan di google image   , dah dapat ne, ya tepatnya gambar di atas, yang dirimu jg gunain..\nmohon izinnya yah :-$\ntrims sebelumnya"}]
 ---
 
 <p><img src="/images/2007/12/time-image.jpg" alt="Time, kaleidoskop, calendar, clock" title="" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" />Tahun 2007 adalah tahun yang unik, karena tidak ada tahun lain yang menyerupai itu. Wakaka, lagi pula semua tahun juga emang sudah beda kan, gak ada yang sama. Yang jelas, dengan adanya tahun 2007 ini umurku jadi genap 23 tahun (protes ah, 23 itu ganjil, bukan genap), sehingga tetap seumur dengan orang-orang lain yang lahir pada tahun 1984 yang lalu.</p>

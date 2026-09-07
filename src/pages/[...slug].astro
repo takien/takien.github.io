@@ -194,24 +194,6 @@ if (isTimeline) {
       </aside>
     )}
 
-    <!-- Author Present-Day Note / Catatan Penulis -->
-    {post.data.nowNote && (
-      <aside class="author-now-box" aria-label="Catatan Penulis">
-        <div class="author-now-header">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="author-now-icon">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-          </svg>
-          <span>Catatan penulis:</span>
-        </div>
-        <div class="author-now-text">{post.data.nowNote}</div>
-        {post.data.nowDate && (
-          <div class="author-now-date">{post.data.nowDate}</div>
-        )}
-      </aside>
-    )}
-
     <!-- Post Content Body -->
     <div class="prose" id="article-body">
       <Content />
@@ -240,6 +222,24 @@ if (isTimeline) {
           )}
         </div>
       </div>
+    )}
+
+    <!-- Author Present-Day Note / Catatan Penulis -->
+    {post.data.nowNote && (
+      <aside class="author-now-box" aria-label="Catatan Penulis">
+        <div class="author-now-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="author-now-icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <span>Catatan penulis:</span>
+        </div>
+        <div class="author-now-text">{post.data.nowNote}</div>
+        {post.data.nowDate && (
+          <div class="author-now-date">{post.data.nowDate}</div>
+        )}
+      </aside>
     )}
 
     <!-- Tags -->

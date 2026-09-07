@@ -524,8 +524,13 @@ img {
   border-left: 4px solid #3b82f6;
   border-radius: var(--radius-md);
   padding: 1.15rem 1.35rem;
+  margin-top: 1.75rem;
   margin-bottom: 2.25rem;
   transition: border-color var(--transition-fast);
+}
+
+.article-historical-box + .author-now-box {
+  margin-top: -0.75rem;
 }
 
 :root[data-theme="dark"] .author-now-box {
