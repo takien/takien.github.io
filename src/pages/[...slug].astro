@@ -8,9 +8,13 @@ import { getSourceInfo, isTimelinePost, isFreshPost } from '../utils/sourceHelpe
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
 
+  const staticPages = new Set(['about', 'wordpress-plugins', 'jquery-plugins']);
+
   const paths: any[] = [];
   for (const post of posts) {
     const cleanSlug = post.data.slug.replace(/^\//, '').replace(/\/$/, '');
+    if (staticPages.has(cleanSlug)) continue;
+
     paths.push({
       params: { slug: cleanSlug },
       props: { post },

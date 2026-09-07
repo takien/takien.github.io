@@ -1,6 +1,6 @@
 ---
 title: "CarX Drift Racing Kini Sudah Tersedia di AppStore"
-date: "2014-03-08T06:05:02+00:00"
+date: "2014-03-08T06:05:00.000Z"
 categories: ["Game"]
 tags: []
 slug: "news/2014/03/carx-drift-racing-kini-sudah-tersedia-di-appstore"
@@ -58,13 +58,3 @@ comments: []
 </ul>
 <p>CarX Drift Racing ini dibuat menggunakan CarX Physics Engine , sebuah game engine yang dikhususkan untuk game-game racing yang juga dikembangkan oleh CarX Technologies.  Game yang sudah didownload oleh 1,300,000 orang pada versi demonya ini juga sedang di-port ke Android namun pihak pengembang belum dapat memastikan kapan akan di rilis di platform tersebut.</p>
 <p>Sudah siap untuk <em>ngepot? </em>Mari unduh game nya di AppStore : <a target="_blank" href="https://itunes.apple.com/app/id644907661">https://itunes.apple.com/app/id644907661</a></p>
-
-<div class="fb-social-plugin fb-recommendations-bar" data-ref="recommendations-bar" data-trigger="50%" data-side="right" data-num-recommendations="4"></div>
- 
-		
-		<div id="ads_article" style="min-width:120px;min-height:120px">
-					
-		
-		
-		
-			</div>

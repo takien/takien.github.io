@@ -1,6 +1,6 @@
 ---
 title: "In-Home Streaming, Mainkan Game Steam Dimanapun di Rumah Anda"
-date: "2014-05-26T02:19:07+00:00"
+date: "2014-05-26T02:19:00.000Z"
 categories: ["Game"]
 tags: []
 slug: "news/2014/05/in-home-streaming-mainkan-game-steam-dimanapun-di-rumah-anda"
@@ -33,13 +33,3 @@ Pada setingan In-Home Streaming Anda dapat merubah beberapa setting seperti kece
 <li>Untuk saat ini, baru sistem operasi Windows yang dapat dijadikan sebagai <em>host.</em> SteamOS, Linux, Mac OS X akan tersedia di waktu dekat.</li>
 </ol>
 <p>Untuk informasi lebih lanjut : <a target="_blank" href="https://support.steampowered.com/kb_article.php?ref=3629-RIAV-1617">https://support.steampowered.com/kb_article.php?ref=3629-RIAV-1617</a></p>
-
-<div class="fb-social-plugin fb-recommendations-bar" data-ref="recommendations-bar" data-trigger="50%" data-side="right" data-num-recommendations="4"></div>
- 
-		
-		<div id="ads_article" style="min-width:120px;min-height:120px">
-					
-		
-		
-		
-			</div>

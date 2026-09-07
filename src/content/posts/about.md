@@ -1,20 +1,36 @@
 ---
-title: "About"
-date: ""
-categories: ["Article"]
-tags: []
+title: "Catatan personal dan jejak digital sejak 2006"
+date: "2026-09-07T02:03:00.000Z"
+categories: ["About"]
+tags: ["about","profil","sejarah"]
 slug: "about"
 legacyUrl: "/about/"
+source: "takien.com"
+author: "takien"
 comments: []
 ---
 
-<div class="content-wrap">
-					<p>Find me here:</p>
-<p>* WordPress <a href="https://web.archive.org/web/20160411173635/http://profiles.wordpress.org/takien/" target="_blank">http://profiles.wordpress.org/takien/</a><br/>
-* GitHub <a href="https://web.archive.org/web/20160411173635/https://github.com/takien/" target="_blank">https://github.com/takien</a><br/>
-* Twitter <a href="https://web.archive.org/web/20160411173635/https://twitter.com/cektkp/" target="_blank">https://twitter.com/cektkp</a><br/>
-* Youtube <a href="https://web.archive.org/web/20160411173635/http://www.youtube.com/cektkp" target="_blank">http://www.youtube.com/cektkp</a><br/>
-* Kaskus <a href="https://web.archive.org/web/20160411173635/http://www.kaskus.co.id/profile/187886" target="_blank">http://www.kaskus.co.id/profile/187886</a></p>
-										
-			
-				</div>
+<p>Aku pertama daftar blog di tahun 2006, ada banyak macam-macam, seperti iblog, tapi yang masih ada jejaknya dan sepertinya rajin aku isi adalah blog.com, dengan nama domain <strong>dasargo.blog.com</strong> (<em>coz you n-ever know</em>)</p>
+
+<p>Sebenarnya aku pernah punya web juga sebelumnya, di Geocities (http://geocities.com/imissuaja) sejak tahun 2004. Isinya gallery foto-foto dan beberapa lirik lagu. Terbuat dari HTML murni hasil dari mempraktekkan buku yang aku pelajari. Karya Mico Pardosi. Walaupun itu web pertamaku, tapi aku membuatnya sedikit unik, karena tampilannya seperti desktop OS9-nya Apple. Sayangnya tidak ada jejaknya di Web Archive. Selain Geocities, di tahun 2004-2005 aku juga punya website di Tripod.com dan beberapa lainnya lupa alamatnya.</p>
+
+<p>Nah, ketika masuk ke tahun 2007, aku mulai kerja di warnet, aku jadi banyak waktu untuk ngoprek internet. Akhirnya aku membuat blog yang di hosting sendiri di 110.mb.com yaitu http://imissu.110mb.com (Tell it or you lose it). Disinilah awal mula aku menginstal WordPress secara mandiri. Setelah aku lihat source di Web Archive, ternyata itu WordPress versi 2.1.2, dengan theme khas Kubrick, yang aku custom header dan footer-nya menggunakan gambar yang aku desain dengan Photoshop dan mengganti ciri khas warna biru menjadi warna orange.</p>
+
+
+<div>
+<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788746581638_imissu.110mb.jpg" alt="110mb" />
+</div>
+
+
+<p>Terlihat sederhana memang, tapi itu momen yang sangat berkesan bagiku, karena dari situlah timbul semangatku lagi untuk mempelajari bahasa pemgroraman PHP. Karena sebelumnya, dari tahun 2004 aku juga sudah belajar buku PHP terbitan ElexMedia, dan mempraktekannya secara lokal, untuk mengonlinekannya masih sulit menurutku. Karena studi kasus yang ada di buku itu pun tidak berhasil aku selesaikan karena ada error yang aku tidak mengerti. Aku jadi putus asa, dan meninggalkan buku itu begitu saja.</p>
+
+<p>Nah setelah aku kenal WordPress di tahun 2007 itu, aku jadi semangat lagi karena ternyata dengan WordPress aku bisa dengan mudah membuat web dengan PHP, yang bisa menyimpan data secara dinamis dan bisa diupdate kapan saja kontennya. Walaupun secara tampilan aku tidak cukup puas dengan WordPress, karena menurutku terlalu simpel dan kurang profesional. Mungkin inilah yang mendasariku mempelajari WordPress lebih dalam, dan mengutak-atik templatenya, sampai sekarang.</p>
+
+<p>Kemudian sekitar bulan September 2007, aku ngeblog pakai domain situskamu.com, lupa aku hostingnya dimana, tapi di sini aku sudah lebih serius karena tidak pakai hosting gratisan lagi, dan sudah pakai domain sendiri.</p>
+
+<p>Jaraknya cukup jauh ya dari bulan Maret ke September, ya memang periode itu aku banyak ngutak-atik forum, menginstall dan mempelajari phpBB sampai SMF. Hingga terbentuklah forum warnetforum.web.id yang kemudian berganti jadi warnetforum.com. Dan akhirnya warnet forum mejadi salah satu forum komunitas warnet yang cukup diperhitungkan di Indonesia. Forum ini menjadi tempat berkumpulnya para pengusaha warnet, para operator warnet, dan para pebisnis warnet.</p>
+
+<h2>Tentang Pemulihan Arsip Ini</h2>
+<p>
+  Situs ini dipulihkan kembali dari snapshot <strong>Wayback Machine Internet Archive</strong> ke <strong>GitHub Pages (takien.github.io)</strong>. Seluruh teks asli, gambar-gambar panduan tutorial, serta komentar dan diskusi dari pembaca dipreservasi secara statis tanpa ada fitur form komentar interaktif lagi, agar kenangan dan ilmu yang tertulis tetap abadi dan dapat dibaca oleh siapa saja.
+</p>

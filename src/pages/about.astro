@@ -1,39 +1,59 @@
 ---
+import { getEntry, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const aboutEntry = await getEntry('posts', 'about');
+let Content: any = null;
+let title = "About • takien.com";
+let description = "Tentang takien.com — personal blog dan arsip catatan web development.";
+let pageHeading = "Catatan personal dan jejak digital sejak 2006.";
+
+if (aboutEntry) {
+  const rendered = await render(aboutEntry);
+  Content = rendered.Content;
+  if (aboutEntry.data.title) {
+    pageHeading = aboutEntry.data.title;
+    title = `${aboutEntry.data.title} • takien.com`;
+  }
+}
 ---
 
 <BaseLayout
-  title="About • takien.com"
-  description="Tentang takien.com — personal blog dan arsip catatan web development."
+  title={title}
+  description={description}
 >
   <div class="content-container">
-    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
-      <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem;">
-        Catatan personal dan jejak digital sejak 2006.
-      </h1>
-      <p style="color: var(--text-secondary); font-size: 1rem;">
-        
-      </p>
+    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+      <div>
+        <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem;">
+          {pageHeading}
+        </h1>
+      </div>
+
+      {import.meta.env.DEV && (
+        <a
+          href="/admin/?slug=about"
+          class="post-edit-btn"
+          title="Edit halaman About di Admin lokal"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="margin-top: 0.5rem;"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 1-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+          <span>Edit About</span>
+        </a>
+      )}
     </div>
 
     <div class="prose">
-      <p>
-        Aku pertama daftar blog di tahun 2006, ada banyak macam-macam, seperti iblog, tapi yang masih ada jejaknya dan sepertinya rajin aku isi adalah blog.com, dengan nama domain **dasargo.blog.com** (<em>cinta banget ma blog ini... beuh.. segitunya?</em>)
-      </p>
-      <p>Sebenarnya aku pernah punya web juga sebelumnya, di Geocities (http://geocities.com/imissuaja) sejak tahun 2004. Isinya gallery foto-foto dan beberapa lirik lagu.  Terbuat dari HTML murni hasil dari mempraktekkan buku yang aku pelajari. Karya Mico Pardosi. Walaupun itu web pertamaku, tapi aku membuatnya sedikit unik, karena tampilannya seperti desktop OS9-nya Apple. Sayangnya tidak ada jejaknya di Web Archive. Selain Geocities, di tahun 2004-2005 aku juga punya website di Tripod.com dan beberapa lainnya lupa alamatnya.</p>
-      <p>Nah, ketika masuk ke tahun 2007, aku mulai kerja di warnet, aku jadi banyak waktu untuk ngoprek internet. Akhirnya aku membuat blog yang di hosting sendiri di 110.mb.com yaitu http://imissu.110mb.com (Tell it or you lose it). Disinilah awal mula aku menginstal WordPress secara mandiri. Setelah aku lihat source di Web Archive, ternyata itu WordPress versi 2.1.2, dengan theme khas Kubrick, yang aku custom header dan footer-nya menggunakan gambar yang aku desain dengan Photoshop dan mengganti ciri khas warna biru menjadi warna orange.</p>
-      <p>Terlihat sederhana memang, tapi itu momen yang sangat berkesan bagiku, karena dari situlah timbul semangatku lagi untuk mempelajari bahasa pemgroraman PHP. Karena sebelumnya, dari tahun 2004 aku juga sudah belajar buku PHP terbitan ElexMedia, dan mempraktekannya secara lokal, untuk mengonlinekannya masih sulit menurutku. Karena studi kasus yang ada di buku itu pun tidak berhasil aku selesaikan karena ada error yang aku tidak mengerti. Aku jadi putus asa, dan meninggalkan buku itu begitu saja.</p>
-      <p>Nah setelah aku kenal WordPress di tahun 2007 itu, aku jadi semangat lagi karena ternyata dengan WordPress aku bisa dengan mudah membuat web dengan PHP, yang bisa menyimpan data secara dinamis dan bisa diupdate kapan saja kontennya. Walaupun secara tampilan aku tidak cukup puas dengan WordPress, karena menurutku terlalu simpel dan kurang profesional. Mungkin inilah yang mendasariku mempelajari WordPress lebih dalam, dan mengutak-atik templatenya, sampai sekarang.</p>
-
-      <p>Kemudian sekitar bulan September 2007, aku ngeblog pakai domain situskamu.com, lupa aku hostingnya dimana, tapi di sini aku sudah lebih serius karena tidak pakai hosting gratisan lagi, dan sudah pakai domain sendiri.</p>
-      <p>Jaraknya cukup jauh ya dari bulan Maret ke September, ya memang periode itu aku banyak ngutak-atik forum, menginstall dan mempelajari phpBB sampai SMF. Hingga terbentuklah forum warnetforum.web.id yang kemudian berganti jadi warnetforum.com. Dan akhirnya warnet forum mejadi salah satu forum komunitas warnet yang cukup diperhitungkan di Indonesia. Forum ini menjadi tempat berkumpulnya para pengusaha warnet, para operator warnet, dan para pebisnis warnet.</p>
-
-  
-
-      <h2>Tentang Pemulihan Arsip Ini</h2>
-      <p>
-        Situs ini dipulihkan kembali dari snapshot <strong>Wayback Machine Internet Archive</strong> ke <strong>GitHub Pages (takien.github.io)</strong>. Seluruh teks asli, gambar-gambar panduan tutorial, serta komentar dan diskusi dari pembaca dipreservasi secara statis tanpa ada fitur form komentar interaktif lagi, agar kenangan dan ilmu yang tertulis tetap abadi dan dapat dibaca oleh siapa saja.
-      </p>
+      {Content ? (
+        <Content />
+      ) : (
+        <p>Konten halaman about sedang dimuat...</p>
+      )}
     </div>
   </div>
 </BaseLayout>

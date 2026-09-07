@@ -1,6 +1,6 @@
 ---
 title: "Miris! Beginilah Kenyataan Nasib Orang IT di Indonesia"
-date: "2015-09-05T08:19:16+00:00"
+date: "2015-09-05T08:19:00.000Z"
 categories: ["Teknologi"]
 tags: []
 slug: "news/2015/09/beginilah-kenyataan-nasib-orang-it-di-indonesia"
@@ -34,15 +34,3 @@ Bahkan tidurnya saja tidak nyenyak gara-gara trouble yang belum terselesaikan.</
 <li>Tapi sewaktu-waktu bisa dimintai tolong ketika foto di smartphone nya terhapus atau kena virus atau mau install aplikasi tertentu.</li>
 </ul>
 <p>Ya, begitulah perlakuan sebagian perusahaan maupun orang-orang Indonesia terhadap pekerja IT. Makanya masih banyak perusahaan-perusahaan di Indonesia ini yang kacau balau sistem informasinya maupun efisiensi nya. Padahal pada kenyataanya orang IT itu cerdas, banyak ide, penuh inovasi, berpikiran kritis, pandai beranalisa dan terbiasa memecahkan masalah.</p>
-<p>&nbsp;</p>
-
-<div id="ads_article" style="min-width:120px;min-height:120px">
-			
-			
-			
-			
-		</div>
-
-
-
-<div class="fb-social-plugin fb-recommendations-bar" data-ref="recommendations-bar" data-trigger="50%" data-side="right" data-num-recommendations="4"></div>

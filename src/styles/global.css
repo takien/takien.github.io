@@ -952,21 +952,76 @@ html.dark .timeline-article-banner {
   color: var(--text-secondary);
 }
 
-/* Strict Image and Media Constraints: 100% Max Width */
+/* Strict Image and Media Constraints with Custom Size Support */
 .prose img,
 .prose picture,
 .prose video {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
+  max-width: 100%;
+  height: auto;
   box-sizing: border-box;
 }
+
+/* Default standalone images inside prose: centered block */
+.prose > p > img:only-child,
+.prose > img {
+  display: block;
+}
+
+/* Helper size & alignment classes for Editor & HTML */
+.prose img.img-left, .prose .alignleft {
+  float: left;
+  margin: 0.5rem 1.5rem 1rem 0;
+}
+
+.prose img.img-right, .prose .alignright {
+  float: right;
+  margin: 0.5rem 0 1rem 1.5rem;
+}
+
+.prose img.img-center, .prose .aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose .img-w-25, .prose .w-25 { max-width: 25% !important; width: 25%; }
+.prose .img-w-33, .prose .w-33 { max-width: 33.33% !important; width: 33.33%; }
+.prose .img-w-50, .prose .w-50 { max-width: 50% !important; width: 50%; }
+.prose .img-w-66, .prose .w-66 { max-width: 66.66% !important; width: 66.66%; }
+.prose .img-w-75, .prose .w-75 { max-width: 75% !important; width: 75%; }
+.prose .img-w-100, .prose .w-100 { max-width: 100% !important; width: 100%; }
+
+/* Utility classes for editor */
+.prose .mx-auto { margin-left: auto !important; margin-right: auto !important; display: block; }
+.prose .py-2 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+.prose .py-4 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+.prose .py-6 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+.prose .py-8 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+.prose .py-10 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+.prose .my-2 { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+.prose .my-4 { margin-top: 1rem !important; margin-bottom: 1rem !important; }
+.prose .my-6 { margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+.prose .my-8 { margin-top: 2rem !important; margin-bottom: 2rem !important; }
+.prose .my-10 { margin-top: 2.5rem !important; margin-bottom: 2.5rem !important; }
+
+/* Support Tailwind arbitrary width syntax if written in editor */
+.prose [class*="max-w-\[50\%\]"] { max-width: 50% !important; }
+.prose [class*="max-w-\[25\%\]"] { max-width: 25% !important; }
+.prose [class*="max-w-\[30\%\]"] { max-width: 30% !important; }
+.prose [class*="max-w-\[40\%\]"] { max-width: 40% !important; }
+.prose [class*="max-w-\[60\%\]"] { max-width: 60% !important; }
+.prose [class*="max-w-\[70\%\]"] { max-width: 70% !important; }
+.prose [class*="max-w-\[75\%\]"] { max-width: 75% !important; }
+.prose [class*="max-w-\[80\%\]"] { max-width: 80% !important; }
+.prose [class*="w-\[50\%\]"] { width: 50% !important; }
+.prose [class*="w-\[25\%\]"] { width: 25% !important; }
+.prose [class*="w-\[75\%\]"] { width: 75% !important; }
 
 .prose .wp-caption,
 .prose div[id^="attachment_"],
 .prose figure,
 .prose div {
-  max-width: 100% !important;
+  max-width: 100%;
   box-sizing: border-box;
 }
 

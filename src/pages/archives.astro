@@ -3,9 +3,13 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSourceInfo, isTimelinePost, isFreshPost } from '../utils/sourceHelper';
 
-const allPosts = (await getCollection('posts')).sort((a, b) => {
-  return (b.data.date || '').localeCompare(a.data.date || '');
-});
+const excludedSlugs = new Set(['about', 'wordpress-plugins', 'jquery-plugins']);
+
+const allPosts = (await getCollection('posts'))
+  .filter((p) => !excludedSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, '')))
+  .sort((a, b) => {
+    return (b.data.date || '').localeCompare(a.data.date || '');
+  });
 
 // Group posts by Year
 const postsByYear: Record<string, any[]> = {};

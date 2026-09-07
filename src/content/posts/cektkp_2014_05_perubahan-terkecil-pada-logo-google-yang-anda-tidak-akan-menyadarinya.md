@@ -1,6 +1,6 @@
 ---
 title: "Perubahan Terkecil pada Logo Google yang Anda Tidak Akan Menyadarinya"
-date: "2014-05-28T10:05:12+00:00"
+date: "2014-05-28T10:05:00.000Z"
 categories: ["Serba-serbi"]
 tags: []
 slug: "news/2014/05/perubahan-terkecil-pada-logo-google-yang-anda-tidak-akan-menyadarinya"
@@ -20,13 +20,3 @@ comments: []
 <p>Tidak menemukan perbedaannya? Perhatikan animasi GIF berikut:<br/>
 <div id="attachment_1655" style="width: 646px" class="wp-caption aligncenter"><img src="/images/cektkp/logo-google-animation.gif" alt="Logo Google animasi" width="636" height="287" class="size-full wp-image-1655"/><p class="wp-caption-text">Logo Google animasi</p></div></p>
 <p>Ya, perubahan tersebut adalah hanya menggeser huruf <strong>g</strong> ke dua ke arah kiri sebanyak 1 piksel dan huruf <strong>l</strong> ke bawah sebanyak 1 piksel. Lalu kenapa dilakukan perubahan kalau hanya sekecil itu? Itu menandakan bahwa Google sangat peduli terhadap sesuatu sampai ke titik yang sedetail-detailnya.</p>
-
-<div class="fb-social-plugin fb-recommendations-bar" data-ref="recommendations-bar" data-trigger="50%" data-side="right" data-num-recommendations="4"></div>
- 
-		
-		<div id="ads_article" style="min-width:120px;min-height:120px">
-					
-		
-		
-		
-			</div>

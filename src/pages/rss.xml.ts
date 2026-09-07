@@ -2,9 +2,12 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context: any) {
-  const posts = (await getCollection('posts')).sort((a, b) => {
-    return (b.data.date || '').localeCompare(a.data.date || '');
-  });
+  const excludedRssSlugs = new Set(['about', 'wordpress-plugins', 'jquery-plugins']);
+  const posts = (await getCollection('posts'))
+    .filter((p) => p.data.date && p.data.date.trim().length > 0 && !excludedRssSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, '')))
+    .sort((a, b) => {
+      return (b.data.date || '').localeCompare(a.data.date || '');
+    });
 
   return rss({
     title: "takien.com • don't cover a judge by its book",

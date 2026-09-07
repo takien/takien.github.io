@@ -10,7 +10,10 @@ interface Props {
 
 const { currentPath = '', currentArticleDate = '' } = Astro.props;
 
-const allPosts = await getCollection('posts');
+const excludedPageSlugs = new Set(['about', 'wordpress-plugins', 'jquery-plugins']);
+const allPosts = (await getCollection('posts')).filter(
+  (p) => !excludedPageSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, ''))
+);
 
 // Compute post counts by year and source
 const yearCounts: Record<string, number> = {};
