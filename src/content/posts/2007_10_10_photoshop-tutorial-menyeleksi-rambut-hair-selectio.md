@@ -387,12 +387,14 @@ Untuk menambah background baru tinggal membuat layer baru yang diletakkan di baw
 
 Nih contohnya.. klik untuk melihat versi besarnya...
 
-<figure class="text-center">
- 
-    <img src="/images/designkillers/seleksi/hasil_03.webp"> 
-    <img src="/images/designkillers/seleksi/hasil_02.webp"> 
-    <img src="/images/designkillers/seleksi/hasil_01.webp"> 
-</figure>
+<di class="md:flex">
+<img src="/images/designkillers/seleksi/hasil_03.webp"> 
+
+<img src="/images/designkillers/seleksi/hasil_02.webp"> 
+
+<img src="/images/designkillers/seleksi/hasil_01.webp"> 
+
+</div>
 
 Oke.. sekian dulu deh, bagi yang mao coba-coba jangan segan-segan postingkan disini hasilnya, bagi yang kuran jelas silakan di tanya, kalau belum ngerti juga entarnya dibuat lagi tutorial yang lebih spesifik tentang rambut. Bagi yang mao rekues foto-fotonya yang lain PM aja. <img src="/images/designkillers/ym/cheesy.gif" alt="Cheesy">
 

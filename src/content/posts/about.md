@@ -38,7 +38,7 @@ Terlihat sederhana memang, tapi itu momen yang sangat berkesan bagiku, karena da
 
 <p>Nah setelah aku kenal WordPress di tahun 2007 itu, aku jadi semangat lagi karena ternyata dengan WordPress aku bisa dengan mudah membuat web dengan PHP, yang bisa menyimpan data secara dinamis dan bisa diupdate kapan saja kontennya. Walaupun secara tampilan aku tidak cukup puas dengan WordPress, karena menurutku terlalu simpel dan kurang profesional. Mungkin inilah yang mendasariku mempelajari WordPress lebih dalam, dan mengutak-atik templatenya, sampai sekarang.</p>
 
-<p>Kemudian sekitar bulan September 2007, aku ngeblog pakai domain situskamu.com, lupa aku hostingnya dimana, tapi di sini aku sudah lebih serius karena tidak pakai hosting gratisan lagi, dan sudah pakai domain sendiri.</p>
+<p>Kemudian sekitar bulan September 2007, aku ngeblog pakai domain situskamu.com, di sini aku sudah lebih serius karena tidak pakai hosting gratisan lagi, dan sudah pakai domain sendiri.</p>
 
 Jaraknya cukup jauh ya dari bulan Maret ke September, ya memang periode itu aku banyak ngutak-atik forum, dari mulai forum gratisan hingga menginstall dan mempelajari phpBB sampai SMF. Hingga terbentuklah forum *warnetforum.web.id* yang kemudian berganti jadi `warnetforum.com`. Dan kelak warnetforum selama 10 tahun ke depan mejadi salah satu forum komunitas warnet yang cukup diperhitungkan di Indonesia. Forum ini menjadi tempat berkumpulnya para pengusaha warnet, para operator warnet, dan para pebisnis warnet.
 
@@ -95,7 +95,7 @@ Hal ini tentu membutuhkan kapasitas hosting yang cukup besar, dan sayangnya host
 Akhirnya aku memindahkan hostingku ke `HOSTGATOR.COM` walaupun shared hosting, bukan VPS, tapi kapasitasnya besar, dan harga perbulannya sekitar $35 USD. Cukup mahal memang. Tapi sangat mumpuni untuk menampung web-web aku dan web clientku sampai sekitar 6 tahun ke depan (2015). Sebelum akhirnya pindah ke VPS di `DIGITALOCEAN` sampai tahun 2025 (10 tahun). Dan akhirnya aku tidak menggunakan VPS lagi tapi menggunakan serverless `CLOUDFLARE` sampai sekarang.
 
 
-Ya, walaupun tahun 2007 bukan pertama kali aku mengenal internet, tapi tahun itu yang sangat seru dan memorable bagiku, tapi juga sangat melelahkan. Sampai aku membuat tulisan blognya di penghujung tahun waktu itu. [Waktu Itu Tahun 2007](/2007/12/31/waktu-itu-tahun-2007/)
+Ya, walaupun tahun 2007 bukan pertama kali aku mengenal internet, tapi tahun itu yang sangat seru dan memorable bagiku, tapi juga sangat melelahkan. Sampai aku menulisnya di blog pada penghujung tahun itu. [Waktu Itu Tahun 2007](/2007/12/31/waktu-itu-tahun-2007/)
 
 Long story short, setelah malang melintang di dunia website, desain dan dunia warnet, aku ditawarin oleh temenku Chapunk untuk bekerja di perusahan Advertising dan Creative Agency `DEALPRODUCTION` di kota Medan. 
 
