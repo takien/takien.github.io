@@ -48,4 +48,8 @@ Ini beberapa hasil keisenganku pakai metode Vibe Coding:
 *Eksperimen video editor*
 <a target="_blank" href="https://sv-edit.vercel.app">https://sv-edit.vercel.app</a>
 
+
+
+
+![blog-restoration](/images/uploads/1788769681389_blog-restoration.jpeg)
 Dan satu lagi, ya ini. Website yang [sedang kamu lihat ini](/) aku buatnya pakai AI atau Vibe Coding, ya kali manual. Tape dehhh
