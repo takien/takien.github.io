@@ -12,7 +12,7 @@
   },
   {
     "id": "dasargo.blog.com",
-    "name": "dasargo.blog.com",
+    "name": "dasargo.blog",
     "shortName": "dasargo",
     "slug": "dasargo.blog.com",
     "period": "2006–2007",
@@ -34,7 +34,7 @@
   },
   {
     "id": "w3magz.com",
-    "name": "w3magz.com",
+    "name": "w3magz",
     "shortName": "w3magz",
     "slug": "w3magz.com",
     "period": "2010–2014",
@@ -111,7 +111,7 @@
   },
   {
     "id": "cektkp.com",
-    "name": "Cektkp.com",
+    "name": "Cektkp",
     "shortName": "cektkp",
     "slug": "cektkp.com",
     "period": "2013–2015",
@@ -119,6 +119,28 @@
     "color": "#ffc600",
     "dotClass": "dot-cektkp",
     "badgeClass": "badge-src-cektkp"
+  },
+  {
+    "id": "indowebmasters.com",
+    "name": "Indowebmasters",
+    "shortName": "indowebmasters",
+    "slug": "indowebmasters.com",
+    "period": "Tutorial Web",
+    "description": "Awalnya untuk forum komunitas web developer, akhirnya aku jadikan blog khusus tutorial web. Dan akhirnya lagi kugabungin ke takien.com",
+    "color": "#0085ff",
+    "dotClass": "dot-indowebmasters",
+    "badgeClass": "badge-src-indowebmasters"
+  },
+  {
+    "id": "blogspot.com",
+    "name": "Blogspot",
+    "shortName": "blogspot",
+    "slug": "blogspot.com",
+    "period": "Blogspot",
+    "description": "Blog randomku di blogspot yang pada akhirnya sudah ku gabungin semua ke takien.com",
+    "color": "#ff5722",
+    "dotClass": "dot-blogspot",
+    "badgeClass": "badge-src-blogspot"
   },
   {
     "id": "takien.com",

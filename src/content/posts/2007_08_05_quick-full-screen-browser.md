@@ -1,10 +1,12 @@
 ---
 title: "quick full screen browser"
-date: "2007-08-05T00:00:00Z"
+date: "2007-08-05T00:00:00.000Z"
 categories: ["Uncategorized"]
-tags: ["Browser", "Internet Explorer", "mozilla firefox", "opera"]
+tags: ["Browser","Internet Explorer","mozilla firefox","opera"]
 slug: "2007/08/05/quick-full-screen-browser"
-legacyUrl: "/blog/2007/08/05/quick-full-screen-browser/"
+legacyUrl: "/2007/08/05/quick-full-screen-browser/"
+source: "blogspot.com"
+author: "takien"
 comments: []
 ---
 

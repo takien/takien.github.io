@@ -1,108 +1,14 @@
 ---
 title: "Table to CSS Converter, Convert Table to DIV in Seconds"
-date: "2007-12-02T00:00:00Z"
+date: "2007-12-02T00:00:00.000Z"
 categories: ["Website"]
 tags: []
 slug: "2007/12/02/table-to-css-converter-convert-table-to-div-in-seconds"
-legacyUrls: ["189/table-to-css-converter-convert-table-to-div-in-seconds.php", "189/table-to-css-converter-convert-table-to-div-in-seconds", "blog/2007/12/02/table-to-css-converter-convert-table-to-div-in-seconds", "table-to-css-converter-convert-table-to-div-in-seconds"]
-source: "takien.com"
-comments: [
-  {
-    "author": "rizkyonline",
-    "date": "",
-    "text": "wah mantap om&#8230;\nsering2 ya sharing ilmu-nya&#8230;"
-  },
-  {
-    "author": "iklan baris gratis",
-    "date": "",
-    "text": "Ada baiknya kalo belajar css.\nSelamat Berkarya"
-  },
-  {
-    "author": "Whois Gratis Juga",
-    "date": "",
-    "text": "wah ini info top, cek UCP bro  \nSip, mempersingkat waktu nih. I love tools&#8230;."
-  },
-  {
-    "author": "geblek",
-    "date": "",
-    "text": "mantap\nlebih mantap lagi kalau langsung jadi themes wordpress"
-  },
-  {
-    "author": "dhit",
-    "date": "",
-    "text": "klw bisa full version, tp free, malah jadi MANTAB&#8230; trims ya"
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "hehe.. ini aja dah mantab kok..\nemang ada file html yang lebih dari 25kb?\ngak ada kan&#8230;\nini cocok buat layout templet&#8230;"
-  },
-  {
-    "author": "monza",
-    "date": "",
-    "text": "wah, top abis\ndengan adanya soft ini, bisa menghemat waktu kita..\napalagi buat pemula cs kayak aku (L)"
-  },
-  {
-    "author": "Lutfi",
-    "date": "",
-    "text": "bagi dong passwordnya, kagak bisa di-ektrak nih   send email ya"
-  },
-  {
-    "author": "Daniezz",
-    "date": "",
-    "text": "tengkyuuu bgt!!\nampe nangis2 nih bikin table css manual, gila div2nya banyak bgt&#8230;.PUSIIING ..hiks2"
-  },
-  {
-    "author": "EdO",
-    "date": "",
-    "text": "wah&#8230;bener..bener&#8230;\nberbagi ilmu terus yeah&#8230;"
-  },
-  {
-    "author": "akangaziz",
-    "date": "",
-    "text": "bos kok gak bisa ya pake kata sandi http://www.situskamu.com\nudah di ganti kah kata sandi nya?"
-  },
-  {
-    "author": "@di",
-    "date": "",
-    "text": "Infonya oke banget. Pas lagi butuh ternyata ada di sini. Langsung sedot dan jalan lancar. Trims"
-  },
-  {
-    "author": "ramdhan",
-    "date": "",
-    "text": "kok ga bisa si extract sih&#8230;\ntrus di isi pasword wrong2 mulu&#8230;"
-  },
-  {
-    "author": "purba",
-    "date": "",
-    "text": "Thx bos.. sdh di download dan berhasil. GBU"
-  },
-  {
-    "author": "radiaku",
-    "date": "",
-    "text": "masih versi trial ya bos. waduh"
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "yup, tapi ini kan opsional..\nsebaiknya tetap biasakan pake css manual"
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "kan ada tuh passwordnya, baca deh postingnya sampai habis"
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "bisa kok&#8230;\ngak pake http:// tuh"
-  },
-  {
-    "author": "takien.com",
-    "date": "",
-    "text": "sudah tersedia link download yang tidak pakai password, cek kembali posting di atas.\nthanks"
-  }
-]
+legacyUrl: "/2007/12/02/table-to-css-converter-convert-table-to-div-in-seconds/"
+legacyUrls: ["189/table-to-css-converter-convert-table-to-div-in-seconds.php","189/table-to-css-converter-convert-table-to-div-in-seconds","blog/2007/12/02/table-to-css-converter-convert-table-to-div-in-seconds","table-to-css-converter-convert-table-to-div-in-seconds"]
+source: "indowebmasters.com"
+author: "takien"
+comments: [{"author":"rizkyonline","date":"","text":"wah mantap om&#8230;\nsering2 ya sharing ilmu-nya&#8230;"},{"author":"iklan baris gratis","date":"","text":"Ada baiknya kalo belajar css.\nSelamat Berkarya"},{"author":"Whois Gratis Juga","date":"","text":"wah ini info top, cek UCP bro  \nSip, mempersingkat waktu nih. I love tools&#8230;."},{"author":"geblek","date":"","text":"mantap\nlebih mantap lagi kalau langsung jadi themes wordpress"},{"author":"dhit","date":"","text":"klw bisa full version, tp free, malah jadi MANTAB&#8230; trims ya"},{"author":"takien.com","date":"","text":"hehe.. ini aja dah mantab kok..\nemang ada file html yang lebih dari 25kb?\ngak ada kan&#8230;\nini cocok buat layout templet&#8230;"},{"author":"monza","date":"","text":"wah, top abis\ndengan adanya soft ini, bisa menghemat waktu kita..\napalagi buat pemula cs kayak aku (L)"},{"author":"Lutfi","date":"","text":"bagi dong passwordnya, kagak bisa di-ektrak nih   send email ya"},{"author":"Daniezz","date":"","text":"tengkyuuu bgt!!\nampe nangis2 nih bikin table css manual, gila div2nya banyak bgt&#8230;.PUSIIING ..hiks2"},{"author":"EdO","date":"","text":"wah&#8230;bener..bener&#8230;\nberbagi ilmu terus yeah&#8230;"},{"author":"akangaziz","date":"","text":"bos kok gak bisa ya pake kata sandi http://www.situskamu.com\nudah di ganti kah kata sandi nya?"},{"author":"@di","date":"","text":"Infonya oke banget. Pas lagi butuh ternyata ada di sini. Langsung sedot dan jalan lancar. Trims"},{"author":"ramdhan","date":"","text":"kok ga bisa si extract sih&#8230;\ntrus di isi pasword wrong2 mulu&#8230;"},{"author":"purba","date":"","text":"Thx bos.. sdh di download dan berhasil. GBU"},{"author":"radiaku","date":"","text":"masih versi trial ya bos. waduh"},{"author":"takien.com","date":"","text":"yup, tapi ini kan opsional..\nsebaiknya tetap biasakan pake css manual"},{"author":"takien.com","date":"","text":"kan ada tuh passwordnya, baca deh postingnya sampai habis"},{"author":"takien.com","date":"","text":"bisa kok&#8230;\ngak pake http:// tuh"},{"author":"takien.com","date":"","text":"sudah tersedia link download yang tidak pakai password, cek kembali posting di atas.\nthanks"}]
 ---
 
 <p><img src="/images/2007/12/div.png" alt="table to div converter" title="" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" /><em>How to convert table to div?</em> Sepertinya kalimat ini menjadi frequently asked question di forum-forum deh. Secara aku sendiri pernah nanya itu, tapi jawaban yang diberikan kurang atau bahkan tidak memuaskan. Ya, karena ujung-ujungnya kita disuruh belajar CSS.. <img src="/images/2007/12/icon_sad.gif" alt=":(" title="" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" />  cape deh. Mengedit CSS yang sudah ada memang mudah, tapi membuat sebuah layout website full css from scratch  bukanlah hal yang mudah, setidaknya bagi  pemula seperti yang punya blog ini. Bagaimana tidak, setelah sekian kali edit dan preview di Firefox, eh.. malah tampil kacau di Internet Explorer&#8230; huh&#8230; Terpaksa deh layout tableless nya ditundah dulu sampai</p>

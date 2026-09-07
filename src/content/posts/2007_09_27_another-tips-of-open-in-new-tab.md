@@ -1,11 +1,13 @@
 ---
 title: "Another Tips of Open in New Tab"
-date: "2007-09-27T00:00:00Z"
+date: "2007-09-27T00:00:00.000Z"
 categories: ["Uncategorized"]
 tags: []
 slug: "2007/09/27/another-tips-of-open-in-new-tab"
-legacyUrls: ["458/another-tips-of-open-in-new-tab.php", "458/another-tips-of-open-in-new-tab", "blog/2007/09/27/another-tips-of-open-in-new-tab", "another-tips-of-open-in-new-tab"]
-source: "takien.com"
+legacyUrl: "/2007/09/27/another-tips-of-open-in-new-tab/"
+legacyUrls: ["458/another-tips-of-open-in-new-tab.php","458/another-tips-of-open-in-new-tab","blog/2007/09/27/another-tips-of-open-in-new-tab","another-tips-of-open-in-new-tab"]
+source: "blogspot.com"
+author: "takien"
 comments: []
 ---
 

@@ -10,7 +10,7 @@ interface Props {
 
 const { currentPath = '', currentArticleDate = '' } = Astro.props;
 
-const excludedPageSlugs = new Set(['about', 'wordpress-plugins', 'jquery-plugins']);
+const excludedPageSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'wordpress-plugins', 'jquery-plugins']);
 const allPosts = (await getCollection('posts')).filter(
   (p) => !excludedPageSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, ''))
 );

@@ -687,6 +687,14 @@ html.dark .source-dot.dot-designkillers {
   background-color: #ffc600;
 }
 
+.source-dot.dot-indowebmasters {
+  background-color: #0085ff;
+}
+
+.source-dot.dot-blogspot {
+  background-color: #ff5722;
+}
+
 .source-dot.dot-timeline {
   background-color: #0284c7;
 }

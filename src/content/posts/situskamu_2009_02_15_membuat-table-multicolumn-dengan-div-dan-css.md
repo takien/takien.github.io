@@ -1,48 +1,13 @@
 ---
-title: "Membuat table multicolumn dengan div dan css"
-date: "2009-02-15T12:00:00Z"
-categories: ["Internet", "Webdesign", "html"]
-tags: ["2007", "2008", "blog", "blogger", "Browser", "cara menginstall wordpress", "cari duit", "city", "css", "custom block", "custom region", "div", "domain", "domain parking", "Drupal", "drupal theme", "forum", "Google", "htaccess", "html", "integration", "Internet", "Internet Explorer", "kaleidoskop", "kilas balik", "layout", "mini city", "mod rewrite", "parked domain", "review", "security", "SEO", "SMF", "Spyware", "table", "tutorial wordpress", "upgrade wordpress", "Web 2.0", "Webdesign", "website", "WordPress", "wordpress plugin", "Wordpress theme", "wordpress upgrade", "xampp"]
-slug: "2009/02/15/membuat-table-multicolumn-dengan-div-dan-css"
-legacyUrl: "/membuat-table-multicolumn-dengan-div-dan-css/"
-source: "blog.situskamu.com"
-comments: [
-  {
-    "author": "Anonymous",
-    "date": "May 7, 08 at 3:52 pm",
-    "text": "kalau salah satu kolomnya ada yg di merge cell nya gmana bro ngakalinnya ?\n\nmisal kolom 2 di merge ama kolom 3 tapi cuma di baris ke 2…ngerti kan ?  \n\nklau table yg di atas kan table umum\n\nmohon penjelasan suhu…\n\nnamakamu reply on May 7th, 2008:\n\nBisa aja, itu namanya colspan.\n\nKita ambil contoh baris pertama, colom ke satu dan kedua mau di merge (span).\n\naslinya:\n\n<div class=“baris”>\n\n<div class=“kolom”>1</div>\n\n<div class=“kolom”>2</div>\n\ndirubah menjadi:\n\n <div class=“baris”>\n\n<div class=“kolomspan”>1</div>\n\nkolom2 harus dihapus, karena kita anggap sudah merged dengan kolom 1  \n\ndi cssnya kita tambahkan..\n\n\n\n.kolomspan {\n\nwidth: 24.4px; /* jumlah width kol 1 dengan kol 2 */\n\nfloat:left\n\n}"
-  },
-  {
-    "author": "Anonymous",
-    "date": "May 7, 08 at 5:53 pm",
-    "text": "What the hell about DIV CSS\n\ni dont understand what are you talking about  ….\n\nGreat Tutorial Bro\n\ni Love you\n\nnamakamu reply on May 7th, 2008:\n\n      \n\nchika-mela-santi.3gp reply on May 7th, 2008:\n\ni love you to\n\nwakakakakak\n\npotoseleb reply on May 9th, 2008:\n\nme too\n\nwakakaka"
-  },
-  {
-    "author": "Anonymous",
-    "date": "May 8, 08 at 4:03 pm",
-    "text": "wah lengkap tutorialnya… thanks brooo"
-  },
-  {
-    "author": "Anonymous",
-    "date": "May 8, 08 at 6:46 pm",
-    "text": "Kayaknya malah lebih banyak tag nya deh, alasan menggunakan div sbg pengganti layout table ditujukan untuk mengurangi jumlah tag, sehingga diharapkan dokumen di donlot bisa lbh cepat.\n\nkayak gitu deh, maaf klo salah he he\n\nnamakamu reply on May 9th, 2008:\n\nhaha.. untuk contoh ini mungkin ya.., tapi kan masih div,  gak ada table, tr, td.  \n\ntapi entarnya kalau ada yang table di dalam table gitu pasti lebih enak pake div kan  \n\neh, link segera dipasang, tengkyu.\n\nbimoweb.com reply on May 10th, 2008:\n\nsudah saya pasang bos, silahkan di cek di blogrollnya\n\nnama link nya blog situs kamu\n\nbtw tolong label situsku diganti jadi\n\nbimoweb[dot]com\n\nhe he tenkyu bos"
-  },
-  {
-    "author": "Anonymous",
-    "date": "Jun 6, 08 at 8:06 pm",
-    "text": "waw infonya keren nih, mau coba ah  \n\nnamakamu reply on June 11th, 2008:\n\nhehe"
-  },
-  {
-    "author": "Anonymous",
-    "date": "Jan 26, 09 at 9:34 pm",
-    "text": "mas menurut saya klo untuk buat table di dalam kontent website lebih pas n mudah pake tag table dech… soalnya khan emang itu fungsi utama dari tag table, dan sepertinya lebih mudah.\n\nklo layout baru pake div+CSS\n\nnamakamu reply on January 27th, 2009:\n\niya sih bener juga  \n\nlagian sebenernya belakangan jadi tahu klu ada yang lebih simple dari contoh diatas..\n\nheh"
-  },
-  {
-    "author": "Anonymous",
-    "date": "Mar 30, 09 at 11:00 am",
-    "text": "Kalau ada background-nya gimana caranya????"
-  }
-]
+title: "Membuat table multicolumn dengan DIV dan CSS"
+date: "2008-08-21T12:00:00.000Z"
+categories: ["Internet","Webdesign","html"]
+tags: ["2007","2008","blog","blogger","Browser","cara menginstall wordpress","cari duit","city","css","custom block","custom region","div","domain","domain parking","Drupal","drupal theme","forum","Google","htaccess","html","integration","Internet","Internet Explorer","kaleidoskop","kilas balik","layout","mini city","mod rewrite","parked domain","review","security","SEO","SMF","Spyware","table","tutorial wordpress","upgrade wordpress","Web 2.0","Webdesign","website","WordPress","wordpress plugin","Wordpress theme","wordpress upgrade","xampp"]
+slug: "2008/08/21/membuat-table-multicolumn-dengan-div-dan-css"
+legacyUrl: "/2008/08/21/membuat-table-multicolumn-dengan-div-dan-css/"
+source: "indowebmasters.com"
+author: "takien"
+comments: [{"author":"Anonymous","date":"May 7, 08 at 3:52 pm","text":"kalau salah satu kolomnya ada yg di merge cell nya gmana bro ngakalinnya ?\n\nmisal kolom 2 di merge ama kolom 3 tapi cuma di baris ke 2…ngerti kan ?  \n\nklau table yg di atas kan table umum\n\nmohon penjelasan suhu…\n\nnamakamu reply on May 7th, 2008:\n\nBisa aja, itu namanya colspan.\n\nKita ambil contoh baris pertama, colom ke satu dan kedua mau di merge (span).\n\naslinya:\n\n<div class=“baris”>\n\n<div class=“kolom”>1</div>\n\n<div class=“kolom”>2</div>\n\ndirubah menjadi:\n\n <div class=“baris”>\n\n<div class=“kolomspan”>1</div>\n\nkolom2 harus dihapus, karena kita anggap sudah merged dengan kolom 1  \n\ndi cssnya kita tambahkan..\n\n\n\n.kolomspan {\n\nwidth: 24.4px; /* jumlah width kol 1 dengan kol 2 */\n\nfloat:left\n\n}"},{"author":"Anonymous","date":"May 7, 08 at 5:53 pm","text":"What the hell about DIV CSS\n\ni dont understand what are you talking about  ….\n\nGreat Tutorial Bro\n\ni Love you\n\nnamakamu reply on May 7th, 2008:\n\n      \n\nchika-mela-santi.3gp reply on May 7th, 2008:\n\ni love you to\n\nwakakakakak\n\npotoseleb reply on May 9th, 2008:\n\nme too\n\nwakakaka"},{"author":"Anonymous","date":"May 8, 08 at 4:03 pm","text":"wah lengkap tutorialnya… thanks brooo"},{"author":"Anonymous","date":"May 8, 08 at 6:46 pm","text":"Kayaknya malah lebih banyak tag nya deh, alasan menggunakan div sbg pengganti layout table ditujukan untuk mengurangi jumlah tag, sehingga diharapkan dokumen di donlot bisa lbh cepat.\n\nkayak gitu deh, maaf klo salah he he\n\nnamakamu reply on May 9th, 2008:\n\nhaha.. untuk contoh ini mungkin ya.., tapi kan masih div,  gak ada table, tr, td.  \n\ntapi entarnya kalau ada yang table di dalam table gitu pasti lebih enak pake div kan  \n\neh, link segera dipasang, tengkyu.\n\nbimoweb.com reply on May 10th, 2008:\n\nsudah saya pasang bos, silahkan di cek di blogrollnya\n\nnama link nya blog situs kamu\n\nbtw tolong label situsku diganti jadi\n\nbimoweb[dot]com\n\nhe he tenkyu bos"},{"author":"Anonymous","date":"Jun 6, 08 at 8:06 pm","text":"waw infonya keren nih, mau coba ah  \n\nnamakamu reply on June 11th, 2008:\n\nhehe"},{"author":"Anonymous","date":"Jan 26, 09 at 9:34 pm","text":"mas menurut saya klo untuk buat table di dalam kontent website lebih pas n mudah pake tag table dech… soalnya khan emang itu fungsi utama dari tag table, dan sepertinya lebih mudah.\n\nklo layout baru pake div+CSS\n\nnamakamu reply on January 27th, 2009:\n\niya sih bener juga  \n\nlagian sebenernya belakangan jadi tahu klu ada yang lebih simple dari contoh diatas..\n\nheh"},{"author":"Anonymous","date":"Mar 30, 09 at 11:00 am","text":"Kalau ada background-nya gimana caranya????"}]
 ---
 
 <figure class="image-missing-placeholder" role="img" aria-label="table-css.gif">

@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context: any) {
-  const excludedRssSlugs = new Set(['about', 'wordpress-plugins', 'jquery-plugins']);
+  const excludedRssSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'wordpress-plugins', 'jquery-plugins']);
   const posts = (await getCollection('posts'))
     .filter((p) => p.data.date && p.data.date.trim().length > 0 && !excludedRssSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, '')))
     .sort((a, b) => {

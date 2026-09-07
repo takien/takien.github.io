@@ -44,6 +44,15 @@ export async function getStaticPaths() {
       });
     }
 
+    // Additional short alias without .blog (e.g. dasargo.blog -> dasargo)
+    const baseName = shortName.replace(/\.blog$/, '');
+    if (baseName && baseName !== s && baseName !== shortName) {
+      paths.push({
+        params: { source: baseName },
+        props: { source: s, posts: sorted, description: desc }
+      });
+    }
+
     // Alias slug from name (e.g. 'koleksi-foto' for 'Koleksi Foto')
     const nameSlug = slugify(data.name);
     if (nameSlug && nameSlug !== s && nameSlug !== shortName) {
