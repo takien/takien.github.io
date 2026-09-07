@@ -117,11 +117,21 @@ if (isTimeline) {
   dotClass = 'dot-fresh';
   dotTitle = 'Tulisan Baru';
 }
+
+// Ekstrak gambar pertama artikel untuk social share preview atau fallback ke ilustrasi jejak digital
+let postImage = '/images/ilustrasi-jejak-digital.jpg';
+if (post.body) {
+  const imgMatch = post.body.match(/!\[.*?\]\((https?:\/\/[^\s\)]+|\/[^\s\)]+)/i) || post.body.match(/<img[^>]+src=["'](https?:\/\/[^"']+|\/[^"']+)["']/i);
+  if (imgMatch && imgMatch[1]) {
+    postImage = imgMatch[1];
+  }
+}
 ---
 
 <BaseLayout
   title={`${post.data.title} • takien.com`}
   description={`Artikel ${post.data.title} di blog takien.com (2006-2016)`}
+  image={postImage}
   articleDate={post.data.date}
 >
   <article class="content-container">

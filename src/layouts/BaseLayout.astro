@@ -16,7 +16,7 @@ interface Props {
 const {
   title = "napak tilas jejak digital - my blog restoration",
   description = "Arsip blog takien.com (2006-2016) — Tutorial web development, WordPress, JavaScript, PHP, dan tips pemrograman.",
-  image = "/favicon.svg",
+  image = "/images/ilustrasi-jejak-digital.jpg",
   articleDate,
   showSidebar = true
 } = Astro.props;
@@ -39,12 +39,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://takien.g
     <meta name="title" content={title} />
     <meta name="description" content={description} />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content={articleDate ? "article" : "website"} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, canonicalURL)} />
+    <meta property="og:image:width" content="1500" />
+    <meta property="og:image:height" content="1120" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content="napak tilas jejak digital" />
     {articleDate && <meta property="article:published_time" content={articleDate} />}
 
     <!-- Twitter -->
@@ -53,6 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://takien.g
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, canonicalURL)} />
+    <meta property="twitter:image:alt" content={title} />
 
     <!-- Detect Localhost for Admin Shortcuts -->
     <script is:inline>
