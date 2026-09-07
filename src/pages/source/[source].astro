@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { slugify } from '../../utils/slugify';
+import { getSourceInfo, getBlogDescription, getBlogSources } from '../../utils/sourceHelper';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const sourceMap = new Map<string, { name: string; posts: any[] }>();
+
+  // Initialize with all configured blogs from blogs.json
+  const allBlogs = getBlogSources();
+  allBlogs.forEach((b) => {
+    sourceMap.set(b.slug, { name: b.name, posts: [] });
+  });
+
+  posts.forEach((p) => {
+    const info = getSourceInfo(p.data.source);
+    const s = info.slug;
+    if (!sourceMap.has(s)) {
+      sourceMap.set(s, { name: info.name, posts: [] });
+    }
+    sourceMap.get(s)!.posts.push(p);
+  });
+
+  const paths: any[] = [];
+  sourceMap.forEach((data, s) => {
+    const sorted = data.posts.sort((a, b) => (b.data.date || '').localeCompare(a.data.date || ''));
+    const desc = getBlogDescription(s) || `Koleksi tulisan yang dipulihkan dari ${s}`;
+
+    // Exact domain slug (e.g. w3magz.com)
+    paths.push({
+      params: { source: s },
+      props: { source: s, posts: sorted, description: desc }
+    });
+
+    // Short slug without .com (e.g. w3magz, situskamu, imissu)
+    const shortName = s.replace(/\.(com|net|org|110mb\.com)$/, '').replace(/^blog\./, '');
+    if (shortName && shortName !== s) {
+      paths.push({
+        params: { source: shortName },
+        props: { source: s, posts: sorted, description: desc }
+      });
+    }
+
+    // Alias slug from name (e.g. 'koleksi-foto' for 'Koleksi Foto')
+    const nameSlug = slugify(data.name);
+    if (nameSlug && nameSlug !== s && nameSlug !== shortName) {
+      paths.push({
+        params: { source: nameSlug },
+        props: { source: s, posts: sorted, description: desc }
+      });
+    }
+  });
+
+  return paths;
+}
+
+const { source, posts, description } = Astro.props;
+const sourceInfo = getSourceInfo(source);
+---
+
+<BaseLayout
+  title={`Arsip ${sourceInfo.name} • takien.com`}
+  description={description}
+>
+  <div class="container">
+    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">
+        {sourceInfo.slug === 'desain' ? 'Koleksi Desain' : (sourceInfo.slug === 'foto' ? 'Koleksi Foto' : 'Blog & Sumber')}
+      </div>
+      <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span class={`source-dot ${sourceInfo.dotClass}`} style="width: 14px; height: 14px;"></span>
+        <span>{sourceInfo.name}</span>
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 0.75rem; max-width: 680px; line-height: 1.6;">
+        {description}
+      </p>
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--bg-hover); padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">
+        <span>{sourceInfo.slug === 'desain' ? '🎨' : (sourceInfo.slug === 'foto' ? '📷' : '📚')} Menampilkan <strong>{posts.length}</strong> {sourceInfo.slug === 'desain' ? 'karya' : (sourceInfo.slug === 'foto' ? 'foto' : 'artikel')}</span>
+      </div>
+    </div>
+
+    {posts.length === 0 ? (
+      <div style="text-align: center; padding: 4rem 1rem; color: var(--text-muted); background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius-md);">
+        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Belum ada postingan dalam koleksi ini</p>
+        <p style="font-size: 0.9rem;">Kamu dapat menambahkan tulisan atau dokumentasi foto melalui halaman Admin.</p>
+      </div>
+    ) : (
+      <div class="posts-grid">
+        {posts.map((post: any) => (
+          <PostCard
+            title={post.data.title}
+            slug={post.data.slug}
+            date={post.data.date}
+            categories={post.data.categories}
+            tags={post.data.tags}
+            source={post.data.source || source}
+            isTimeline={post.data.isTimeline}
+            isFresh={post.data.isFresh}
+            commentsCount={post.data.comments?.length || 0}
+          />
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

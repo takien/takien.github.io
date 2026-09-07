@@ -1,0 +1,192 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSourceInfo, isTimelinePost, isFreshPost } from '../utils/sourceHelper';
+
+const allPosts = (await getCollection('posts')).sort((a, b) => {
+  return (b.data.date || '').localeCompare(a.data.date || '');
+});
+
+// Group posts by Year
+const postsByYear: Record<string, any[]> = {};
+allPosts.forEach((post) => {
+  const year = post.data.date ? post.data.date.slice(0, 4) : 'Lainnya';
+  if (!postsByYear[year]) {
+    postsByYear[year] = [];
+  }
+  postsByYear[year].push(post);
+});
+
+const sortedYears = Object.keys(postsByYear).sort((a, b) => b.localeCompare(a));
+
+// Sources present per year
+const yearSources: Record<string, string[]> = {};
+const yearHasTimeline: Record<string, boolean> = {};
+
+sortedYears.forEach((year) => {
+  const sourcesSet = new Set<string>();
+  let hasTimeline = false;
+  postsByYear[year].forEach((post) => {
+    if (isTimelinePost(post.data)) {
+      hasTimeline = true;
+    }
+    sourcesSet.add(getSourceInfo(post.data.source).slug);
+  });
+  yearSources[year] = Array.from(sourcesSet);
+  yearHasTimeline[year] = hasTimeline;
+});
+---
+
+<BaseLayout
+  title="Arsip Artikel Kronologis • takien.com"
+  description="Daftar lengkap seluruh artikel blog takien.com dan timeline hidup terorganisir per tahun."
+>
+  <div class="content-container">
+    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem;">
+        Arsip Kronologis
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;">
+        Menampilkan <strong>{allPosts.length}</strong> artikel dan catatan timeline yang diterbitkan secara kronologis.
+      </p>
+
+      <!-- macOS Finder Style Source Legend -->
+      <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted);">
+        <span style="font-weight: 600;">Sumber:</span>
+        <a href="/source/facebook.com/" class="source-badge" title="Facebook">
+          <span class="source-dot dot-facebook"></span>
+          <span>Facebook</span>
+        </a>
+        <a href="/source/takien.com/" class="source-badge" title="takien.com">
+          <span class="source-dot dot-takien"></span>
+          <span>takien.com</span>
+        </a>
+        <a href="/source/blog.situskamu.com/" class="source-badge" title="blog.situskamu.com">
+          <span class="source-dot dot-situskamu"></span>
+          <span>blog.situskamu.com</span>
+        </a>
+        <a href="/source/imissu.110mb.com/" class="source-badge" title="imissu.110mb.com">
+          <span class="source-dot dot-imissu"></span>
+          <span>imissu.110mb.com</span>
+        </a>
+        <a href="/source/dasargo.blog.com/" class="source-badge" title="dasargo.blog.com">
+          <span class="source-dot dot-dasargo"></span>
+          <span>dasargo.blog.com</span>
+        </a>
+        <a href="/source/w3magz.com/" class="source-badge" title="w3magz.com">
+          <span class="source-dot dot-w3magz"></span>
+          <span>w3magz.com</span>
+        </a>
+        <a href="/source/youtube.com/" class="source-badge" title="YouTube">
+          <span class="source-dot dot-youtube"></span>
+          <span>YouTube</span>
+        </a>
+        <a href="/source/tiktok.com/" class="source-badge" title="TikTok">
+          <span class="source-dot dot-tiktok"></span>
+          <span>TikTok</span>
+        </a>
+        <a href="/source/designkillers.com/" class="source-badge" title="DesignKillers">
+          <span class="source-dot dot-designkillers"></span>
+          <span>DesignKillers</span>
+        </a>
+        <a href="/source/desain/" class="source-badge" title="Desain (Photoshop)">
+          <span class="source-dot dot-desain"></span>
+          <span>Desain</span>
+        </a>
+        <a href="/source/foto/" class="source-badge" title="Koleksi Foto">
+          <span class="source-dot dot-foto"></span>
+          <span>Foto</span>
+        </a>
+        <a href="/source/cektkp.com/" class="source-badge" title="Cektkp.com">
+          <span class="source-dot dot-cektkp"></span>
+          <span>Cektkp.com</span>
+        </a>
+        <span class="source-badge" title="Sisipan Timeline Hidup" style="cursor: default;">
+          <span class="source-dot dot-timeline"></span>
+          <span>Timeline</span>
+        </span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 3rem;">
+      {sortedYears.map((year) => (
+        <section id={`year-${year}`} style="scroll-margin-top: 5rem;">
+          <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+            <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--accent);">
+              {year}
+            </h2>
+            <div style="display: inline-flex; align-items: center; gap: 0.35rem;" title={`Blog & Timeline aktif di tahun ${year}`}>
+              {yearSources[year] && yearSources[year].map((src) => {
+                const info = getSourceInfo(src);
+                return (
+                  <a
+                    href={`/source/${info.slug}/`}
+                    class="source-dot-link"
+                    title={`Blog ${year}: ${info.name}`}
+                    aria-label={`Blog ${year}: ${info.name}`}
+                  >
+                    <span class={`source-dot ${info.dotClass}`}></span>
+                  </a>
+                );
+              })}
+              {yearHasTimeline[year] && (
+                <span class="source-dot-link" title={`Terdapat catatan Timeline di tahun ${year}`} aria-label={`Timeline ${year}`}>
+                  <span class="source-dot dot-timeline"></span>
+                </span>
+              )}
+            </div>
+            <span style="font-size: 0.85rem; color: var(--text-muted); background-color: var(--bg-hover); padding: 0.2rem 0.6rem; border-radius: var(--radius-full);">
+              {postsByYear[year].length} entri
+            </span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.85rem; border-left: 2px solid var(--border); padding-left: 1.25rem; margin-left: 0.5rem;">
+            {postsByYear[year].map((post) => {
+              const formattedDate = post.data.date ? post.data.date.slice(5, 10) : '';
+              const commentCount = post.data.comments?.length || 0;
+              const sourceInfo = getSourceInfo(post.data.source);
+              const isTimeline = isTimelinePost(post.data);
+              const isFresh = isFreshPost(post.data);
+              const dotClass = isTimeline ? 'dot-timeline' : (isFresh ? 'dot-fresh' : sourceInfo.dotClass);
+
+              return (
+                <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                  {formattedDate && (
+                    <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); min-width: 48px;">
+                      {formattedDate}
+                    </span>
+                  )}
+                  <a 
+                    href={`/source/${sourceInfo.slug}/`} 
+                    class="source-dot-link"
+                    title={isTimeline ? 'Timeline' : `Sumber: ${sourceInfo.name}`}
+                    aria-label={isTimeline ? 'Timeline' : `Sumber: ${sourceInfo.name}`}
+                  >
+                    <span class={`source-dot ${dotClass}`}></span>
+                  </a>
+                  {isTimeline && (
+                    <span class="badge-timeline" style="font-size: 0.65rem; padding: 0.1rem 0.45rem;">Timeline</span>
+                  )}
+                  {isFresh && !isTimeline && (
+                    <span class="badge-fresh" style="font-size: 0.65rem; padding: 0.1rem 0.45rem;">Baru</span>
+                  )}
+                  <a 
+                    href={`/${post.data.slug}/`} 
+                    style="font-size: 1.02rem; font-weight: 600; color: var(--text-primary);"
+                  >
+                    {post.data.title}
+                  </a>
+                  {commentCount > 0 && (
+                    <span style="font-size: 0.72rem; color: var(--text-muted); background-color: var(--bg-hover); padding: 0.1rem 0.45rem; border-radius: 4px;">
+                      {commentCount} komentar
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

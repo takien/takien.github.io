@@ -1,0 +1,398 @@
+---
+import { getCollection } from 'astro:content';
+import { slugify } from '../utils/slugify';
+import { getSourceInfo, getBlogSources } from '../utils/sourceHelper';
+
+interface Props {
+  currentPath?: string;
+  currentArticleDate?: string;
+}
+
+const { currentPath = '', currentArticleDate = '' } = Astro.props;
+
+const allPosts = await getCollection('posts');
+
+// Compute post counts by year and source
+const yearCounts: Record<string, number> = {};
+const categoryCounts: Record<string, number> = {};
+const sourceCounts: Record<string, number> = {};
+const yearSources: Record<string, string[]> = {};
+
+for (const post of allPosts) {
+  // Source count using canonical slug
+  const srcInfo = getSourceInfo(post.data.source);
+  const src = srcInfo.slug;
+  sourceCounts[src] = (sourceCounts[src] || 0) + 1;
+
+  // Year count & sources
+  if (post.data.date) {
+    const y = post.data.date.substring(0, 4);
+    if (/^\d{4}$/.test(y)) {
+      yearCounts[y] = (yearCounts[y] || 0) + 1;
+      if (!yearSources[y]) yearSources[y] = [];
+      if (!yearSources[y].includes(src)) {
+        yearSources[y].push(src);
+      }
+    }
+  }
+
+  // Category counts
+  if (post.data.categories) {
+    for (const cat of post.data.categories) {
+      if (cat && cat !== 'Uncategorized') {
+        categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+      }
+    }
+  }
+}
+
+const sortedYears = Object.keys(yearCounts).sort((a, b) => b.localeCompare(a));
+const topCategories = Object.entries(categoryCounts)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+
+// Determine active year if viewing an article or year archive
+let activeYear = '';
+if (currentArticleDate) {
+  activeYear = currentArticleDate.substring(0, 4);
+} else {
+  const matchYear = currentPath.match(/\/(\d{4})\//);
+  if (matchYear) {
+    activeYear = matchYear[1];
+  }
+}
+
+const blogSources = getBlogSources().map((b) => ({
+  source: b.slug,
+  period: b.period,
+  desc: b.description
+}));
+
+const isCurrentSource = (slug: string) => currentPath.includes(`/source/${slug}`);
+---
+
+<div class="sidebar-wrapper">
+  <!-- Widget: Yearly Archive -->
+  <div class="sidebar-widget">
+    <div class="widget-header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="widget-icon">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span class="widget-title">Arsip Tahun</span>
+    </div>
+
+    <ul class="year-list">
+      {sortedYears.map((year) => {
+        const count = yearCounts[year];
+        const isActive = year === activeYear;
+        const sourcesInYear = yearSources[year] || [];
+        return (
+          <li>
+            <a
+              href={`/archives/#year-${year}`}
+              class={`year-link ${isActive ? 'active' : ''}`}
+            >
+              <span class="year-label">
+                {isActive && <span class="active-dot">•</span>}
+                <span class="year-number">{year}</span>
+                {sourcesInYear.length > 0 && (
+                  <span class="year-source-dots">
+                    {sourcesInYear.map((src) => {
+                      const info = getSourceInfo(src);
+                      return (
+                        <span
+                          class={`source-dot ${info.dotClass}`}
+                          title={`Blog di tahun ${year}: ${info.name}`}
+                        ></span>
+                      );
+                    })}
+                  </span>
+                )}
+              </span>
+              <span class="year-badge">{count}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div class="widget-footer">
+      <a href="/archives/" class="all-archives-link">
+        Lihat Seluruh Timeline &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Widget: Blog Collections -->
+  <div class="sidebar-widget">
+    <div class="widget-header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="widget-icon">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <span class="widget-title">Blog & Sumber</span>
+    </div>
+    
+    <div class="archive-blog-chips">
+      {blogSources.map((item) => {
+        const info = getSourceInfo(item.source);
+        const count = sourceCounts[item.source] || 0;
+        const isActive = isCurrentSource(info.slug);
+        return (
+          <a
+            href={`/source/${info.slug}/`}
+            class={`blog-chip ${isActive ? 'active' : ''}`}
+            style={`--chip-color: ${info.color};`}
+            title={`${item.desc} (${item.period})`}
+          >
+            <div class="blog-chip-header">
+              <span class={`source-dot ${info.dotClass}`}></span>
+              <span class="blog-chip-name">{info.name}</span>
+            </div>
+            <span class="blog-chip-note">
+              {item.period} &bull; {count} post
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- Widget: Top Categories -->
+  <div class="sidebar-widget">
+    <div class="widget-header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="widget-icon">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span class="widget-title">Kategori Utama</span>
+    </div>
+
+    <ul class="category-list">
+      {topCategories.map(([cat, count]) => (
+        <li>
+          <a href={`/categories/${slugify(cat)}/`} class="category-link">
+            <span class="category-name">{cat}</span>
+            <span class="category-badge">{count}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .sidebar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    padding-right: 0.25rem;
+  }
+
+  .sidebar-widget {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.15rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .widget-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+  }
+
+  .widget-icon {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .widget-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Year List */
+  .year-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .year-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 0.65rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+
+  .year-link:hover {
+    background-color: var(--bg-hover);
+    color: var(--accent);
+    padding-left: 0.85rem;
+  }
+
+  .year-link.active {
+    background-color: var(--accent-subtle);
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .active-dot {
+    margin-right: 0.35rem;
+    color: var(--accent);
+  }
+
+  .year-label {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+  }
+
+  .year-source-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: 0.4rem;
+  }
+
+  .year-badge {
+    font-size: 0.75rem;
+    background-color: var(--bg-hover);
+    color: var(--text-muted);
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--radius-full);
+    min-width: 22px;
+    text-align: center;
+  }
+
+  .year-link.active .year-badge {
+    background-color: var(--accent);
+    color: var(--text-inverse);
+  }
+
+  .widget-footer {
+    margin-top: 0.85rem;
+    padding-top: 0.6rem;
+    border-top: 1px dashed var(--border);
+    text-align: center;
+  }
+
+  .all-archives-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .all-archives-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Blog Chips */
+  .archive-blog-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .blog-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.55rem 0.75rem;
+    background-color: color-mix(in srgb, var(--chip-color) 4%, var(--bg-hover));
+    border: 1px solid color-mix(in srgb, var(--chip-color) 25%, var(--border));
+    border-left: 4px solid var(--chip-color);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .blog-chip:hover,
+  .blog-chip.active {
+    border-color: var(--chip-color);
+    border-left-width: 4px;
+    background-color: color-mix(in srgb, var(--chip-color) 10%, var(--bg-card));
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .blog-chip-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .blog-chip-name {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.15s ease;
+  }
+
+  .blog-chip:hover .blog-chip-name,
+  .blog-chip.active .blog-chip-name {
+    color: var(--chip-color);
+  }
+
+  .blog-chip-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    padding-left: 1.05rem;
+  }
+
+  /* Category List */
+  .category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .category-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.55rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    transition: all 0.12s ease;
+  }
+
+  .category-link:hover {
+    background-color: var(--bg-hover);
+    color: var(--accent);
+  }
+
+  .category-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .category-badge {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+</style>

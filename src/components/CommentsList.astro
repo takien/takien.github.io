@@ -1,0 +1,57 @@
+---
+interface Comment {
+  author: string;
+  date?: string;
+  text: string;
+}
+
+interface Props {
+  comments: Comment[];
+}
+
+const { comments = [] } = Astro.props;
+
+function getInitials(name: string) {
+  if (!name) return '?';
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
+  return name.slice(0, 2).toUpperCase();
+}
+---
+
+{comments.length > 0 && (
+  <section class="comments-section" id="comments">
+    <div class="comments-header">
+      <h3 class="comments-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>Komentar ({comments.length})</span>
+      </h3>
+      <span class="comments-badge-readonly">Arsip Statis</span>
+    </div>
+
+    <div class="comments-list">
+      {comments.map((comment, index) => (
+        <article class="comment-item" id={`comment-${index + 1}`}>
+          <div class="comment-top">
+            <div class="comment-avatar" aria-hidden="true">
+              {getInitials(comment.author)}
+            </div>
+            <div class="comment-author-info">
+              <span class="comment-author-name">{comment.author}</span>
+              {comment.date && (
+                <time class="comment-date">{comment.date}</time>
+              )}
+            </div>
+          </div>
+          <div class="comment-body">
+            {comment.text}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+)}

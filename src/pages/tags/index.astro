@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { slugify } from '../../utils/slugify';
+
+const posts = await getCollection('posts');
+const tagCounts: Record<string, { name: string; count: number }> = {};
+
+posts.forEach((p) => {
+  p.data.tags?.forEach((t: string) => {
+    const slug = slugify(t);
+    if (!slug) return;
+    if (!tagCounts[slug]) {
+      tagCounts[slug] = { name: t, count: 0 };
+    }
+    tagCounts[slug].count++;
+  });
+});
+
+const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1].count - a[1].count);
+---
+
+<BaseLayout
+  title="Daftar Tag • takien.com"
+  description="Daftar seluruh tagar topik pembahasan di blog takien.com"
+>
+  <div class="content-container">
+    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem;">
+        Tag Artikel
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1rem;">
+        Menjelajah <strong>{sortedTags.length}</strong> tag dan topik artikel.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 0.65rem;">
+      {sortedTags.map(([slug, item]) => (
+        <a
+          href={`/tags/${slug}/`}
+          style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-full); padding: 0.35rem 0.85rem; font-size: 0.9rem; color: var(--text-primary); display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.15s ease;"
+        >
+          <span>#{item.name}</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">{item.count}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

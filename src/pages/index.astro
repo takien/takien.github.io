@@ -1,0 +1,188 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { slugify } from '../utils/slugify';
+import { getBlogSources, getSourceInfo } from '../utils/sourceHelper';
+
+const allPosts = (await getCollection('posts'))
+  .filter((p) => p.data.date && p.data.date.trim().length > 0)
+  .sort((a, b) => {
+    return (b.data.date || '').localeCompare(a.data.date || '');
+  });
+
+const totalPosts = allPosts.length;
+const totalComments = allPosts.reduce((acc, p) => acc + (p.data.comments?.length || 0), 0);
+
+// Source counts computed using canonical slug
+const sourceCounts: Record<string, number> = {};
+allPosts.forEach((p) => {
+  const info = getSourceInfo(p.data.source);
+  sourceCounts[info.slug] = (sourceCounts[info.slug] || 0) + 1;
+});
+
+const blogSources = getBlogSources();
+
+const categoryCounts: Record<string, number> = {};
+allPosts.forEach((p) => {
+  p.data.categories?.forEach((c: string) => {
+    categoryCounts[c] = (categoryCounts[c] || 0) + 1;
+  });
+});
+const popularCategories = Object.entries(categoryCounts)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 7);
+---
+
+<BaseLayout
+  title="takien.com • don't cover a judge by its book"
+  description="Arsip restorasi blog takien.com (2006-2016) — Tutorial web design, WordPress, PHP, JavaScript, dan pemrograman."
+>
+  <div class="content-container">
+    <!-- Hero Banner -->
+    <div style="background: linear-gradient(135deg, var(--bg-card), var(--bg-hover)); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.25rem 2rem; margin-bottom: 2.25rem;">
+      <div style="max-width: 720px;">
+        <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent);"></span>
+          Historical Web Archive & Timeline (since 2006)
+        </span>
+        <h1 style="font-size: 2.25rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.85rem; color: var(--text-primary);">
+          selamat datang
+        </h1>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.5rem;">
+          Kumpulan tulisanku dari jaman dulu yang pernah kupublikasikan di Internet dan yang berhasil aku kumpulkan lagi. Aku aktif ngeblog dari tahun 2006 sampai 2016. 10 tahun. Setelah itu masih nulis juga tapi di Facebook Notes, group maupun di status. Sudah 10 tahun juga sampai sekarang (2026). Sepertinya aku bakalan nulis lagi di sini. <a href="/about/" style="font-weight: 600; text-decoration: underline;">Selengkapnya</a>.
+        </p>
+
+        <!-- Stats Chips -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; background: var(--bg-card); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            <span><strong>{totalPosts}</strong> Konten & Catatan</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; background: var(--bg-card); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span><strong>{totalComments}</strong> Komentar Pembaca</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; background: var(--bg-card); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span><strong>2006 &ndash; 2026</strong> (20 Tahun)</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; background: var(--bg-card); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span><strong>{blogSources.length}</strong> Blog & Sumber</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Koleksi & Sumber (Card Kecil seperti Sidebar) -->
+    <div style="margin-bottom: 2.25rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.55rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          <h2 style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.015em; margin: 0;">
+            Blog & Sumber Koleksi
+          </h2>
+        </div>
+        <a href="/archives/" style="font-size: 0.84rem; font-weight: 600; color: var(--accent);">
+          Lihat Seluruh Timeline &rarr;
+        </a>
+      </div>
+
+      <div class="home-sources-grid">
+        {blogSources.map((item) => {
+          const count = sourceCounts[item.slug] || 0;
+          return (
+            <a
+              href={`/source/${item.slug}/`}
+              class="blog-chip"
+              style={`--chip-color: ${item.color};`}
+              title={`${item.description} (${item.period})`}
+            >
+              <div class="blog-chip-header">
+                <span class={`source-dot ${item.dotClass}`}></span>
+                <span class="blog-chip-name">{item.name}</span>
+              </div>
+              <span class="blog-chip-note">
+                {item.period} &bull; {count} post
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Category Pills -->
+    {popularCategories.length > 0 && (
+      <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap;">
+        <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">
+          Kategori:
+        </span>
+        {popularCategories.map(([cat, count]) => (
+          <a
+            href={`/categories/${slugify(cat)}/`}
+            style="font-size: 0.82rem; padding: 0.25rem 0.7rem; border-radius: var(--radius-full); border: 1px solid var(--border); color: var(--text-secondary); background-color: var(--bg-card); transition: all 0.15s ease;"
+          >
+            {cat} <span style="opacity: 0.6; font-size: 0.74rem;">({count})</span>
+          </a>
+        ))}
+        <a
+          href="/categories/"
+          style="font-size: 0.8rem; font-weight: 600; color: var(--accent); padding-left: 0.35rem;"
+        >
+          Semua Kategori &rarr;
+        </a>
+      </div>
+    )}
+
+    <!-- Posts Feed -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.75rem;">
+      <div>
+        <h2 style="font-size: 1.35rem; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 0.25rem 0;">
+          Daftar Artikel & Catatan
+        </h2>
+        <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0;">
+          Diterbitkan berurutan dari tulisan terbaru hingga arsip awal 2006.
+        </p>
+      </div>
+      <a href="/archives/" style="font-size: 0.86rem; font-weight: 600; color: var(--accent); flex-shrink: 0;">
+        Arsip per Tahun &rarr;
+      </a>
+    </div>
+
+    <div class="posts-grid" style="margin-top: 1rem;">
+      {allPosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          slug={post.data.slug}
+          date={post.data.date}
+          source={post.data.source || 'takien.com'}
+          categories={post.data.categories}
+          tags={post.data.tags}
+          isTimeline={post.data.isTimeline}
+          isFresh={post.data.isFresh}
+          commentsCount={post.data.comments?.length || 0}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

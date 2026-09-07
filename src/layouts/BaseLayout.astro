@@ -1,0 +1,90 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SearchModal from '../components/SearchModal.astro';
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  articleDate?: string;
+  showSidebar?: boolean;
+}
+
+const {
+  title = "takien.com • don't cover a judge by its book",
+  description = "Arsip blog takien.com (2006-2016) — Tutorial web development, WordPress, JavaScript, PHP, dan tips pemrograman.",
+  image = "/favicon.svg",
+  articleDate,
+  showSidebar = true
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://takien.github.io');
+---
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="takien.com RSS Feed" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={articleDate ? "article" : "website"} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, canonicalURL)} />
+    {articleDate && <meta property="article:published_time" content={articleDate} />}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+    <!-- Detect Localhost for Admin Shortcuts -->
+    <script is:inline>
+      try {
+        var h = window.location.hostname;
+        if (h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0' || h.endsWith('.local')) {
+          document.documentElement.classList.add('is-local-env');
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <Header currentPath={Astro.url.pathname} />
+    
+    <main style="flex: 1; padding: 2.5rem 0;">
+      {showSidebar ? (
+        <div class="site-layout container">
+          <aside class="desktop-sidebar" aria-label="Navigasi Arsip dan Kategori">
+            <Sidebar currentPath={Astro.url.pathname} currentArticleDate={articleDate} />
+          </aside>
+          <div class="site-main-content">
+            <slot />
+          </div>
+        </div>
+      ) : (
+        <div class="container">
+          <slot />
+        </div>
+      )}
+    </main>
+
+    <Footer />
+    <SearchModal />
+  </body>
+</html>

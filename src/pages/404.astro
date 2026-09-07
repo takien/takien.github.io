@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Halaman Tidak Ditemukan (404) • takien.com"
+  description="Halaman yang Anda cari tidak ditemukan di arsip takien.com."
+>
+  <div class="content-container" style="text-align: center; padding: 4rem 1rem;">
+    <div style="font-size: 5rem; font-weight: 900; letter-spacing: -0.05em; color: var(--accent); line-height: 1; margin-bottom: 1rem;">
+      404
+    </div>
+    <h1 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem;">
+      Halaman Tidak Ditemukan
+    </h1>
+    <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 2rem; font-size: 1.05rem;">
+      Tautan yang Anda tuju mungkin sudah berubah, atau tidak terdokumentasi dalam arsip lama. Silakan gunakan fitur pencarian atau kembali ke beranda.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 1rem;">
+      <a 
+        href="/" 
+        style="background-color: var(--accent); color: white; padding: 0.65rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; text-decoration: none;"
+      >
+        Kembali ke Beranda
+      </a>
+      <a 
+        href="/archives/" 
+        style="background-color: var(--bg-hover); color: var(--text-primary); border: 1px solid var(--border); padding: 0.65rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; text-decoration: none;"
+      >
+        Buka Arsip
+      </a>
+    </div>
+  </div>
+</BaseLayout>

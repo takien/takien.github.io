@@ -1,0 +1,134 @@
+[
+  {
+    "id": "imissu.110mb.com",
+    "name": "imissu.110mb.com",
+    "shortName": "imissu",
+    "slug": "imissu.110mb.com",
+    "period": "Maret 2007",
+    "description": "7 tulisan perdana takien di blog gratisan imissu.110mb.com pada bulan Maret 2007 sebelum berpindah ke takien.com. Ini adalah blog ke-dua setelah blog.com, walaupun gratisan tapi hosting sendiri/install wordpress sendiri.",
+    "color": "#f97316",
+    "dotClass": "dot-imissu",
+    "badgeClass": "badge-src-imissu"
+  },
+  {
+    "id": "dasargo.blog.com",
+    "name": "dasargo.blog.com",
+    "shortName": "dasargo",
+    "slug": "dasargo.blog.com",
+    "period": "2006–2007",
+    "description": "Arsip tulisan lawas takien dari platform dasargo.blog.com pada tahun 2006–2007 sebelum era imissu dan takien.com.",
+    "color": "#94a3b8",
+    "dotClass": "dot-dasargo",
+    "badgeClass": "badge-src-dasargo"
+  },
+  {
+    "id": "blog.situskamu.com",
+    "name": "blog.situskamu.com",
+    "shortName": "situskamu",
+    "slug": "blog.situskamu.com",
+    "period": "2007–2009",
+    "description": "Arsip tulisan, catatan teknis, dan tutorial takien dari era blog.situskamu.com (2007–2009).",
+    "color": "#0ea5e9",
+    "dotClass": "dot-situskamu",
+    "badgeClass": "badge-src-situskamu"
+  },
+  {
+    "id": "w3magz.com",
+    "name": "w3magz.com",
+    "shortName": "w3magz",
+    "slug": "w3magz.com",
+    "period": "2010–2014",
+    "description": "Koleksi 11 tulisan dan tutorial karya Wak Jek yang pernah dipublikasikan di majalah web online w3magz.com (2010–2014).",
+    "color": "#84cc16",
+    "dotClass": "dot-w3magz",
+    "badgeClass": "badge-src-w3magz"
+  },
+  {
+    "id": "facebook.com",
+    "name": "Facebook",
+    "shortName": "Facebook",
+    "slug": "facebook.com",
+    "period": "2011–2016",
+    "description": "Koleksi status, dokumentasi proyek, dan catatan terpilih takien yang pernah dibagikan di Facebook.",
+    "color": "#1877f2",
+    "dotClass": "dot-facebook",
+    "badgeClass": "badge-src-facebook"
+  },
+  {
+    "id": "youtube.com",
+    "name": "YouTube",
+    "shortName": "YouTube",
+    "slug": "youtube.com",
+    "period": "Video",
+    "description": "Koleksi video, tutorial, dan dokumentasi proyek takien dari kanal YouTube.",
+    "color": "#ff0000",
+    "dotClass": "dot-youtube",
+    "badgeClass": "badge-src-youtube"
+  },
+  {
+    "id": "tiktok.com",
+    "name": "TikTok",
+    "shortName": "TikTok",
+    "slug": "tiktok.com",
+    "period": "Video Pendek",
+    "description": "Koleksi konten video pendek, tutorial singkat, dan tips takien di TikTok.",
+    "color": "#00eae6",
+    "dotClass": "dot-tiktok",
+    "badgeClass": "badge-src-tiktok"
+  },
+  {
+    "id": "designkillers.com",
+    "name": "DesignKillers",
+    "shortName": "DesignKillers",
+    "slug": "designkillers.com",
+    "period": "Tutorial Desain",
+    "description": "Koleksi tulisanku di DesignKillers.com, forum diskusi desain yang aku buat juga hampir bersamaan dengan Warnet Forum.",
+    "color": "#000000",
+    "dotClass": "dot-designkillers",
+    "badgeClass": "badge-src-designkillers"
+  },
+  {
+    "id": "desain",
+    "name": "Desain",
+    "shortName": "Desain",
+    "slug": "desain",
+    "period": "Photoshop",
+    "description": "Koleksi desain-desain aku menggunakan Photoshop, beberapa tidak dipublikasikan di online.",
+    "color": "#31a8ff",
+    "dotClass": "dot-desain",
+    "badgeClass": "badge-src-desain"
+  },
+  {
+    "id": "foto",
+    "name": "Koleksi Foto",
+    "shortName": "Foto",
+    "slug": "foto",
+    "period": "Galeri Foto",
+    "description": "Dokumentasi dan arsip koleksi foto-foto personal, kegiatan, dan momen bersejarah takien.",
+    "color": "#f59e0b",
+    "dotClass": "dot-foto",
+    "badgeClass": "badge-src-foto"
+  },
+  {
+    "id": "cektkp.com",
+    "name": "Cektkp.com",
+    "shortName": "cektkp",
+    "slug": "cektkp.com",
+    "period": "2013–2015",
+    "description": "Koleksi berita, tips teknologi, game, dan artikel pilihan takien di Cektkp.com (2013–2015).",
+    "color": "#ffc600",
+    "dotClass": "dot-cektkp",
+    "badgeClass": "badge-src-cektkp"
+  },
+  {
+    "id": "takien.com",
+    "name": "takien.com",
+    "shortName": "takien.com",
+    "slug": "takien.com",
+    "period": "2007–2016",
+    "description": "Koleksi tulisan utama di blog takien.com sejak 2007 hingga 2016.",
+    "color": "#a855f7",
+    "dotClass": "dot-takien",
+    "badgeClass": "badge-src-takien"
+  }
+]

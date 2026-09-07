@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+.cache_html/
+scratch/
+.DS_Store
+scripts/local-admin/

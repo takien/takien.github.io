@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { slugify } from '../../utils/slugify';
+
+const posts = await getCollection('posts');
+const categoryCounts: Record<string, { name: string; count: number }> = {};
+
+posts.forEach((p) => {
+  p.data.categories?.forEach((c: string) => {
+    const slug = slugify(c);
+    if (!slug) return;
+    if (!categoryCounts[slug]) {
+      categoryCounts[slug] = { name: c, count: 0 };
+    }
+    categoryCounts[slug].count++;
+  });
+});
+
+const sortedCategories = Object.entries(categoryCounts).sort((a, b) => b[1].count - a[1].count);
+---
+
+<BaseLayout
+  title="Kategori Artikel • takien.com"
+  description="Daftar seluruh kategori artikel blog takien.com"
+>
+  <div class="content-container">
+    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem;">
+        Kategori Artikel
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1rem;">
+        Menjelajah artikel berdasarkan kategori pembahasan.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;">
+      {sortedCategories.map(([slug, item]) => (
+        <a
+          href={`/categories/${slug}/`}
+          style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.15s ease;"
+        >
+          <span style="font-weight: 600; font-size: 1.05rem; color: var(--text-primary);">
+            {item.name}
+          </span>
+          <span style="background-color: var(--accent-subtle); color: var(--accent); font-weight: 700; font-size: 0.8rem; padding: 0.2rem 0.55rem; border-radius: var(--radius-full);">
+            {item.count}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

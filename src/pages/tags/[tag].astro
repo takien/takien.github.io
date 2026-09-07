@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { slugify } from '../../utils/slugify';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const tagsMap = new Map<string, { name: string; posts: any[] }>();
+
+  posts.forEach((p) => {
+    p.data.tags?.forEach((t: string) => {
+      const slug = slugify(t);
+      if (!slug) return;
+      if (!tagsMap.has(slug)) {
+        tagsMap.set(slug, { name: t, posts: [] });
+      }
+      tagsMap.get(slug)!.posts.push(p);
+    });
+  });
+
+  return Array.from(tagsMap.entries()).map(([slug, data]) => {
+    const sorted = data.posts.sort((a, b) => (b.data.date || '').localeCompare(a.data.date || ''));
+    return {
+      params: { tag: slug },
+      props: { tag: data.name, posts: sorted },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`Tag: #${tag} • takien.com`}
+  description={`Daftar artikel dengan tag #${tag} di blog takien.com`}
+>
+  <div class="container">
+    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">
+        Tag
+      </div>
+      <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem;">
+        #{tag}
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1rem;">
+        Menampilkan <strong>{posts.length}</strong> artikel dengan tag ini.
+      </p>
+    </div>
+
+    <div class="posts-grid">
+      {posts.map((post: any) => (
+        <PostCard
+          title={post.data.title}
+          slug={post.data.slug}
+          date={post.data.date}
+          source={post.data.source || 'takien.com'}
+          categories={post.data.categories}
+          tags={post.data.tags}
+          isTimeline={post.data.isTimeline}
+          isFresh={post.data.isFresh}
+          commentsCount={post.data.comments?.length || 0}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

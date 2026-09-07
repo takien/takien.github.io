@@ -1,0 +1,19 @@
+---
+title: "Facebook lagi heboh dengan kemunculan #hashtag, nah, fitur ini juga loh..."
+date: "2013-06-14T13:47:00Z"
+categories: ["WordPress"]
+tags: ["facebook", "Belajar WordPress", "wordpress", "plugin"]
+slug: "2013/06/14/facebook-lagi-heboh-dengan-kemunculan-hashtag-nah-fitur-ini"
+legacyUrl: "/2013/06/14/facebook-lagi-heboh-dengan-kemunculan-hashtag-nah-fitur-ini/"
+source: "facebook.com"
+author: "Wak Jek"
+group: "Belajar WordPress"
+comments: [{"author": "Hermawan Febrianto", "date": "Friday 14 June 2013 at 13:47", "text": "amankan dulu :army;"}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 13:47", "text": "hahaha"}, {"author": "Jeffry Gunawan", "date": "Friday 14 June 2013 at 14:19", "text": "fungsinya apa ya gan?"}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 14:20", "text": "bwt ngalay"}, {"author": "Jeni Gemintang", "date": "Friday 14 June 2013 at 14:28", "text": "gak beda sama built-in tag"}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 14:29", "text": "see it in action by mastah Hermawan Febrianto http://febri.net/test-hashtag-plugin-by-takien-com.php"}, {"author": "Hermawan Febrianto", "date": "Friday 14 June 2013 at 14:31", "text": ":hammer"}, {"author": "Jeni Gemintang", "date": "Friday 14 June 2013 at 14:31", "text": "ouputnya search result ??? gak riskan buat SEO ?, kenapa gak seperti tag aja Wak"}, {"author": "Hermawan Febrianto", "date": "Friday 14 June 2013 at 14:32", "text": "^^ nah itu tadi saya tanyakan pada Wak juga haha"}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 14:32", "text": "twitter dan facebook hashtag itu sbrnya search juga kok, riskannya kenapa?"}, {"author": "Jeni Gemintang", "date": "Friday 14 June 2013 at 14:34", "text": "lupa2 ingat sih, cuman jaman AGC itu tuh yang di redirect ke search result, kan jadi perhatian si big G juga"}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 14:35", "text": "beda donk, klo jaman AGC kan itu nyari keyword di google"}, {"author": "Ikhwan", "date": "Friday 14 June 2013 at 15:28", "text": "kalo ama TAG apa bedanya mas"}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 15:36", "text": "beda, penggunaannya lebih mudah hashtag, fungsinya kurang lebih sama"}, {"author": "Barkah Wibowo", "date": "Friday 14 June 2013 at 16:48", "text": "masih bingung bedanya hashtag sm tag selain tanda pager \"#\""}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 17:47", "text": "beda brow, tag gk bisa diketikkan langsung di content."}, {"author": "Abby Syailendra", "date": "Friday 14 June 2013 at 17:53", "text": "it klo diklik munculnya apa?"}, {"author": "Wak Jek", "date": "Friday 14 June 2013 at 17:57", "text": "search ke post yg punya hashtag yg sama"}, {"author": "Hermawan Febrianto", "date": "Wednesday 7 August 2013 at 22:31", "text": "sundul ah, ini kalo hastagnya di awal paragrap, ga keluar ya Wak"}, {"author": "Wak Jek", "date": "Wednesday 7 August 2013 at 22:32", "text": "coba cari bagian ini\n\n(^|\\s)#(\\w*[a-zA-Z_]+\\w*)\n\nganti dengan\n\n(^|\\s)?#(\\w*[a-zA-Z_]+\\w*)"}, {"author": "Hermawan Febrianto", "date": "Wednesday 7 August 2013 at 22:56", "text": "solved by atas ane :ngacir:"}, {"author": "Prast Rahastu", "date": "Wednesday 7 August 2013 at 23:48", "text": "Sama2"}]
+---
+
+<p>Facebook lagi heboh dengan kemunculan #hashtag, nah, fitur ini juga loh digunakan di WordPress,<br/>
+http://wordpress.org/plugins/hashtag (saat posting ini dibuat, mungkin plugin tsb belum di approve oleh tim #WordPress).</p>
+
+<p>Untuk sementara, boleh download di sini http://takien.com/files/hashtag-0.1.zip</p>
+
+<p><img src="/images/facebook/fb_11_0_a62e0235e7.jpg" alt="Facebook lagi heboh dengan kemunculan #hashtag, nah, fitur ini juga loh..." title="Facebook lagi heboh dengan kemunculan #hashtag, nah, fitur ini juga loh..." class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" /></p>

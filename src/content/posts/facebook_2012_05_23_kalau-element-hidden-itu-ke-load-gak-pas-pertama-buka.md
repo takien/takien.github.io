@@ -1,0 +1,15 @@
+---
+title: "Kalau element hidden itu ke load gak pas pertama buka"
+date: "2012-05-23T22:14:00Z"
+categories: ["Pribadi"]
+tags: ["facebook", "W3 kaskus", "pribadi"]
+slug: "2012/05/23/kalau-element-hidden-itu-ke-load-gak-pas-pertama-buka"
+legacyUrl: "/2012/05/23/kalau-element-hidden-itu-ke-load-gak-pas-pertama-buka/"
+source: "facebook.com"
+author: "Wak Jek"
+group: "W3 kaskus"
+comments: [{"author": "Prast Rahastu", "date": "Wednesday 23 May 2012 at 22:14", "text": "coba aja di server yang berat, ntar kelihatan"}, {"author": "Kecoa Ngamuk Kecoa", "date": "Wednesday 23 May 2012 at 22:16", "text": "klo ff bisa cek di page info kan?"}, {"author": "Mohammad Naufal Fadil", "date": "Wednesday 23 May 2012 at 22:19", "text": "ke load.(display:block) kecuali di Opera"}, {"author": "Prast Rahastu", "date": "Wednesday 23 May 2012 at 22:20", "text": "oh iya, masing2 browser beda gan. mungkin contohnya kayak spoiler old kasku*s"}, {"author": "Wak Jek", "date": "Wednesday 23 May 2012 at 22:27", "text": "wow. ane baru experimen di labs.\n\nkalau image dijadikan background via css, jika elemen tersebut hidden, maka gambar gk diload.\nnamun jika image sebagai img src, maka tetep keload meskipun display none\n\nthanks agan agan."}, {"author": "Mohammad Naufal Fadil", "date": "Wednesday 23 May 2012 at 22:28", "text": "^\nketularan Muhammad Surya Ikhsanudin"}, {"author": "Wak Jek", "date": "Wednesday 23 May 2012 at 22:29", "text": "tapi kan ane gk mension orang sekampung"}, {"author": "Wak Jek", "date": "Wednesday 23 May 2012 at 22:30", "text": "jadi kesimpulannya css responsive itu 100% aman.\ntablet/mobile device gk akan ngeload elemen2 yang khusus untuk desktop"}, {"author": "Prast Rahastu", "date": "Wednesday 23 May 2012 at 22:31", "text": "keren punya lab"}, {"author": "Wak Jek", "date": "Wednesday 23 May 2012 at 22:31", "text": "kain lab gan"}, {"author": "Prast Rahastu", "date": "Wednesday 23 May 2012 at 22:33", "text": "emang udah dicoba di browser tablet / hp / kapsul / pil?"}, {"author": "Wak Jek", "date": "Wednesday 23 May 2012 at 22:38", "text": "udah don"}, {"author": "Prast Rahastu", "date": "Wednesday 23 May 2012 at 22:43", "text": "gmn caranya gan"}, {"author": "Wak Jek", "date": "Wednesday 23 May 2012 at 22:54", "text": "cara apa"}, {"author": "Prast Rahastu", "date": "Wednesday 23 May 2012 at 23:42", "text": "coba di bermacam browser"}, {"author": "Wak Jek", "date": "Thursday 24 May 2012 at 00:16", "text": "tinggal buka aja di browser yang berbeda"}, {"author": "Wak Jek", "date": "Thursday 24 May 2012 at 00:17", "text": "gak ding, browser tetep. fyi ipun ipad itu kan pake browser webkit dengan kemampuan kurang lebih sama dengan browser desktop. yang beda cuma viewport doank. jadi tinggal resize viewport aja kok:D"}, {"author": "Prast Rahastu", "date": "Thursday 24 May 2012 at 00:56", "text": "kalau androshit gan?"}, {"author": "Heri Hehe Setiawan", "date": "Thursday 24 May 2012 at 10:30", "text": "lan patih"}]
+---
+
+<p>kalau element hidden itu ke load gak pas pertama buka.<br/>
+misalnya image</p>

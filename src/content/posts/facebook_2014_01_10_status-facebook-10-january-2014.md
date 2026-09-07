@@ -1,0 +1,24 @@
+---
+title: "Status Facebook 10 January 2014"
+date: "2014-01-10T00:08:00Z"
+categories: ["Internet"]
+tags: ["facebook", "W3 kaskus", "internet"]
+slug: "2014/01/10/status-facebook-10-january-2014"
+legacyUrl: "/2014/01/10/status-facebook-10-january-2014/"
+source: "facebook.com"
+author: "Wak Jek"
+group: "W3 kaskus"
+comments: [{"author": "Timothy Leviano Mangapul Malau", "date": "Friday 10 January 2014 at 00:08", "text": "ane selalu matiin autorenew om, takut kejadian kayak om"}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 00:09", "text": "domain puluhan, sbrnya selalu ane OFF kan, tapi gk tau ne ada yang kelewatan"}, {"author": "Timothy Leviano Mangapul Malau", "date": "Friday 10 January 2014 at 00:11", "text": "kalo ane emang rutin ngecek om, tiap minggu pasti buka registar dan cek  maklum ane tipe orang lupaan kalo ga dibiasain bisa rugi bandar"}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 00:12", "text": "pas cek kok saldo gk berkurang, ternyata ada history lagi.\nDonation From, ... $15 USD.\njaaaaaahh... uang donasi numpang lewat"}, {"author": "Timothy Leviano Mangapul Malau", "date": "Friday 10 January 2014 at 00:14", "text": "emang buat beli apaan om"}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 00:14", "text": "maksudnya? siapa yang beli"}, {"author": "Timothy Leviano Mangapul Malau", "date": "Friday 10 January 2014 at 00:19", "text": "itu nyari paypalnya buat apa tadinya"}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 00:19", "text": "pan udah dijelaskan di thread"}, {"author": "Prast R", "date": "Friday 10 January 2014 at 00:19", "text": "wahahaha kenapa di auto"}, {"author": "Prast R", "date": "Friday 10 January 2014 at 00:20", "text": "o"}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 00:20", "text": "kyknya ada unsur peniupan nih godady, masa autorenew semua,"}, {"author": "Prast R", "date": "Friday 10 January 2014 at 00:20", "text": "tagih ke klian, bilg auto billing"}, {"author": "Timothy Leviano Mangapul Malau", "date": "Friday 10 January 2014 at 00:21", "text": "owh ga liat  hosting dimana om , aduin om godaddy ke icann"}, {"author": "Prast R", "date": "Friday 10 January 2014 at 00:21", "text": "mungkin agan lupa men uncheck"}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 00:22", "text": "seingat ane dlu lebih banyak yang ane uncheck, kok sekarang yang OFF auto renewalnya cuma bbrp"}, {"author": "Anang F. Arnowo", "date": "Friday 10 January 2014 at 00:27", "text": "kasihan..."}, {"author": "Timothy Leviano Mangapul Malau", "date": "Friday 10 January 2014 at 00:34", "text": "aduin om ke ican"}, {"author": "Prast R", "date": "Friday 10 January 2014 at 00:49", "text": "jual lg aj wak"}, {"author": "Kecoa Ngamuk Kecoa", "date": "Friday 10 January 2014 at 01:23", "text": "Udah prnh ngalamin kirim2 komplain ke support alasan gak tau klo autorenew, duit dibalikin 45 hari kemudian sm godedi"}, {"author": "Kecoa Ngamuk Kecoa", "date": "Friday 10 January 2014 at 01:24", "text": "Godedi itu bisa anulir (anu dikelir) renew domain trnyt, bnyk provider yg gak bisa"}, {"author": "Timothy Leviano Mangapul Malau", "date": "Friday 10 January 2014 at 01:34", "text": "di namesilo juga bisa om kalo ga salah"}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 01:40", "text": "udah kirim tiket, ktnya godaddy mau nonton"}, {"author": "Jersey William", "date": "Friday 10 January 2014 at 06:35", "text": "TS ababil ..."}, {"author": "Simbah Gemblung", "date": "Friday 10 January 2014 at 08:25", "text": "no 10-nya ngeriii... tingkat mastah..."}, {"author": "Wak Jek", "date": "Friday 10 January 2014 at 10:30", "text": "ye bisa direfund, Jersey William thanks atas saran2nya"}, {"author": "Abonk Farouk", "date": "Friday 10 January 2014 at 10:35", "text": "ane juga pernah cuma ketahuannya udah lama jadi ndak bisa refund  motong cc"}, {"author": "Wak Jek", "date": "Saturday 11 January 2014 at 08:12", "text": "i got my money back"}, {"author": "Kecoa Ngamuk Kecoa", "date": "Saturday 11 January 2014 at 09:39", "text": "cepet amat, udah makin bagus ini si godedi, dulu ane nggu 45 hari, tapi emang lapornya telat sehari"}, {"author": "Wak Jek", "date": "Saturday 11 January 2014 at 11:15", "text": "http://takien.com/.../things-you-may-didnt-know-about.../"}, {"author": "Ravva Sid", "date": "Friday 17 January 2014 at 07:16", "text": "Jah punyaku 3 biji, tau gitu komplen dah, berasa jg euy"}, {"author": "Yanuar Arifianto", "date": "Friday 17 January 2014 at 07:19", "text": "Punya ane 2 biji, normal."}]
+---
+
+<p>.<br/>
+1. Susah cari paypal<br/>
+2. Udah dapat, mahal<br/>
+3. Mau bayar hosting<br/>
+4. Pas login, ada history, payment to ... completed, xx usd<br/>
+5. Fakkkk,, ternyata autorenew dari godaddy,<br/>
+6. Masalahnya bukan domain ane<br/>
+7. Tapi domain orang<br/>
+8. Yang belum tentu mau diperpanjang<br/>
+9. Dan mahal, 15 usd<br/>
+10. Tertegun</p>

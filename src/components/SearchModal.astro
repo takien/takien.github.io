@@ -1,0 +1,134 @@
+---
+---
+
+<div id="search-modal" class="modal-backdrop" style="display: none;">
+  <div class="modal-content" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-input-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input 
+        type="text" 
+        id="search-input" 
+        class="search-input" 
+        placeholder="Cari artikel, topik, atau tag... (Esc untuk keluar)"
+        autocomplete="off"
+      />
+      <button id="close-search-btn" class="icon-btn" aria-label="Tutup pencarian" style="border: none; padding: 0.2rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div id="search-results" class="search-results">
+      <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+        Ketik kata kunci untuk mencari di 150+ artikel arsip.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  let searchIndex = null;
+  const modal = document.getElementById('search-modal');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const searchBtn = document.getElementById('search-btn');
+  const closeBtn = document.getElementById('close-search-btn');
+
+  async function loadIndex() {
+    if (!searchIndex) {
+      try {
+        const res = await fetch('/search-index.json');
+        searchIndex = await res.json();
+      } catch (e) {
+        console.error('Failed to load search index:', e);
+      }
+    }
+  }
+
+  function openSearch() {
+    modal.style.display = 'flex';
+    searchInput.focus();
+    loadIndex();
+  }
+
+  function closeSearch() {
+    modal.style.display = 'none';
+    searchInput.value = '';
+    if (searchResults) {
+      searchResults.innerHTML = `
+        <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          Ketik kata kunci untuk mencari di 150+ artikel arsip.
+        </div>
+      `;
+    }
+  }
+
+  searchBtn?.addEventListener('click', openSearch);
+  closeBtn?.addEventListener('click', closeSearch);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeSearch();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (modal.style.display === 'flex') closeSearch();
+      else openSearch();
+    }
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeSearch();
+    }
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    if (!q || !searchIndex) {
+      searchResults.innerHTML = `
+        <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          Ketik kata kunci untuk mencari di 150+ artikel arsip.
+        </div>
+      `;
+      return;
+    }
+
+    const matches = searchIndex.filter((item) => {
+      const matchTitle = item.title.toLowerCase().includes(q);
+      const matchCat = item.categories.some((c) => c.toLowerCase().includes(q));
+      const matchTag = item.tags.some((t) => t.toLowerCase().includes(q));
+      return matchTitle || matchCat || matchTag;
+    });
+
+    if (matches.length === 0) {
+      searchResults.innerHTML = `
+        <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          Tidak ada hasil untuk "<strong>${escapeHtml(q)}</strong>".
+        </div>
+      `;
+      return;
+    }
+
+    searchResults.innerHTML = matches.slice(0, 15).map((item) => `
+      <a href="${item.slug}" class="search-item">
+        <div class="search-item-title">${escapeHtml(item.title)}</div>
+        <div class="search-item-meta">
+          ${item.date ? `<span>${item.date}</span>` : ''}
+          ${item.categories.length ? ` &bull; <span>${escapeHtml(item.categories.join(', '))}</span>` : ''}
+        </div>
+      </a>
+    `).join('');
+  });
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+</script>

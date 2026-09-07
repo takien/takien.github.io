@@ -1,0 +1,71 @@
+---
+title: "Waktu Itu Tahun 2007"
+date: "2007-12-31T00:00:00Z"
+categories: ["Umum"]
+tags: []
+slug: "2007/12/31/waktu-itu-tahun-2007"
+legacyUrls: ["211/waktu-itu-tahun-2007.php", "211/waktu-itu-tahun-2007", "blog/2007/12/31/waktu-itu-tahun-2007", "waktu-itu-tahun-2007"]
+source: "takien.com"
+comments: [
+  {
+    "author": "hams",
+    "date": "",
+    "text": "wah..wahh..\njadi pengin kerja di warnet nie..\nkayaknya kok enak banget..\nmau donk..\nhwehee..\n&#8230;\ntapi aku disini juga &#8220;rasah mbayar&#8221; lohh..\ncuma lom punya forum and domain sendiri kayak kmu..\n&#8230;\nkapan-kapan minta ahhh..\n&#8230;\nbtw thanks udah ngedukung hams buat acara percintaan-nya yawhh..\nhalah..\nhwehe..\n&#8230;\nnice blog.."
+  },
+  {
+    "author": "great_ww",
+    "date": "",
+    "text": "Pengalaman pertama memang pengalaman yg tidak akan pernah terlupakan&#8230;.\nkeep up the good spirit &#8230;"
+  },
+  {
+    "author": "takien.com",
+    "date": "",
+    "text": "@hams\now itu kamu serius toh,\ntak kirain ecek-ecek wakakaka..\n@great_ww\niyup, betul sekali\nthanks buat yang dah komen"
+  },
+  {
+    "author": "pondokiklan.com",
+    "date": "",
+    "text": "waw&#8230;.\nini true story pak bos ya&#8230;\nkeren&#8230; salut pak&#8230;..\nkau banyak memberikanku tips2 untuk terus survive di duia internet ini&#8230;\nmakasih&#8230;"
+  },
+  {
+    "author": "hams",
+    "date": "",
+    "text": "bro..\nhabis baca artikel itu yap..??\nbagoes..\ngw juga ikutan nimbrung lagi ni bro..\n&#8230;\nheh..\nsapa juga yang ecek-ecek..\ngw serius nie..\ncuma kalo mo nglakuin yang gila-gilaan harus tetep mikir..\nlha dia tinggal di balikpapan..\ngw tinggal di jakarta..\ngimana coba mo kerjain secara serius..\ngw sih mo masukin video ke youtube..\ntapi lama juga..\nbaru masih 5 orang yang liat..\npadahal ini kan urgent..\nhadohh..\nbingung jadinya bro..\nada ide ngga&#8217;..??\n&#8230;"
+  },
+  {
+    "author": "takien.com",
+    "date": "",
+    "text": "@pondokiklan\nya pak ini true story kok,\nkalau saya banyak memberi tips sepertinya\nterbalik itu pak.\noh yah, saya lupa tahun 2007 juga\npertama kali saya kenal orang baik seperti bapak.."
+  },
+  {
+    "author": "takien.com",
+    "date": "",
+    "text": "@hams\nwaduh, ide? kalau udah urusan gitu agak rumit bro&#8230;\ngak ada e-book nya sih.. hiks hiks \ntapi aku salut kok dengan usaha mu&#8230;\npokoknya tetep usaha deh,\nsiap sukses yah, tapi inget kemungkinan buruk juga teteb ada&#8230;\nharus teteb lapang dada..  \nbtw thx dah balik lagi.."
+  },
+  {
+    "author": "pondokiklan.com",
+    "date": "",
+    "text": "@namakamu\nhehe, jangan di lebihkan lag&#8230; kan ente yang banyak memberi banyak masukan&#8230; ya ga&#8230;."
+  },
+  {
+    "author": "hams",
+    "date": "",
+    "text": "yup..\nsudah bro..\nthanks.."
+  },
+  {
+    "author": "dhe",
+    "date": "",
+    "text": "Salam Kenal  \ndaku cm mau minta izin gunain gambar di atas  \ndaku dapat pr ne dari teman :-$ , pr-nya aneh2.. asli, n cr jawabnnya berdasarkan gambar yang daku temukan di google image   , dah dapat ne, ya tepatnya gambar di atas, yang dirimu jg gunain..\nmohon izinnya yah :-$\ntrims sebelumnya"
+  }
+]
+---
+
+<p><img src="/images/2007/12/time-image.jpg" alt="Time, kaleidoskop, calendar, clock" title="" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" />Tahun 2007 adalah tahun yang unik, karena tidak ada tahun lain yang menyerupai itu. Wakaka, lagi pula semua tahun juga emang sudah beda kan, gak ada yang sama. Yang jelas, dengan adanya tahun 2007 ini umurku jadi genap 23 tahun (protes ah, 23 itu ganjil, bukan genap), sehingga tetap seumur dengan orang-orang lain yang lahir pada tahun 1984 yang lalu.</p>
+<p>Selain itu tahun 2007 juga banyak hal-hal baru yang baru pertama kali aku alami terutama di bidang Internet. Seperti bulan Januari &#8211; Februari 2007, aku  pacaran sama cewek, terus&#8230; terus&#8230;.. gak jadi deh&#8230; wkakwakaka. Nggak boleh diceritakan, karena nggak ada hubungannya dengan dunia Internet <img src="/images/2007/12/icon_smile.gif" alt=":)" title="" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" />  <span id="more-211"></span></p>
+<p>Maret 2007, pertama kali aku kerja di warnet,  kalau sebelum ini main internet bayar, sekarang jadi enggak bayar alias gratis, hehehe. Dari situlah aku mulai menjelajah dunia internet yang ternyata sangat luas. Tanggal 4 pertama kali aku menginstall forum phpBB di hosting gratisan kwikphp.com, cikal bakal warnetforum. Tanggal 10 pertama kali aku punya account di Gmail, sebuah account email yang sering aku gunakan untuk berkomunikasi online yang bersifat resmi. Tanggal 16 pertama kali aku punya domain, domain warnetforum.web.id ku di setujui depkominfo. Seneng banget waktu itu punya domain betulan, soalnya selama ini aku hanya punya domain ecek-ecek yaitu .co.nr hehe.</p>
+<p>Mei 2007 tanggal 18 pertama kali aku punya domain internasional dot com, ini lebih seneng lagi, karena domain ku nggak gratisan lagi, kekekee. Tanggal 20 pertama kali aku ngirim email ke 80-an orang sekaligus. Hehehe, waktu itu memberku sekitar 80 an, aku ngirim email buat mengumumkan kalau domain web.id berganti jadi .com</p>
+<p>Juli 2007, pertama sekali aku jadi reseller hosting,  hehehe&#8230;  pertama  sekali kenal  WHM. Nggak istimewa sih, tapi ternyata sampai sekarang banyak temenku yang lain yang belum tahu apa itu we ha em, kekekekeke.</p>
+<p>September 2007, lupa tanggalnya, forum phpBB berhasil ku konvert menjadi SMF, dan ternyata SMF jauh lebih bagus daripada phpBB, selamat tinggal phpBB yang telah menemani aku sekitar 6 bulan. hehehehe.</p>
+<p>Oktober 2007, nggak ada yang seru neh, banyakan error mulu.. November 2007, pertama sekali punya blog ini, gak seru yah? ya udah deh.. kekekee.</p>
+<p>Desember 2007, sampai akhirnya bulan Desember datang, sedikitpun aku belum dapat cewek lagi hiks hiks hiks.. Dan yang lebih gak bisa diterima akal sehat,  ternyata aku belum tidur dari kemarin sore. wekekekee.</p>
+<p><font color="#c0c0c0">Note: Makasih gambarnya ya mbah Google!</font></p>

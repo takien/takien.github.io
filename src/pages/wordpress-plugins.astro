@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const allPosts = await getCollection('posts');
+const pluginPosts = allPosts.filter((p) => {
+  const t = p.data.title.toLowerCase();
+  const c = p.data.categories?.map((x: string) => x.toLowerCase()).join(' ') || '';
+  const tg = p.data.tags?.map((x: string) => x.toLowerCase()).join(' ') || '';
+  return t.includes('plugin') || c.includes('plugin') || tg.includes('plugin') || t.includes('easy table') || t.includes('spry');
+}).sort((a, b) => (b.data.date || '').localeCompare(a.data.date || ''));
+---
+
+<BaseLayout
+  title="WordPress Plugins • takien.com"
+  description="Daftar plugin WordPress open source yang pernah dikembangkan oleh takien."
+>
+  <div class="container">
+    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">
+        Koleksi Karya
+      </div>
+      <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem;">
+        WordPress Plugins
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 680px;">
+        Plugin-plugin WordPress buatan takien yang pernah dirilis di repositori resmi WordPress.org maupun dibagikan gratis di blog ini (Easy Table, WP Spry Menu, Word Replacer, dll).
+      </p>
+    </div>
+
+    <div class="posts-grid">
+      {pluginPosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          slug={post.data.slug}
+          date={post.data.date}
+          source={post.data.source || 'takien.com'}
+          categories={post.data.categories}
+          tags={post.data.tags}
+          commentsCount={post.data.comments?.length || 0}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,193 @@
+---
+import { getBlogSources } from '../utils/sourceHelper';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const blogSources = getBlogSources();
+const isSourceActive = currentPath.startsWith('/source/');
+---
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <div class="brand">
+      <a href="/" class="brand-title">
+        <span>napak tilas jejak digital</span>
+      </a>
+      <span class="brand-tagline">don't cover a judge by its book</span>
+    </div>
+
+    <nav aria-label="Navigasi Utama">
+      <ul class="nav-links">
+        <li>
+          <a 
+            href="/" 
+            class={`nav-link ${currentPath === '/' ? 'active' : ''}`}
+          >
+            Home
+          </a>
+        </li>
+
+        <!-- Dropdown Sumber -->
+        <li class="nav-dropdown-item">
+          <button 
+            type="button"
+            class={`nav-link nav-dropdown-btn ${isSourceActive ? 'active' : ''}`} 
+            id="nav-sources-btn" 
+            aria-expanded="false" 
+            aria-haspopup="true"
+          >
+            <span>Sumber</span>
+            <svg class="dropdown-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          
+          <div class="nav-dropdown-menu" id="nav-sources-menu">
+            <div class="dropdown-header-label">Koleksi Blog & Sumber</div>
+            <div class="dropdown-grid">
+              {blogSources.map((item) => (
+                <a 
+                  href={`/source/${item.slug}/`} 
+                  class={`dropdown-source-link ${currentPath === `/source/${item.slug}/` ? 'active' : ''}`}
+                >
+                  <span class={`source-dot ${item.dotClass}`}></span>
+                  <div class="dropdown-source-info">
+                    <span class="dropdown-source-name">{item.name}</span>
+                    <span class="dropdown-source-period">{item.period}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div class="dropdown-footer">
+              <a href="/archives/" class="dropdown-all-link">
+                Lihat Seluruh Timeline & Arsip &rarr;
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <a 
+            href="/archives/" 
+            class={`nav-link ${currentPath === '/archives/' ? 'active' : ''}`}
+          >
+            Archives
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/categories/" 
+            class={`nav-link ${currentPath.startsWith('/categories/') ? 'active' : ''}`}
+          >
+            Categories
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/about/" 
+            class={`nav-link ${currentPath === '/about/' ? 'active' : ''}`}
+          >
+            About
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <!-- Search Trigger Button -->
+      <button id="search-btn" class="icon-btn" aria-label="Search articles" title="Search (Cmd + K)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <!-- Dark / Light Mode Toggle -->
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg id="theme-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg id="theme-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <!-- RSS Feed Link -->
+      <a href="/rss.xml" class="icon-btn" aria-label="RSS Feed" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 11a9 9 0 0 1 9 9"></path>
+          <path d="M4 4a16 16 0 0 1 16 16"></path>
+          <circle cx="5" cy="19" r="1"></circle>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  // Theme Toggle Script
+  const themeToggle = document.getElementById('theme-toggle');
+  const sunIcon = document.getElementById('theme-sun');
+  const moonIcon = document.getElementById('theme-moon');
+
+  function updateIcons(theme) {
+    if (theme === 'dark') {
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    } else {
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+  }
+
+  const currentTheme = localStorage.getItem('theme') || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateIcons(currentTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const active = document.documentElement.getAttribute('data-theme');
+    const newTheme = active === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateIcons(newTheme);
+  });
+
+  // Dropdown Sumber Toggle
+  const sourcesBtn = document.getElementById('nav-sources-btn');
+  const dropdownItem = sourcesBtn?.closest('.nav-dropdown-item');
+
+  sourcesBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = dropdownItem?.classList.toggle('is-open');
+    sourcesBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (dropdownItem?.classList.contains('is-open') && !dropdownItem.contains(e.target)) {
+      dropdownItem.classList.remove('is-open');
+      sourcesBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dropdownItem?.classList.contains('is-open')) {
+      dropdownItem.classList.remove('is-open');
+      sourcesBtn?.setAttribute('aria-expanded', 'false');
+      sourcesBtn?.focus();
+    }
+  });
+</script>
