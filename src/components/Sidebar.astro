@@ -11,9 +11,11 @@ interface Props {
 const { currentPath = '', currentArticleDate = '' } = Astro.props;
 
 const excludedPageSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
-const allPosts = (await getCollection('posts')).filter(
-  (p) => !excludedPageSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, ''))
-);
+const allPosts = (await getCollection('posts')).filter((p) => {
+  const isPage = p.data.format === 'page' || (p.data as any).type === 'page';
+  const cleanSlug = p.data.slug.replace(/^\//, '').replace(/\/$/, '');
+  return !isPage && !excludedPageSlugs.has(cleanSlug);
+});
 
 // Compute post counts by year and source
 const yearCounts: Record<string, number> = {};

@@ -4,6 +4,7 @@ date: "2026-09-07T06:50:00.000Z"
 categories: ["Vibe Coding"]
 tags: ["vibe coding","ai","coding"]
 slug: "vibe-coding"
+format: "page"
 legacyUrl: "/vibe-coding/"
 source: "takien.com"
 author: "takien"

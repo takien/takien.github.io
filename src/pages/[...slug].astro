@@ -3,17 +3,15 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CommentsList from '../components/CommentsList.astro';
 import { slugify } from '../utils/slugify';
-import { getSourceInfo, isTimelinePost, isFreshPost } from '../utils/sourceHelper';
+import { getSourceInfo, isTimelinePost, isFreshPost, STATIC_PAGE_SLUGS } from '../utils/sourceHelper';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
 
-  const staticPages = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
-
   const paths: any[] = [];
   for (const post of posts) {
     const cleanSlug = post.data.slug.replace(/^\//, '').replace(/\/$/, '');
-    if (staticPages.has(cleanSlug)) continue;
+    if (STATIC_PAGE_SLUGS.has(cleanSlug)) continue;
 
     paths.push({
       params: { slug: cleanSlug },
@@ -97,9 +95,15 @@ function calculateAge(dateStr: string): string {
 
 const postAgeText = calculateAge(post.data.date);
 
-const allPosts = (await getCollection('posts')).sort((a, b) => {
-  return (b.data.date || '').localeCompare(a.data.date || '');
-});
+const allPosts = (await getCollection('posts'))
+  .filter((p) => {
+    const isPage = p.data.format === 'page' || (p.data as any).type === 'page';
+    const cleanSlug = p.data.slug.replace(/^\//, '').replace(/\/$/, '');
+    return !isPage && !STATIC_PAGE_SLUGS.has(cleanSlug);
+  })
+  .sort((a, b) => {
+    return (b.data.date || '').localeCompare(a.data.date || '');
+  });
 const currentIndex = allPosts.findIndex((p) => p.data.slug === post.data.slug);
 const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;

@@ -4,6 +4,7 @@ date: "2026-09-07T02:03:00.000Z"
 categories: ["About"]
 tags: ["about","profil","sejarah"]
 slug: "about"
+format: "page"
 legacyUrl: "/about/"
 source: "takien.com"
 author: "takien"
@@ -11,7 +12,7 @@ comments: []
 ---
 
 <div>
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788770766155_ilustrasi-jejak-digital.jpg" alt="jejak digital" />
+<img class="md:w-[50%] mx-auto py-10" src="/images/uploads/1788770766155_ilustrasi-jejak-digital.jpg" alt="jejak digital" />
 </div>
 
 
@@ -21,7 +22,7 @@ comments: []
 Sebenarnya aku pernah punya web juga sebelumnya, di Geocities (http://geocities.com/imissuaja) sejak tahun 2004. Isinya gallery foto-foto dan beberapa lirik lagu. Terbuat dari HTML murni hasil dari mempraktekkan buku yang aku pelajari. Karya *Mico Pardosi*. Walaupun itu web pertamaku, tapi aku membuatnya sedikit unik, karena tampilannya seperti desktop OS9-nya Apple. Teknologi yagn dipakai masih sangat jadul, yakni masih pakai `<table>` dan `<frameset>`. Sayangnya tidak ada jejaknya di Web Archive. Selain Geocities, di tahun 2004-2005 aku juga punya website di Tripod.com dan beberapa lainnya lupa alamatnya.
 
 
-<div class="max-w-full lg:max-w-[50%] mx-auto py-10">
+<div class="max-w-full lg:w-[50%] mx-auto py-10">
 <img src="/images/uploads/1788761056479_gusmul.jpg" alt="warnet" />
 <div><small><em>Walaupun aku nggak kenal secara personal dengan Gus Mul (Agus Mulyadi), tapi setidaknya kami sama-sama blogger dan pernah lahir di Magelang</em></small></div>
 </div>
@@ -30,7 +31,7 @@ Nah, ketika masuk ke tahun 2007, aku mulai kerja di <a title="Warnet Simulator" 
 
 
 <div>
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788746581638_imissu.110mb.jpg" alt="110mb" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788746581638_imissu.110mb.jpg" alt="110mb" />
 </div>
 
 
@@ -45,13 +46,13 @@ Jaraknya cukup jauh ya dari bulan Maret ke September, ya memang periode itu aku 
 Warnet forum itu menjadi momen pertama aku mempunyai domain komersil sendiri. Walaupun itu bukan pengalaman pertama aku membeli domain, karena di bulan September 2006 aku pernah membelikan domain dan hosting (sebenarnya aku yang menawarkan untuk membuat website ini dan akupun membuatkan website statis) untuk "studio foto, wedding dan desain" di tempat aku bekerja sebelumnya. You know what? Domainnya mahal banget waktu itu, ya iya lah, belinya di INDOGLOBAL.COM hahaha.
 
  <div>
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788750746680_kamardesain.com.inv.jpg" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788750746680_kamardesain.com.inv.jpg" />
 </div>
 
 Aku lupa apakah websitenya jadi sampai online atau tidak, karena aku keburu resign dan pindah kerja lagi ke sebuah studio foto lainnya. Walaupun di sini tidak lama dan tidak sempat menawarkan untuk membuat website. Hahaha. Ya, aku resign setelah bekerja hanya beberapa bulan saja di sini, karena keburu mendapatkan tawaran kerja sebagai [OP Warnet di ISTANANET](/2007/05/01/foto-foto-istananet/ "Foto-foto Istananet"), yang menurutku lebih menarik. wkkwkwk
 
 <div>
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788753231155_pic-0017.jpg" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788753231155_pic-0017.jpg" />
 </div>
 
 
@@ -61,8 +62,8 @@ Aku lupa apakah websitenya jadi sampai online atau tidak, karena aku keburu resi
 Ya, kesempatan kerja di warnet tidak bisa aku abaikan begitu saja, mengingat aku lagi semangat-semangatnya dengan dunia online dan website kala itu. Walaupun kerja di studio foto juga merupakan kesenangan aku, karena aku suka desain dan fotografi. Aku banyak belajar dari situ, termasuk mengasah kemampuan desain dengan Photoshop dan juga video editing. Tapi itu semua masih kalah sama passsion aku dengan dunia online.
 
 <div style="display:flex">
-<img class="max-w-[50%]" src="/images/uploads/1788760576060_pic-0009.webp" />
-<img class="max-w-[50%]" src="/images/uploads/1788760623479_picture001.jpg" />
+<img class="lg:w-[50%]" src="/images/uploads/1788760576060_pic-0009.webp" />
+<img class="lg:w-[50%]" src="/images/uploads/1788760623479_picture001.jpg" />
 </div>
 
 
@@ -82,14 +83,14 @@ Karena itu paket reseller, aku jadi punya ide untuk bisa menjual kembali layanan
 
 
  <div>
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788752064770_blisshosting-large.jpeg" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788752064770_blisshosting-large.jpeg" />
 </div>
 
 Masih di tahun 2007, webku semakin banyak sekali dan forumku semakin ramai. Bahkan aku membuat forum baru lagi `DESIGNKILLERS.COM` (wadah diskusi desain grafis) dan juga `INDOWEBMASTERS.COM` (wadah diskusi web developer). 
 
 Hal ini tentu membutuhkan kapasitas hosting yang cukup besar, dan sayangnya hostingnya Rudy tidak bisa menampung itu. Soalnya ketika aku tanya VPS, dia bilang tidak ada.
 
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788752521085_vps-ask.png" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788752521085_vps-ask.png" />
  
 
 Akhirnya aku memindahkan hostingku ke `HOSTGATOR.COM` walaupun shared hosting, bukan VPS, tapi kapasitasnya besar, dan harga perbulannya sekitar $35 USD. Cukup mahal memang. Tapi sangat mumpuni untuk menampung web-web aku dan web clientku sampai sekitar 6 tahun ke depan (2015). Sebelum akhirnya pindah ke VPS di `DIGITALOCEAN` sampai tahun 2025 (10 tahun). Dan akhirnya aku tidak menggunakan VPS lagi tapi menggunakan serverless `CLOUDFLARE` sampai sekarang.
@@ -103,11 +104,11 @@ Long story short, setelah malang melintang di dunia website, desain dan dunia wa
 
 
 
-<img class="max-w-[50%] mx-auto pt-10" src="/images/uploads/1788759314076_panasonic.jpg" />
+<img class="lg:w-[50%] mx-auto pt-10" src="/images/uploads/1788759314076_panasonic.jpg" />
 
 *kamera bagong*
 
-<img class="max-w-[50%] mx-auto pt-10" src="/images/uploads/1788759327476_render.jpg" />
+<img class="lg:w-[50%] mx-auto pt-10" src="/images/uploads/1788759327476_render.jpg" />
 
 *Lagi render video, bisa sambil tidur soalnya malamnya begadang di warnet, di situ aku pakai baju kaos WARNETFORUM wkkwkw*
 
@@ -115,18 +116,18 @@ Long story short, setelah malang melintang di dunia website, desain dan dunia wa
 Walaupun fokus kerjaanku di situ memegang kamera dan editing video (lagi). Tapi akhirnya perusahaan itu jadi clientku karena aku tawarin untuk membuat website (lagi), wkkwkw. 
 
 
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788758658972_dealpro.jpeg" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788758658972_dealpro.jpeg" />
 
 
 Sekitar 1 tahun disitu cukup melelahkan akhirnya aku kembali ke dunia online (lagi). Aku melamar kerja di berbagai perusahaan media di Medan sebagai web developer, dengan hanya mengandalkan ijazah SMA dan percaya diri yang berlebihan.
 
 Dari 2 perusahaan yang menerimaku akhirnya aku memutuskan untuk memilih bergabung dengan `SUMUTPOS`, sebuah perusahaan media lokal anakan JAWAPOS grup. Tahun 2009-2014 aku bekerja di situ. 
 
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788757204639_sumut-pos.jpg" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788757204639_sumut-pos.jpg" />
 
 Ini menjadi tantangan tersendiri bagiku, karena di tahun 2012 juga aku membuka usaha jasa pembuatan website `PERDANAWEB`, di samping makin banyak project dari berbagai agency website dengan sistem `kerja remote` dan juga aktif mencari recehan uang di berbagai platform online termasuk `Google AdSense` dan juga aktif menjadi `GAMER` abal-abal di sekitar tahun 2013-2014. Kebayang kan bagaimana *crowded* nya hidupku saat itu. Wkkwkw. Tapi belum pernah aku buat tulisannya, nanti deh aku tulis kapan-kapan.
 
-<img class="max-w-[50%] mx-auto py-10" src="/images/uploads/1788761214358_gamer-abal-abal.jpeg" />
+<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788761214358_gamer-abal-abal.jpeg" />
 
  
 

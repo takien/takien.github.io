@@ -4,6 +4,7 @@ date: ""
 categories: ["Uncategorized"]
 tags: []
 slug: "wordpress-plugins"
+format: "page"
 legacyUrl: "/wordpress-plugins/"
 comments: []
 ---

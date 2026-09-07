@@ -102,3 +102,6 @@ export function isFreshPost(postData: any): boolean {
   }
   return false;
 }
+
+export const STATIC_PAGE_SLUGS = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
+

@@ -109,10 +109,13 @@ a:hover {
   color: var(--accent-hover);
 }
 
-/* Responsive media defaults */
-img {
+/* Responsive media defaults (base specificity 0,0,1 so Tailwind utilities override naturally) */
+img,
+picture,
+video {
   max-width: 100%;
   height: auto;
+  box-sizing: border-box;
 }
 
 /* Container */
@@ -975,15 +978,6 @@ html.dark .timeline-article-banner {
   color: var(--text-secondary);
 }
 
-/* Strict Image and Media Constraints with Custom Size Support */
-.prose img,
-.prose picture,
-.prose video {
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
-
 /* Default standalone images inside prose: centered block */
 .prose > p > img:only-child,
 .prose > img {
@@ -1110,19 +1104,6 @@ html.dark .timeline-article-banner {
 .rounded-lg, .prose .rounded-lg { border-radius: var(--radius-lg) !important; }
 .rounded-full, .prose .rounded-full { border-radius: var(--radius-full) !important; }
 .border, .prose .border { border: 1px solid var(--border) !important; }
-
-/* Support Tailwind arbitrary width syntax if written in editor */
-.prose [class*="max-w-\[50\%\]"] { max-width: 50% !important; }
-.prose [class*="max-w-\[25\%\]"] { max-width: 25% !important; }
-.prose [class*="max-w-\[30\%\]"] { max-width: 30% !important; }
-.prose [class*="max-w-\[40\%\]"] { max-width: 40% !important; }
-.prose [class*="max-w-\[60\%\]"] { max-width: 60% !important; }
-.prose [class*="max-w-\[70\%\]"] { max-width: 70% !important; }
-.prose [class*="max-w-\[75\%\]"] { max-width: 75% !important; }
-.prose [class*="max-w-\[80\%\]"] { max-width: 80% !important; }
-.prose [class*="w-\[50\%\]"] { width: 50% !important; }
-.prose [class*="w-\[25\%\]"] { width: 25% !important; }
-.prose [class*="w-\[75\%\]"] { width: 75% !important; }
 
 .prose .wp-caption,
 .prose div[id^="attachment_"],

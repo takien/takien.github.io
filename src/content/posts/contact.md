@@ -4,6 +4,7 @@ date: "2026-09-07T04:45:00.000Z"
 categories: ["Contact"]
 tags: ["contact","profil","sosial-media"]
 slug: "contact"
+format: "page"
 legacyUrl: "/contact/"
 source: "takien.com"
 author: "takien"

@@ -1,11 +1,13 @@
 ---
 title: "Styling Scrollbar to Look Like Facebook ScrollableArea Using jScrollPane"
-date: "2011-12-30T12:15:51+00:00"
+date: "2011-12-30T12:15:00.000Z"
 categories: ["Tips & Tutorial"]
 tags: ["Web Design"]
 slug: "2011/12/30/styling-scrollbar-to-look-like-facebook-scrollablearea-using-jscrollpane"
-legacyUrl: "/blog/2011/12/30/styling-scrollbar-to-look-like-facebook-scrollablearea-using-jscrollpane/"
-comments: []
+legacyUrl: "/2011/12/30/styling-scrollbar-to-look-like-facebook-scrollablearea-using-jscrollpane/"
+source: "takien.com"
+author: "takien"
+comments: [{"author":"Rodolfo Jorge Nemer Nogueira","date":"","text":"Very good post. I recently used this technique to compose the scroll effect.\n\nRodolfo Nogueira Curitiba Paraná UFPR Música"},{"author":"Anonymous","date":"","text":"yeah, every stuff in famous sites like facebook, google, or twtitter is great to be imitated and applied  since they have mature programmer and or web designer, xD"},{"author":"Guest","date":"","text":"i think it does not work in ie."},{"author":"Anonymous","date":"","text":"That doesn’t matter"},{"author":"Guest","date":"","text":"and you call yourself a web developer?"},{"author":"Anonymous","date":"","text":"yes, Not IE developer. problem?"},{"author":"Pedox","date":"","text":"and im called who ??"},{"author":"Anonymous","date":"","text":"troll"},{"author":"keaglez","date":"","text":"There is no reason it doesn’t work on IE 7 and up. It does work by the way, you lost border-radius but that’s pretty much it.\n\n@takien:disqus The mouseover event seems to be not reliable, if you hover in and out fast, the scrollbar will repeat fade in/out. CSS3 might help in this case. Or do some checking if animation is playing before calling fadein/out."},{"author":"Fauzie","date":"","text":"for the animation problem, you could use the stop() event.\n\nhttp://api.jquery.com/stop/"},{"author":"Anonymous","date":"","text":"for those who use IE, I confirmed it does work in IE 6 and above.\n\n@2413c800e6b3406b83ae7f720b62fd8d:disqus fixed missed vendor prefix’s border radius in CSS.\n\nmultiple queued animations problem in fadein/out it also has been fixed, thanks to @fauzie811:disqus . use stop(true, true) since .stop() doesn’t work.\n\nThe article updated, as well as the demo page.\nthanks."},{"author":"Pedox","date":"","text":"it’s great takien… don’t forget for give me Good reputation !!\nim still waiting"}]
 ---
 
 <div class="content-wrap">

@@ -4,6 +4,7 @@ date: "2026-09-07T04:25:00.000Z"
 categories: ["Komunitas"]
 tags: ["komunitas","gabung","diskusi"]
 slug: "gabung-komunitas"
+format: "page"
 legacyUrl: "/gabung-komunitas/"
 source: "takien.com"
 author: "takien"

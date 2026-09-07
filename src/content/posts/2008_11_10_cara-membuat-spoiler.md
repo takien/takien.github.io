@@ -1,31 +1,13 @@
 ---
 title: "Cara Membuat Spoiler"
 date: "2008-11-10T06:49:00.000Z"
-categories: ["Tutorial", "JavaScript", "HTML"]
-tags: ["spoiler", "javascript", "html", "vbulletin", "web development"]
+categories: ["Tutorial","JavaScript","HTML"]
+tags: ["spoiler","javascript","html","vbulletin","web development"]
 slug: "2008/11/10/cara-membuat-spoiler"
 legacyUrl: "/2008/11/10/cara-membuat-spoiler/"
 source: "indowebmasters.com"
 author: "takien"
-comments:
-  - author: "ripiyuku"
-    date: "2008-11-28 18:32:00"
-    text: "udah nyoba boss … seeppppp"
-  - author: "iBNuX"
-    date: "2008-12-01 04:29:00"
-    text: "thx for sharing…"
-  - author: "iBNuX"
-    date: "2009-01-27 03:42:00"
-    text: "tapi klo multi spoiler ga jalan yang keduanya"
-  - author: "Administrator"
-    date: "2009-01-27 16:04:00"
-    text: "@ibnux, bisa, untuk multi spoiler cukup tambahkan div lagi di masing2 spoilernya… jadinya begini… spoiler 1: <div>... kode spoiler</div> spoiler 2: <div>... kode spoiler</div> boleh dicoba :)"
-  - author: "dago7"
-    date: "2009-01-29 10:38:00"
-    text: "bikin yang kaya di kaskus douung"
-  - author: "Administrator"
-    date: "2009-01-29 17:08:00"
-    text: "tinggal ganti aja Tampilkan/Sembunyikan menjadi Show/Hide :-j"
+comments: [{"author":"ripiyuku","date":"","text":"udah nyoba boss … seeppppp"},{"author":"iBNuX","date":"","text":"thx for sharing…"},{"author":"iBNuX","date":"","text":"tapi klo multi spoiler ga jalan yang keduanya"},{"author":"takien","date":"","text":"@ibnux,\nbisa, untuk multi spoiler cukup tambahkan div lagi di masing2 spoilernya…\n\njadinya begini…\n\nspoiler 1\n\n\n.... disini kode spoiler seperti contoh di atas\n\n\n\n\nspoiler 2\n\n\n.... disini kode spoiler untuk contoh diatas...\n\n\n\n\nboleh dicoba"},{"author":"dago7","date":"","text":"bikin yang kaya di kaskus douung"},{"author":"takien","date":"","text":"tinggal ganti aja Tampilkan/Sembunyikan menjadi Show/Hide :-j"},{"author":"Misz","date":"","text":"Bisa dipakai di WP ngga ya?\nTerus kalo bisa naruhnya di bagaian mana?"},{"author":"Cyber Search","date":"","text":"ane coba di theme ane kok ngga bisa ya mas..apa themenya yang ngga support ya..?"},{"author":"takien","date":"","text":"hmmmm…\nntar ane cek lagi gan"},{"author":"Xrvel","date":"","text":"udah saya cek gan. makasih gan.. bisa gan :p"},{"author":"takien","date":"","text":"Hello all,\nsudah saya buatkan pluginnya untuk WordPress, tinggal upload instal.\nCek link di atas.\nThank you"},{"author":"Cyber Search","date":"","text":"walah…mantaff..ijin sedot gan..pertamaxxx"},{"author":"Crist_erick","date":"","text":"ijin sedot gan, thx"},{"author":"Anonymous","date":"","text":"silahkan gan"},{"author":"Anonymous","date":"","text":"work gan… bisa di wp ane"}]
 ---
 
 Menyembunyikan konten tertentu dari sebuah halaman website terkadang diperlukan untuk menghemat space. Ketika visitor ingin melihatnya mereka dapat dengan mudah menampilkannya. Dalam software forum semacam vBulletin, hal ini disebut dengan Spoiler.
@@ -51,3 +33,7 @@ Bagaimana cara membuatnya? Hanya diperlukan sedikit kode javascript yang langsun
 Ini adalah konten yang disembunyikan, klik tombol Sembunyikan/Tampilkan untuk membuka atau menutup konten ini.</div>
 </div>
 ```
+
+**Versi plugin WordPress**
+
+[Di sini](/2008/11/10/cara-membuat-spoiler-di-wordpress/)

@@ -9,6 +9,8 @@ const posts = defineCollection({
     categories: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
     slug: z.string(),
+    format: z.string().optional().default('post'),
+    type: z.string().optional(),
     legacyUrl: z.string().optional(),
     legacyUrls: z.array(z.string()).optional().default([]),
     source: z.string().optional(),

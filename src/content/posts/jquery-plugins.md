@@ -4,6 +4,7 @@ date: ""
 categories: ["Uncategorized"]
 tags: []
 slug: "jquery-plugins"
+format: "page"
 legacyUrl: "/jquery-plugins/"
 comments: []
 ---

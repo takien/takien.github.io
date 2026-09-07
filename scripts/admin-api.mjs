@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,70 +21,24 @@ function parseMarkdown(raw) {
 
   const yamlStr = match[1];
   const content = match[2];
-  const frontmatter = {};
+  let frontmatter = {};
 
-  const lines = yamlStr.split('\n');
-  let inComments = false;
-  let commentsBuffer = '';
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    if (inComments) {
-      commentsBuffer += '\n' + line;
-      if (line.trim().endsWith(']')) {
-        try {
-          frontmatter['comments'] = JSON.parse(commentsBuffer.trim());
-        } catch {
-          frontmatter['comments'] = [];
-        }
-        inComments = false;
-      }
-      continue;
-    }
-
-    const colonIdx = line.indexOf(':');
-    if (colonIdx > 0 && !line.startsWith(' ') && !line.startsWith('\t')) {
-      const key = line.slice(0, colonIdx).trim();
-      let val = line.slice(colonIdx + 1).trim();
-
-      if (key === 'comments') {
-        if (val.startsWith('[')) {
-          if (val.endsWith(']')) {
-            try {
-              frontmatter[key] = JSON.parse(val);
-            } catch {
-              frontmatter[key] = [];
-            }
-          } else {
-            inComments = true;
-            commentsBuffer = val;
-          }
-        } else {
-          frontmatter[key] = [];
-        }
-        continue;
-      }
-
-      if (val.startsWith('"') && val.endsWith('"')) {
-        val = val.slice(1, -1).replace(/\\"/g, '"');
-      } else if (val.startsWith("'") && val.endsWith("'")) {
-        val = val.slice(1, -1);
-      } else if (val.startsWith('[') && val.endsWith(']')) {
-        try {
-          val = JSON.parse(val);
-        } catch {
-          val = val.slice(1, -1).split(',').map(s => s.trim().replace(/^["']|["']$/g, ''));
-        }
-      } else if (val === 'true') {
-        val = true;
-      } else if (val === 'false') {
-        val = false;
-      }
-
-      frontmatter[key] = val;
-    }
+  try {
+    frontmatter = yaml.load(yamlStr) || {};
+  } catch (e) {
+    frontmatter = {};
   }
+
+  if (!Array.isArray(frontmatter.categories)) {
+    frontmatter.categories = frontmatter.categories ? [frontmatter.categories] : [];
+  }
+  if (!Array.isArray(frontmatter.tags)) {
+    frontmatter.tags = frontmatter.tags ? [frontmatter.tags] : [];
+  }
+  if (!Array.isArray(frontmatter.comments)) {
+    frontmatter.comments = [];
+  }
+  frontmatter.format = frontmatter.format || frontmatter.type || 'post';
 
   return { frontmatter, content };
 }
@@ -104,6 +59,9 @@ function stringifyMarkdown(fm, content) {
   lines.push(`categories: ${categoriesJson}`);
   lines.push(`tags: ${tagsJson}`);
   lines.push(`slug: "${fm.slug || ''}"`);
+  if (fm.format && fm.format !== 'post') {
+    lines.push(`format: "${fm.format}"`);
+  }
   
   if (fm.legacyUrl) lines.push(`legacyUrl: "${fm.legacyUrl}"`);
   if (fm.legacyUrls && fm.legacyUrls.length) lines.push(`legacyUrls: ${JSON.stringify(fm.legacyUrls)}`);
@@ -226,6 +184,7 @@ export function adminApiMiddleware(req, res, next) {
             title: frontmatter.title || file,
             date: frontmatter.date || '',
             slug: frontmatter.slug || '',
+            format: frontmatter.format || frontmatter.type || 'post',
             categories: frontmatter.categories || [],
             tags: frontmatter.tags || [],
             source: frontmatter.source || 'takien.com',
@@ -281,6 +240,7 @@ export function adminApiMiddleware(req, res, next) {
           isNew,
           title,
           date,
+          format,
           categories,
           tags,
           slug,
@@ -290,7 +250,8 @@ export function adminApiMiddleware(req, res, next) {
           nowNote,
           nowDate,
           isTimeline,
-          content
+          content,
+          comments
         } = body;
 
         if (!title) return sendError('Judul postingan wajib diisi');
@@ -339,10 +300,20 @@ export function adminApiMiddleware(req, res, next) {
           } catch {}
         }
 
+        let finalComments = existingFm.comments || [];
+        if (Array.isArray(comments)) {
+          finalComments = comments.map(c => ({
+            author: String(c.author || c.nama || c.name || 'Anonymous').trim(),
+            date: (c.date === null || c.date === undefined) ? (c.tanggal === null || c.tanggal === undefined ? '' : String(c.tanggal).trim()) : String(c.date).trim(),
+            text: String(c.text !== undefined ? c.text : (c.komentar !== undefined ? c.komentar : (c.comment !== undefined ? c.comment : ''))).trim()
+          })).filter(c => c.text.length > 0 || c.author.length > 0);
+        }
+
         const updatedFm = {
           ...existingFm,
           title,
           date,
+          format: format || existingFm.format || existingFm.type || 'post',
           categories: Array.isArray(categories) ? categories : [],
           tags: Array.isArray(tags) ? tags : [],
           slug,
@@ -352,7 +323,8 @@ export function adminApiMiddleware(req, res, next) {
           group: group !== undefined ? group : (existingFm.group || ''),
           nowNote: nowNote ? nowNote.trim() : undefined,
           nowDate: nowDate ? nowDate.trim() : undefined,
-          isTimeline: Boolean(isTimeline)
+          isTimeline: Boolean(isTimeline),
+          comments: finalComments
         };
 
         const finalMarkdown = stringifyMarkdown(updatedFm, content || '');
@@ -415,16 +387,21 @@ export function adminApiMiddleware(req, res, next) {
 
         if (!dataUrl) return sendError('Data gambar tidak ditemukan');
 
-        const matches = dataUrl.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-        if (!matches || matches.length !== 3) {
-          return sendError('Format data gambar tidak valid');
+        let buffer;
+        try {
+          const commaIdx = dataUrl.indexOf(',');
+          const base64Str = commaIdx !== -1 ? dataUrl.slice(commaIdx + 1) : dataUrl;
+          buffer = Buffer.from(base64Str.replace(/\s+/g, ''), 'base64');
+          if (!buffer || buffer.length === 0) {
+            return sendError('Data gambar kosong atau tidak valid');
+          }
+        } catch (e) {
+          return sendError('Format data gambar tidak valid: ' + e.message);
         }
 
-        const buffer = Buffer.from(matches[2], 'base64');
-
         let destRelPath = '';
-        if (targetPath) {
-          const cleanTarget = targetPath.replace(/^\/+/, '');
+        if (targetPath && !targetPath.startsWith('http://') && !targetPath.startsWith('https://')) {
+          const cleanTarget = targetPath.split('?')[0].split('#')[0].replace(/^\/+/, '');
           const absTarget = path.join(publicDir, cleanTarget);
           
           if (!absTarget.startsWith(publicDir)) {
@@ -435,7 +412,8 @@ export function adminApiMiddleware(req, res, next) {
           await fs.writeFile(absTarget, buffer);
           destRelPath = '/' + cleanTarget;
         } else {
-          const cleanName = (filename || 'image.jpg').toLowerCase().replace(/[^a-z0-9.-]/g, '-');
+          let cleanName = (filename || 'image.png').toLowerCase().replace(/[^a-z0-9.-]/g, '-');
+          if (!path.extname(cleanName)) cleanName += '.png';
           const time = Date.now();
           const savedName = `${time}_${cleanName}`;
           const uploadsDir = path.join(publicDir, 'images', 'uploads');

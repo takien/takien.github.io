@@ -4,7 +4,11 @@ import { getCollection } from 'astro:content';
 export async function GET(context: any) {
   const excludedRssSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
   const posts = (await getCollection('posts'))
-    .filter((p) => p.data.date && p.data.date.trim().length > 0 && !excludedRssSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, '')))
+    .filter((p) => {
+      const isPage = p.data.format === 'page' || (p.data as any).type === 'page';
+      const cleanSlug = p.data.slug.replace(/^\//, '').replace(/\/$/, '');
+      return Boolean(p.data.date && p.data.date.trim().length > 0 && !isPage && !excludedRssSlugs.has(cleanSlug));
+    })
     .sort((a, b) => {
       return (b.data.date || '').localeCompare(a.data.date || '');
     });
