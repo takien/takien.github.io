@@ -11,7 +11,7 @@ const blogSources = getBlogSources();
 const isSourceActive = currentPath.startsWith('/source/');
 ---
 
-<header class="site-header">
+<header class="site-header px-4 sm:px-6 lg:px-8">
   <div class="container nav-wrap">
     <div class="brand">
       <a href="/" class="brand-title">
@@ -102,6 +102,14 @@ const isSourceActive = currentPath.startsWith('/source/');
             Gabung
           </a>
         </li>
+        <li>
+          <a 
+            href="/vibe-coding/" 
+            class={`nav-link ${currentPath === '/vibe-coding/' || currentPath.startsWith('/vibe-coding') ? 'active' : ''}`}
+          >
+            Vibe Coding
+          </a>
+        </li>
       </ul>
     </nav>
 
@@ -140,6 +148,80 @@ const isSourceActive = currentPath.startsWith('/source/');
           <circle cx="5" cy="19" r="1"></circle>
         </svg>
       </a>
+
+      <!-- Mobile Burger Menu Toggle Button -->
+      <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Menu" aria-expanded="false" title="Menu Navigasi">
+        <svg id="burger-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg id="burger-close-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Dropdown Panel -->
+  <div id="mobile-nav-panel" class="mobile-nav-panel" style="display: none;">
+    <div class="container mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li>
+          <a href="/" class={`mobile-nav-link ${currentPath === '/' ? 'active' : ''}`}>
+            Home
+          </a>
+        </li>
+        <li class="mobile-dropdown-section">
+          <button type="button" id="mobile-sources-btn" class="mobile-nav-link mobile-dropdown-toggle" aria-expanded="false">
+            <span>Koleksi Sumber ({blogSources.length})</span>
+            <svg class="dropdown-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div id="mobile-sources-menu" class="mobile-sources-subgrid" style="display: none;">
+            {blogSources.map((item) => (
+              <a 
+                href={`/source/${item.slug}/`} 
+                class={`mobile-source-item ${currentPath === `/source/${item.slug}/` ? 'active' : ''}`}
+              >
+                <span class={`source-dot ${item.dotClass}`}></span>
+                <span class="mobile-source-name">{item.name}</span>
+                <span class="mobile-source-period">{item.period}</span>
+              </a>
+            ))}
+            <a href="/archives/" class="mobile-source-all">
+              Lihat Seluruh Timeline & Arsip &rarr;
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="/archives/" class={`mobile-nav-link ${currentPath === '/archives/' ? 'active' : ''}`}>
+            Archives
+          </a>
+        </li>
+        <li>
+          <a href="/categories/" class={`mobile-nav-link ${currentPath.startsWith('/categories/') ? 'active' : ''}`}>
+            Categories
+          </a>
+        </li>
+        <li>
+          <a href="/about/" class={`mobile-nav-link ${currentPath === '/about/' ? 'active' : ''}`}>
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/gabung-komunitas/" class={`mobile-nav-link ${currentPath === '/gabung-komunitas/' || currentPath.startsWith('/gabung-komunitas') ? 'active' : ''}`}>
+            Gabung
+          </a>
+        </li>
+        <li>
+          <a href="/vibe-coding/" class={`mobile-nav-link ${currentPath === '/vibe-coding/' || currentPath.startsWith('/vibe-coding') ? 'active' : ''}`}>
+            Vibe Coding
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </header>
@@ -174,7 +256,7 @@ const isSourceActive = currentPath.startsWith('/source/');
     updateIcons(newTheme);
   });
 
-  // Dropdown Sumber Toggle
+  // Desktop Dropdown Sumber Toggle
   const sourcesBtn = document.getElementById('nav-sources-btn');
   const dropdownItem = sourcesBtn?.closest('.nav-dropdown-item');
 
@@ -184,18 +266,68 @@ const isSourceActive = currentPath.startsWith('/source/');
     sourcesBtn.setAttribute('aria-expanded', String(isOpen));
   });
 
+  // Mobile Menu Burger Toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNavPanel = document.getElementById('mobile-nav-panel');
+  const burgerIcon = document.getElementById('burger-icon');
+  const burgerCloseIcon = document.getElementById('burger-close-icon');
+
+  function toggleMobileMenu(forceState) {
+    if (!mobileNavPanel) return;
+    const isHidden = mobileNavPanel.style.display === 'none';
+    const nextOpen = forceState !== undefined ? forceState : isHidden;
+    
+    if (nextOpen) {
+      mobileNavPanel.style.display = 'block';
+      if (burgerIcon) burgerIcon.style.display = 'none';
+      if (burgerCloseIcon) burgerCloseIcon.style.display = 'block';
+      mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileNavPanel.style.display = 'none';
+      if (burgerIcon) burgerIcon.style.display = 'block';
+      if (burgerCloseIcon) burgerCloseIcon.style.display = 'none';
+      mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  mobileMenuBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileMenu();
+  });
+
+  // Mobile Sources Sublist Toggle
+  const mobileSourcesBtn = document.getElementById('mobile-sources-btn');
+  const mobileSourcesMenu = document.getElementById('mobile-sources-menu');
+  mobileSourcesBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!mobileSourcesMenu) return;
+    const isHidden = mobileSourcesMenu.style.display === 'none';
+    mobileSourcesMenu.style.display = isHidden ? 'flex' : 'none';
+    mobileSourcesBtn.setAttribute('aria-expanded', String(isHidden));
+    mobileSourcesBtn.classList.toggle('is-open', isHidden);
+  });
+
+  // Close menus when clicking outside
   document.addEventListener('click', (e) => {
     if (dropdownItem?.classList.contains('is-open') && !dropdownItem.contains(e.target)) {
       dropdownItem.classList.remove('is-open');
       sourcesBtn?.setAttribute('aria-expanded', 'false');
     }
+    if (mobileNavPanel && mobileNavPanel.style.display !== 'none' && !mobileNavPanel.contains(e.target) && !mobileMenuBtn?.contains(e.target)) {
+      toggleMobileMenu(false);
+    }
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && dropdownItem?.classList.contains('is-open')) {
-      dropdownItem.classList.remove('is-open');
-      sourcesBtn?.setAttribute('aria-expanded', 'false');
-      sourcesBtn?.focus();
+    if (e.key === 'Escape') {
+      if (dropdownItem?.classList.contains('is-open')) {
+        dropdownItem.classList.remove('is-open');
+        sourcesBtn?.setAttribute('aria-expanded', 'false');
+      }
+      if (mobileNavPanel && mobileNavPanel.style.display !== 'none') {
+        toggleMobileMenu(false);
+        mobileMenuBtn?.focus();
+      }
     }
   });
 </script>

@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context: any) {
-  const excludedRssSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'wordpress-plugins', 'jquery-plugins']);
+  const excludedRssSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
   const posts = (await getCollection('posts'))
     .filter((p) => p.data.date && p.data.date.trim().length > 0 && !excludedRssSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, '')))
     .sort((a, b) => {
@@ -10,7 +10,7 @@ export async function GET(context: any) {
     });
 
   return rss({
-    title: "takien.com • don't cover a judge by its book",
+    title: "napak tilas jejak digital - my blog restoration",
     description: 'Arsip artikel blog takien.com (2006-2016)',
     site: context.site || 'https://takien.github.io',
     items: posts.map((post) => ({

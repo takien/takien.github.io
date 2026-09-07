@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSourceInfo, isTimelinePost, isFreshPost } from '../utils/sourceHelper';
 
-const excludedSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'wordpress-plugins', 'jquery-plugins']);
+const excludedSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
 
 const allPosts = (await getCollection('posts'))
   .filter((p) => !excludedSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, '')))

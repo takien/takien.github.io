@@ -10,7 +10,7 @@ interface Props {
 
 const { currentPath = '', currentArticleDate = '' } = Astro.props;
 
-const excludedPageSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'wordpress-plugins', 'jquery-plugins']);
+const excludedPageSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
 const allPosts = (await getCollection('posts')).filter(
   (p) => !excludedPageSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, ''))
 );
@@ -50,6 +50,14 @@ for (const post of allPosts) {
 }
 
 const sortedYears = Object.keys(yearCounts).sort((a, b) => b.localeCompare(a));
+
+// Sembunyikan tahun di arsip sidebar jika seluruh isinya hanya dari Facebook
+const sidebarYears = sortedYears.filter((year) => {
+  const sources = yearSources[year] || [];
+  const isOnlyFacebook = sources.length > 0 && sources.every((s) => s === 'facebook.com' || s === 'facebook');
+  return !isOnlyFacebook;
+});
+
 const topCategories = Object.entries(categoryCounts)
   .sort((a, b) => b[1] - a[1])
   .slice(0, 6);
@@ -88,7 +96,7 @@ const isCurrentSource = (slug: string) => currentPath.includes(`/source/${slug}`
     </div>
 
     <ul class="year-list">
-      {sortedYears.map((year) => {
+      {sidebarYears.map((year) => {
         const count = yearCounts[year];
         const isActive = year === activeYear;
         const sourcesInYear = yearSources[year] || [];

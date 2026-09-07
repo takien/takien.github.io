@@ -5,7 +5,7 @@ import PostCard from '../components/PostCard.astro';
 import { slugify } from '../utils/slugify';
 import { getBlogSources, getSourceInfo } from '../utils/sourceHelper';
 
-const excludedFeedSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'wordpress-plugins', 'jquery-plugins']);
+const excludedFeedSlugs = new Set(['about', 'contact', 'gabung-komunitas', 'vibe-coding', 'wordpress-plugins', 'jquery-plugins']);
 
 const allPosts = (await getCollection('posts'))
   .filter((p) => p.data.date && p.data.date.trim().length > 0 && !excludedFeedSlugs.has(p.data.slug.replace(/^\//, '').replace(/\/$/, '')))
@@ -37,7 +37,7 @@ const popularCategories = Object.entries(categoryCounts)
 ---
 
 <BaseLayout
-  title="takien.com • don't cover a judge by its book"
+  title="napak tilas jejak digital - my blog restoration"
   description="Arsip restorasi blog takien.com (2006-2016) — Tutorial web design, WordPress, PHP, JavaScript, dan pemrograman."
 >
   <div class="content-container">

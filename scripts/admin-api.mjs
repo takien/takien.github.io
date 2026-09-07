@@ -358,6 +358,12 @@ export function adminApiMiddleware(req, res, next) {
         const finalMarkdown = stringifyMarkdown(updatedFm, content || '');
         await fs.writeFile(filePath, finalMarkdown, 'utf-8');
 
+        // Trigger Astro content sync & route regeneration automatically
+        try {
+          const now = new Date();
+          await fs.utimes(path.join(rootDir, 'src', 'content.config.ts'), now, now);
+        } catch {}
+
         sendJson({
           success: true,
           file: path.basename(targetFilename),
