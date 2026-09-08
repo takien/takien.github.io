@@ -24,7 +24,7 @@ Sebenarnya aku pernah punya web juga sebelumnya, di Geocities (http://geocities.
 
 <div class="max-w-full lg:w-[50%] mx-auto py-10">
 <img src="/images/uploads/1788761056479_gusmul.jpg" alt="warnet" />
-<div><small><em>Walaupun aku nggak kenal secara personal dengan Gus Mul (Agus Mulyadi), tapi setidaknya kami sama-sama blogger dan pernah lahir di Magelang</em></small></div>
+<div><small><em>Sebagian sejarah dan peradaban digital kita dibangun di warnet. - Gus Mul / Agus Mulyadi</em></small></div>
 </div>
 
 Nah, ketika masuk ke tahun 2007, aku mulai kerja di <a title="Warnet Simulator" target="_blank" href="https://warnet.moretools.net/">warnet</a>, aku jadi banyak waktu untuk ngoprek internet. Akhirnya aku membuat blog yang di hosting sendiri di 110.mb.com yaitu [http://imissu.110mb.com](/source/imissu.110mb.com/) (Tell it or you lose it). Disinilah awal mula aku menginstal WordPress secara mandiri. Setelah aku lihat source di Web Archive, ternyata itu WordPress versi 2.1.2, dengan theme khas Kubrick, yang aku custom header dan footer-nya menggunakan gambar yang aku desain dengan Photoshop dan mengganti ciri khas warna biru menjadi warna orange.

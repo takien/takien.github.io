@@ -89,6 +89,18 @@ function stringifyMarkdown(fm, content) {
   return lines.join('\n');
 }
 
+function getFilenameFromUrl(urlStr) {
+  if (!urlStr) return '';
+  try {
+    const clean = urlStr.split('?')[0].split('#')[0].replace(/\/+$/, '');
+    const parts = clean.split('/');
+    const last = parts.pop() || '';
+    return decodeURIComponent(last);
+  } catch {
+    return (urlStr.split('/').pop() || '').split('?')[0];
+  }
+}
+
 /**
  * Extract image references from markdown/HTML content
  */
@@ -106,9 +118,11 @@ function extractImages(content) {
     const ariaLabelMatch = fullTag.match(/aria-label=["']([^"']*)["']/i);
     const textMatch = inner.match(/<span[^>]*class=["']placeholder-text["'][^>]*>([\s\S]*?)<\/span>/i);
     const label = (ariaLabelMatch && ariaLabelMatch[1]) || (textMatch && textMatch[1].trim()) || 'Gambar Hilang';
+    const filename = getFilenameFromUrl(label) || label;
 
     images.push({
       alt: label,
+      filename,
       url: '',
       fullMatch: fullTag,
       type: 'placeholder',
@@ -119,7 +133,8 @@ function extractImages(content) {
   // 2. Markdown images
   const mdRegex = /!\[(.*?)\]\((.*?)\)/g;
   while ((match = mdRegex.exec(content)) !== null) {
-    images.push({ alt: match[1], url: match[2], fullMatch: match[0], type: 'markdown' });
+    const filename = getFilenameFromUrl(match[2]) || match[1] || 'image';
+    images.push({ alt: match[1], filename, url: match[2], fullMatch: match[0], type: 'markdown' });
   }
 
   // 3. HTML img tags
@@ -128,8 +143,11 @@ function extractImages(content) {
     const tag = match[0];
     const src = match[1];
     const altMatch = tag.match(/alt=["']([^"']*)["']/i);
+    const alt = altMatch ? altMatch[1] : '';
+    const filename = getFilenameFromUrl(src) || alt || 'image';
     images.push({
-      alt: altMatch ? altMatch[1] : '',
+      alt,
+      filename,
       url: src,
       fullMatch: tag,
       type: 'html'
@@ -374,6 +392,174 @@ export function adminApiMiddleware(req, res, next) {
         });
       } catch (err) {
         sendError('Gagal menghapus postingan: ' + err.message, 500);
+      }
+    })();
+    return;
+  }
+
+  if (pathname === '/merge' && req.method === 'POST') {
+    (async () => {
+      try {
+        const body = await readBody();
+        const { targetFile, sourceFiles, options = {} } = body;
+
+        if (!targetFile) return sendError('Target file wajib disertakan');
+        if (!Array.isArray(sourceFiles) || sourceFiles.length === 0) {
+          return sendError('Minimal satu file sumber harus dipilih');
+        }
+
+        const cleanTarget = path.basename(targetFile);
+        const targetFilePath = path.join(postsDir, cleanTarget);
+
+        // Read target file
+        let targetRaw;
+        try {
+          targetRaw = await fs.readFile(targetFilePath, 'utf-8');
+        } catch {
+          return sendError(`File target "${cleanTarget}" tidak ditemukan`, 404);
+        }
+
+        const parsedTarget = parseMarkdown(targetRaw);
+        const targetFm = parsedTarget.frontmatter;
+        let mergedContent = (parsedTarget.content || '').trim();
+
+        const includeHeading = options.includeHeading !== false;
+        const mergeCategories = options.mergeCategories !== false;
+        const mergeTags = options.mergeTags !== false;
+        const mergeComments = options.mergeComments !== false;
+        const addLegacyUrls = options.addLegacyUrls !== false;
+        const deleteSourceFiles = options.deleteSourceFiles !== false;
+
+        // Sets for unique categories and tags
+        const categorySet = new Set(targetFm.categories || []);
+        const tagSet = new Set(targetFm.tags || []);
+        let allComments = Array.isArray(targetFm.comments) ? [...targetFm.comments] : [];
+
+        // Legacy URLs set
+        const legacyUrlsSet = new Set(
+          (Array.isArray(targetFm.legacyUrls) ? targetFm.legacyUrls : []).map(u => u.replace(/^\/+|\/+$/g, ''))
+        );
+
+        const processedSourceFiles = [];
+
+        for (const src of sourceFiles) {
+          const cleanSrc = path.basename(src);
+          if (cleanSrc === cleanTarget) continue; // skip self
+
+          const srcPath = path.join(postsDir, cleanSrc);
+          let srcRaw;
+          try {
+            srcRaw = await fs.readFile(srcPath, 'utf-8');
+          } catch {
+            console.warn(`File sumber ${cleanSrc} tidak ditemukan, dilewati.`);
+            continue;
+          }
+
+          const parsedSrc = parseMarkdown(srcRaw);
+          const srcFm = parsedSrc.frontmatter;
+          const srcContent = (parsedSrc.content || '').trim();
+
+          // 1. Append content
+          if (srcContent) {
+            if (mergedContent) mergedContent += '\n\n';
+            if (includeHeading && srcFm.title) {
+              mergedContent += `## ${srcFm.title}\n\n`;
+            } else if (mergedContent) {
+              mergedContent += '---\n\n';
+            }
+            mergedContent += srcContent;
+          }
+
+          // 2. Categories & tags
+          if (mergeCategories && Array.isArray(srcFm.categories)) {
+            srcFm.categories.forEach(c => c && categorySet.add(c));
+          }
+          if (mergeTags && Array.isArray(srcFm.tags)) {
+            srcFm.tags.forEach(t => t && tagSet.add(t));
+          }
+
+          // 3. Comments
+          if (mergeComments && Array.isArray(srcFm.comments)) {
+            allComments = allComments.concat(srcFm.comments);
+          }
+
+          // 4. Legacy URLs
+          if (addLegacyUrls) {
+            const cleanSlug = (s) => (s || '').replace(/^\/+|\/+$/g, '');
+            if (srcFm.slug) legacyUrlsSet.add(cleanSlug(srcFm.slug));
+            if (srcFm.legacyUrl) legacyUrlsSet.add(cleanSlug(srcFm.legacyUrl));
+            if (Array.isArray(srcFm.legacyUrls)) {
+              srcFm.legacyUrls.forEach(u => u && legacyUrlsSet.add(cleanSlug(u)));
+            }
+          }
+
+          processedSourceFiles.push(cleanSrc);
+        }
+
+        if (processedSourceFiles.length === 0) {
+          return sendError('Tidak ada file sumber valid yang dapat digabungkan');
+        }
+
+        // Clean target legacyUrls: remove target's own slug and target's own legacyUrl from legacyUrls set
+        const targetCleanSlug = (targetFm.slug || '').replace(/^\/+|\/+$/g, '');
+        const targetCleanLegacy = (targetFm.legacyUrl || '').replace(/^\/+|\/+$/g, '');
+        legacyUrlsSet.delete(targetCleanSlug);
+        if (targetCleanLegacy) legacyUrlsSet.delete(targetCleanLegacy);
+        legacyUrlsSet.delete('');
+
+        // Sort comments chronologically if possible
+        if (mergeComments && allComments.length > 1) {
+          allComments.sort((a, b) => {
+            const da = a.date ? new Date(a.date).getTime() : 0;
+            const db = b.date ? new Date(b.date).getTime() : 0;
+            return da - db;
+          });
+        }
+
+        // Apply metadata updates
+        if (options.customTitle && options.customTitle.trim()) {
+          targetFm.title = options.customTitle.trim();
+        }
+        if (mergeCategories) {
+          targetFm.categories = Array.from(categorySet);
+        }
+        if (mergeTags) {
+          targetFm.tags = Array.from(tagSet);
+        }
+        if (mergeComments) {
+          targetFm.comments = allComments;
+        }
+        if (addLegacyUrls) {
+          targetFm.legacyUrls = Array.from(legacyUrlsSet);
+        }
+
+        // Stringify & write target
+        const newTargetContent = stringifyMarkdown(targetFm, mergedContent);
+        await fs.writeFile(targetFilePath, newTargetContent, 'utf-8');
+
+        // Delete source files if requested
+        const deletedFiles = [];
+        if (deleteSourceFiles) {
+          for (const sFile of processedSourceFiles) {
+            try {
+              await fs.unlink(path.join(postsDir, sFile));
+              deletedFiles.push(sFile);
+            } catch (err) {
+              console.error(`Gagal menghapus file sumber ${sFile}:`, err);
+            }
+          }
+        }
+
+        sendJson({
+          success: true,
+          targetFile: cleanTarget,
+          slug: targetFm.slug,
+          mergedCount: processedSourceFiles.length,
+          deletedFiles,
+          message: `Berhasil menggabungkan ${processedSourceFiles.length} post ke dalam "${targetFm.title}"!`
+        });
+      } catch (err) {
+        sendError('Gagal menggabungkan postingan: ' + err.message, 500);
       }
     })();
     return;
