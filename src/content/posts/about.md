@@ -125,7 +125,9 @@ Dari 2 perusahaan yang menerimaku akhirnya aku memutuskan untuk memilih bergabun
 
 <img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788757204639_sumut-pos.jpg" />
 
-Ini menjadi tantangan tersendiri bagiku, karena di tahun 2012 juga aku membuka usaha jasa pembuatan website `PERDANAWEB`, di samping makin banyak project dari berbagai agency website dengan sistem `kerja remote` dan juga aktif mencari recehan uang di berbagai platform online termasuk `Google AdSense` dan juga aktif menjadi `GAMER` abal-abal di sekitar tahun 2013-2014. Kebayang kan bagaimana *crowded* nya hidupku saat itu. Wkkwkw. Tapi belum pernah aku buat tulisannya, nanti deh aku tulis kapan-kapan.
+Ini menjadi tantangan tersendiri bagiku, karena di tahun 2012 juga aku membuka usaha jasa pembuatan website `PERDANAWEB` bersama dua orang temanku. Aku sangat senang sekali karena bisa membuka usaha sendiri. Walaupun kesenangan itu tidak berlangsung lama, karena akhirnya kami langsung pecah kongsi setelah mendapat project pertama. 
+
+Walaupun sedikti kecewa tapi aku tetap melanjutkan pekerjaanku sendiri, kerja di kantor sambil menjadi freelancer, karena samping makin banyak project dari berbagai agency website dengan sistem `kerja remote`. Selain itu juga aktif mencari recehan uang di berbagai platform online termasuk `Google AdSense`, parking domain dan juga aktif menjadi `GAMER` abal-abal di sekitar tahun 2013-2014. Kebayang kan bagaimana *crowded* nya hidupku saat itu. Wkkwkw. Tapi belum pernah aku buat tulisannya, nanti deh aku tulis kapan-kapan.
 
 <img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788761214358_gamer-abal-abal.jpeg" />
 
