@@ -67,12 +67,12 @@ Ya, kesempatan kerja di warnet tidak bisa aku abaikan begitu saja, mengingat aku
 </div>
 
 
-*Tempat aku ngotak atik web sambil ngaskus*
+*Di warnet IstanaNet ruangan VIP. Di tempat inilah aku ngotak atik web sambil ngaskus*
 
 Hosting pertama yang aku beli untuk web pribadi (warnetforum) adalah di `MWN`, pengalaman pertama yang mengesankan dan yang kelak banyak memberi pelajaran "berharga" bagiku. Layanan hosting dengan tagline [terbaik nomor #1 di Indonesia](/2014/04/27/asyiknya-punya-domain-di-mwn-masterweb-net-hosting-terbaik-1-di-indonesia/ "Asyiknya Punya Domain di MWN Masterweb.net, Hosting Terbaik #1 di Indonesia") itu di bulan pertama sudah memberikan sajian sangat sedap. Database corrupt dan tidak bisa di pulihkan. Layanan customer service nya sangat bagus sekali sehingga aku tidak bisa memindahkan domainku hingga sampai 7 tahun ke depan. 
 
  
- <div class="text-center py-10">
+ <div class="not-prose text-center py-10">
 <img class="max-w-[100%] mx-auto" src="/images/uploads/1788766568613_ianbali.jpg" />
 <small><em>Didatangin teman Kaskuser regional Bali, namanya Ian, tapi marganya Lubis. Dia hobi ngoding juga, banyak ngajarin aku. Kemana-mana dia bawa laptop, bikin ngiri aja. Kalau aku PC pun tidak punya apalagi laptop. Hahaha</em></small>
 </div>
@@ -123,17 +123,28 @@ Sekitar 1 tahun disitu cukup melelahkan akhirnya aku kembali ke dunia online (la
 
 Dari 2 perusahaan yang menerimaku akhirnya aku memutuskan untuk memilih bergabung dengan `SUMUTPOS`, sebuah perusahaan media lokal anakan JAWAPOS grup. Tahun 2009-2014 aku bekerja di situ. 
 
-<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788757204639_sumut-pos.jpg" />
+<div class="not-prose text-center">
+<img class="lg:w-[50%] mx-auto" src="/images/uploads/1788757204639_sumut-pos.jpg" />
+<small class="text-center"><em>Ini aku buat pakai WordPress</em></small>
+</div>
 
-Ini menjadi tantangan tersendiri bagiku, karena di tahun 2012 juga aku membuka usaha jasa pembuatan website `PERDANAWEB` bersama dua orang temanku. Aku sangat senang sekali karena bisa membuka usaha sendiri. Walaupun kesenangan itu tidak berlangsung lama, karena akhirnya kami langsung pecah kongsi setelah mendapat project pertama. 
+Ini menjadi tantangan tersendiri bagiku, karena di tahun 2012 juga aku membuka usaha jasa pembuatan website `PERDANAWEB` bersama dua orang temanku. Aku sangat senang sekali karena bisa membuka usaha sendiri. Walau akhirnya sedikit kecewa karena kami langsung bubar setelah mendapat projek pertama. Wwkwkwkkw
 
 Walaupun sedikti kecewa tapi aku tetap melanjutkan pekerjaanku sendiri, kerja di kantor sambil menjadi freelancer, karena samping makin banyak project dari berbagai agency website dengan sistem `kerja remote`. Selain itu juga aktif mencari recehan uang di berbagai platform online termasuk `Google AdSense`, parking domain dan juga aktif menjadi `GAMER` abal-abal di sekitar tahun 2013-2014. Kebayang kan bagaimana *crowded* nya hidupku saat itu. Wkkwkw. Tapi belum pernah aku buat tulisannya, nanti deh aku tulis kapan-kapan.
 
 <img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788761214358_gamer-abal-abal.jpeg" />
 
- 
+Ya begitulah, meski aku kerja di warnet dan banyak dapat ilmu di situ, dan mengelola warnetforum juga, tapi aku lebih tertarik dengan dunia websitenya. Aku sama sekali nggak belajar tentang jaringan komputer, billing, MikroTik dan sebagainya. Bahkan aku tau sedikit MikroTik itu baru-baru ini aja, itupun terpaksa karena untuk mengelola jaringan WiFi anak-anak kos. "Lah ini kan yang dulu dikutak-atik oleh temen teknisi di warnet dulu, kok aku merasa bego banget ya." Begitu aku menggerutu ketika bingung melihat apa yang harus di setting di WinBox.
+
+Walaupun kalau di tarik ke belakang, sekitar tahun 2004-2005 sebelum kerja di studio foto aku kerja jadi "tukang rakit komputer" dan teknisi di tempat jual komputer di Medan. Itu aku kerjakan sambil kuliah. Awalnya ditawarin teman katanya tetangga nya ada usaha fotokopi dan rental komputer, aku dapat tawaran kerja mengetik di situ, sekalian dikasih tempat tinggal. Lumayan banget kan untuk anak kos perantauan, bisa main komputer sepuasnya dan free tempat tinggal, dapat makan pula, dan digaji.
 
 
+<div class="not-prose text-center my-10">
+<img class="lg:w-[50%] mx-auto" src="/images/uploads/1788925807369_hanscom.jpg" />
+<small><em>Di sinilah aku bekerja dulu, tapi di foto ini tempatnya sudah pindah sekitar 50 meter dari lokasi original dulu. Yang bikin aku bangga karena sampai sekarang logonya tetap pakai itu. Logo hitam-putih itu aku yang buat, pakai Microsoft Word wkwkkw</em></small>
+</div>
+
+Lah kok malah ngelantur lagi, kirain tadi udah habis. Gapapa deh, yang jelas fun-fact nya: aku tidak pernah kuliah jurusan komputer, dan tidak punya komputer. Aku baru beli komputer bekas pertama itu sekitar tahun 2010. Setelah sebelumnya kena tipu teman karena mau beli laptop eh malah dilarikan uangnya. Padahal itu gajian pertama dari Google AdSense. Huuft.
 
 
 <h2>Tentang Pemulihan Arsip Ini</h2>
@@ -141,4 +152,4 @@ Walaupun sedikti kecewa tapi aku tetap melanjutkan pekerjaanku sendiri, kerja di
   Situs ini dipulihkan kembali dari snapshot <strong>Wayback Machine Internet Archive</strong> ke <strong>GitHub Pages (takien.github.io)</strong>. Seluruh teks asli, gambar-gambar panduan tutorial, serta komentar dan diskusi dari pembaca dipreservasi secara statis tanpa ada fitur form komentar interaktif lagi, agar kenangan dan ilmu yang tertulis tetap abadi dan dapat dibaca oleh siapa saja.
 </p>
 
-Komentar memang tidak ada disini, kalau ada yang mau disampaikan kalian bisa gabung grup komunitas [di sini](/gabung-komunitas/).
+Yang mau komen-komen [di sini aja](/gabung-komunitas/).
