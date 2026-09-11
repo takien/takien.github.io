@@ -14,6 +14,10 @@
       {
         "title": "jQuery Plugins",
         "url": "/categories/jquery-plugins/"
+      },
+      {
+        "title": "Vibe Coding",
+        "url": "/vibe-coding/"
       }
     ]
   },
@@ -30,11 +34,17 @@
     "url": "/gabung-komunitas/"
   },
   {
-    "title": "Vibe Coding",
-    "url": "/vibe-coding/"
-  },
-  {
     "title": "About",
     "url": "/about/"
+  },
+  {
+    "title": "Links",
+    "url": "#",
+    "children": [
+      {
+        "title": "Warnet Simulator",
+        "url": "https://warnet.moretools.net"
+      }
+    ]
   }
 ]

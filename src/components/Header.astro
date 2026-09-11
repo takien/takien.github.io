@@ -4,11 +4,13 @@ import navItemsData from '../data/navigation.json';
 interface NavSubItem {
   title: string;
   url: string;
+  target?: string;
 }
 
 interface NavItem {
   title: string;
   url: string;
+  target?: string;
   children?: NavSubItem[];
 }
 
@@ -43,6 +45,8 @@ const navItems: NavItem[] = navItemsData as NavItem[];
                 <a 
                   href={item.url} 
                   class={`nav-link ${isActive ? 'active' : ''}`}
+                  target={item.target || undefined}
+                  rel={item.target === '_blank' ? 'noopener noreferrer' : undefined}
                 >
                   {item.title}
                 </a>
@@ -78,6 +82,8 @@ const navItems: NavItem[] = navItemsData as NavItem[];
                       <a 
                         href={sub.url} 
                         class={`dropdown-source-link ${isSubActive ? 'active' : ''}`}
+                        target={sub.target || undefined}
+                        rel={sub.target === '_blank' ? 'noopener noreferrer' : undefined}
                       >
                         <div class="dropdown-source-info">
                           <span class="dropdown-source-name">{sub.title}</span>
@@ -156,7 +162,12 @@ const navItems: NavItem[] = navItemsData as NavItem[];
               : (currentPath === item.url || (item.url !== '#' && currentPath.startsWith(item.url)));
             return (
               <li>
-                <a href={item.url} class={`mobile-nav-link ${isActive ? 'active' : ''}`}>
+                <a 
+                  href={item.url} 
+                  class={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                  target={item.target || undefined}
+                  rel={item.target === '_blank' ? 'noopener noreferrer' : undefined}
+                >
                   {item.title}
                 </a>
               </li>
@@ -188,6 +199,8 @@ const navItems: NavItem[] = navItemsData as NavItem[];
                     <a 
                       href={sub.url} 
                       class={`mobile-source-item ${isSubActive ? 'active' : ''}`}
+                      target={sub.target || undefined}
+                      rel={sub.target === '_blank' ? 'noopener noreferrer' : undefined}
                     >
                       <span class="mobile-source-name">{sub.title}</span>
                     </a>

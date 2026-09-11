@@ -295,29 +295,45 @@ export function adminApiMiddleware(req, res, next) {
         }
 
         if (!slug) {
-          const d = new Date(date);
-          const y = d.getFullYear() || 2026;
-          const m = String(d.getMonth() + 1).padStart(2, '0');
-          const day = String(d.getDate()).padStart(2, '0');
           const slugified = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
-          slug = `${y}/${m}/${day}/${slugified}`;
+          if (format === 'gallery') {
+            slug = `gallery/${slugified}`;
+          } else {
+            const d = new Date(date);
+            const y = d.getFullYear() || 2026;
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            slug = `${y}/${m}/${day}/${slugified}`;
+          }
         }
 
         let targetFilename = file;
 
         if (isNew || !targetFilename) {
-          const d = new Date(date);
-          const y = d.getFullYear() || 2026;
-          const m = String(d.getMonth() + 1).padStart(2, '0');
-          const day = String(d.getDate()).padStart(2, '0');
-          const slugBase = (slug.split('/').pop() || 'post').slice(0, 50);
-          targetFilename = `${y}_${m}_${day}_${slugBase}.md`;
+          const slugBase = (slug.split('/').pop() || 'gallery').slice(0, 50);
+          if (format === 'gallery') {
+            targetFilename = `gallery_${slugBase}.md`;
+          } else {
+            const d = new Date(date);
+            const y = d.getFullYear() || 2026;
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            targetFilename = `${y}_${m}_${day}_${slugBase}.md`;
+          }
 
           let counter = 1;
           while (true) {
             try {
               await fs.access(path.join(postsDir, targetFilename));
-              targetFilename = `${y}_${m}_${day}_${slugBase}-${counter}.md`;
+              if (format === 'gallery') {
+                targetFilename = `gallery_${slugBase}-${counter}.md`;
+              } else {
+                const d = new Date(date);
+                const y = d.getFullYear() || 2026;
+                const m = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                targetFilename = `${y}_${m}_${day}_${slugBase}-${counter}.md`;
+              }
               counter++;
             } catch {
               break;
@@ -349,7 +365,8 @@ export function adminApiMiddleware(req, res, next) {
           finalPhotos = photos.map(p => ({
             url: String(p.url || '').trim(),
             caption: String(p.caption || '').trim(),
-            alt: String(p.alt || p.caption || '').trim()
+            alt: String(p.alt || p.caption || '').trim(),
+            date: p.date ? String(p.date).trim() : undefined
           })).filter(p => p.url.length > 0);
         }
 
@@ -736,11 +753,20 @@ export function adminApiMiddleware(req, res, next) {
               title: String(item.title || '').trim() || 'Menu',
               url: String(item.url || '').trim() || '#'
             };
+            if (item.target === '_blank' || item.newWindow || item.targetBlank) {
+              cleanItem.target = '_blank';
+            }
             if (Array.isArray(item.children) && item.children.length > 0) {
-              cleanItem.children = item.children.map(child => ({
-                title: String(child.title || '').trim() || 'Sub Menu',
-                url: String(child.url || '').trim() || '#'
-              }));
+              cleanItem.children = item.children.map(child => {
+                const cleanChild = {
+                  title: String(child.title || '').trim() || 'Sub Menu',
+                  url: String(child.url || '').trim() || '#'
+                };
+                if (child.target === '_blank' || child.newWindow || child.targetBlank) {
+                  cleanChild.target = '_blank';
+                }
+                return cleanChild;
+              });
             }
             return cleanItem;
           });
