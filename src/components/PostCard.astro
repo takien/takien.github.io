@@ -65,7 +65,7 @@ if (date) {
 const postUrl = `/${slug.replace(/^\//, '').replace(/\/$/, '')}/`;
 ---
 
-<article class={`post-card ${timeline ? 'is-timeline' : ''} ${fresh ? 'is-fresh' : ''}`} data-post-card>
+<article class={`post-card ${timeline ? 'is-timeline' : ''} ${fresh ? 'is-fresh' : ''}`} data-post-card data-date={date}>
   <div class="post-card-header-row">
     <div class="post-meta">
       <a href={timeline ? `/archives/` : `/source/${sourceInfo.slug}/`} class="source-dot-link" title={dotTitle} aria-label={dotTitle}>

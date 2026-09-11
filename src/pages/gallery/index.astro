@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { slugify } from '../../utils/slugify';
+
+const allGalleries = (await getCollection('posts'))
+  .filter((p) => {
+    const isPage = p.data.format === 'page' || (p.data as any).type === 'page';
+    if (isPage) return false;
+    return p.data.format === 'gallery' || 
+      (Array.isArray(p.data.photos) && p.data.photos.length > 0) ||
+      (p.data.source === 'foto');
+  })
+  .sort((a, b) => (b.data.date || '').localeCompare(a.data.date || ''));
+
+const totalPhotos = allGalleries.reduce((acc, g) => acc + (g.data.photos?.length || 0), 0);
+
+// Group galleries by year
+const galleriesByYear: Record<string, any[]> = {};
+allGalleries.forEach((item) => {
+  const year = item.data.date ? item.data.date.slice(0, 4) : 'Lainnya';
+  if (!galleriesByYear[year]) {
+    galleriesByYear[year] = [];
+  }
+  galleriesByYear[year].push(item);
+});
+
+const sortedYears = Object.keys(galleriesByYear).sort((a, b) => b.localeCompare(a));
+---
+
+<BaseLayout
+  title="Galeri & Album Foto • takien.com"
+  description="Koleksi album foto, galeri dokumentasi, dan arsip visual takien.com."
+>
+  <div class="content-container">
+    <!-- Header -->
+    <header style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <div class="prose max-w-none">
+        <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 0.5rem 0;">
+          📷 Galeri &amp; Album Foto
+        </h1>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 1rem; margin: 0;">
+        Kumpulan <strong>{allGalleries.length}</strong> galeri album foto dan <strong>{totalPhotos}</strong> foto dokumentasi.
+      </p>
+    </header>
+
+    {allGalleries.length === 0 ? (
+      <div style="text-align: center; padding: 4rem 1rem; color: var(--text-muted); background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius-lg);">
+        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Belum ada album foto</p>
+        <p style="font-size: 0.85rem; margin: 0;">Buat galeri foto baru melalui panel admin di <code>/admin/</code> dengan tombol <strong>+ Galeri Foto</strong>.</p>
+      </div>
+    ) : (
+      <div style="display: flex; flex-direction: column; gap: 3rem;">
+        {sortedYears.map((year) => (
+          <section id={`year-${year}`}>
+            <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+              <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--accent); margin: 0;">
+                {year}
+              </h2>
+              <span style="font-size: 0.82rem; color: var(--text-muted); background-color: var(--bg-hover); padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-weight: 500;">
+                {galleriesByYear[year].length} album
+              </span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+              {galleriesByYear[year].map((item) => {
+                const cover = item.data.coverImage || (item.data.photos && item.data.photos[0]?.url) || '/images/ilustrasi-jejak-digital.jpg';
+                const photoCount = item.data.photos?.length || 0;
+                let dateFormatted = item.data.date ? item.data.date.slice(0, 10) : '';
+
+                return (
+                  <a
+                    href={`/${item.data.slug.replace(/^\//, '').replace(/\/$/, '')}/`}
+                    class="gallery-item"
+                    style="text-decoration: none; color: inherit;"
+                  >
+                    <div class="gallery-item-image-wrap" style="aspect-ratio: 16 / 10;">
+                      <img
+                        src={cover}
+                        alt={item.data.title}
+                        loading="lazy"
+                        class="gallery-item-img"
+                      />
+                      <div class="gallery-item-overlay">
+                        <span style="background: rgba(0,0,0,0.6); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600;">
+                          Buka Album &rarr;
+                        </span>
+                      </div>
+                      {photoCount > 0 && (
+                        <span style="position: absolute; bottom: 8px; right: 8px; background: rgba(15, 23, 42, 0.85); color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; backdrop-filter: blur(4px);">
+                          📷 {photoCount} Foto
+                        </span>
+                      )}
+                      {item.data.album && (
+                        <span style="position: absolute; top: 8px; left: 8px; background: rgba(2, 132, 199, 0.9); color: #ffffff; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; backdrop-filter: blur(4px);">
+                          {item.data.album}
+                        </span>
+                      )}
+                    </div>
+
+                    <div style="padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1;">
+                      <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.35;">
+                        {item.data.title}
+                      </h3>
+                      {dateFormatted && (
+                        <div style="font-size: 0.78rem; color: var(--text-muted);">
+                          {dateFormatted}
+                        </div>
+                      )}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

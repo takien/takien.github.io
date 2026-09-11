@@ -14,11 +14,40 @@ const allPosts = (await getCollection('posts'))
     return Boolean(p.data.date && p.data.date.trim().length > 0 && !isPage && !excludedFeedSlugs.has(cleanSlug));
   })
   .sort((a, b) => {
-    return (b.data.date || '').localeCompare(a.data.date || '');
+    return (a.data.date || '').localeCompare(b.data.date || '');
   });
 
 const totalPosts = allPosts.length;
 const totalComments = allPosts.reduce((acc, p) => acc + (p.data.comments?.length || 0), 0);
+
+// Group posts by Year
+const postsByYear: Record<string, any[]> = {};
+allPosts.forEach((post) => {
+  const year = post.data.date ? post.data.date.slice(0, 4) : 'Lainnya';
+  if (!postsByYear[year]) {
+    postsByYear[year] = [];
+  }
+  postsByYear[year].push(post);
+});
+
+const sortedYears = Object.keys(postsByYear).sort((a, b) => a.localeCompare(b));
+
+// Sources present per year
+const yearSources: Record<string, string[]> = {};
+const yearHasTimeline: Record<string, boolean> = {};
+
+sortedYears.forEach((year) => {
+  const sourcesSet = new Set<string>();
+  let hasTimeline = false;
+  postsByYear[year].forEach((post) => {
+    if (post.data.isTimeline) {
+      hasTimeline = true;
+    }
+    sourcesSet.add(getSourceInfo(post.data.source).slug);
+  });
+  yearSources[year] = Array.from(sourcesSet);
+  yearHasTimeline[year] = hasTimeline;
+});
 
 // Source counts computed using canonical slug
 const sourceCounts: Record<string, number> = {};
@@ -167,35 +196,186 @@ const popularCategories = Object.entries(categoryCounts)
       </div>
     )}
 
-    <!-- Posts Feed -->
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.75rem;">
+    <!-- Posts Feed Header with Sorting Controls -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.75rem; flex-wrap: wrap; gap: 1rem;">
       <div>
-        <h2 style="font-size: 1.35rem; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 0.25rem 0;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; letter-spacing: -0.015em; margin: 0 0 0.25rem 0;">
           Daftar Artikel & Catatan
         </h2>
         <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0;">
-          Diterbitkan berurutan dari tulisan terbaru hingga arsip awal 2006.
+          Menampilkan <strong>{totalPosts}</strong> tulisan dan timeline terbagi per tahun.
         </p>
       </div>
-      <a href="/archives/" style="font-size: 0.86rem; font-weight: 600; color: var(--accent); flex-shrink: 0;">
-        Arsip per Tahun &rarr;
-      </a>
+
+      <!-- Sorting Toggle Controls -->
+      <div class="archive-controls">
+        <span style="font-size: 0.84rem; font-weight: 600; color: var(--text-muted);">Urutan:</span>
+        <div class="archive-sort-group" role="group" aria-label="Urutan Beranda">
+          <button
+            type="button"
+            id="home-sort-asc-btn"
+            class="archive-sort-btn active"
+            data-order="asc"
+            aria-pressed="true"
+            title="Urutkan dari artikel terlama ke terbaru (Older First)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+            <span>Terlama Dulu</span>
+          </button>
+          <button
+            type="button"
+            id="home-sort-desc-btn"
+            class="archive-sort-btn"
+            data-order="desc"
+            aria-pressed="false"
+            title="Urutkan dari artikel terbaru ke terlama"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+            <span>Terbaru Dulu</span>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="posts-grid" style="margin-top: 1rem;">
-      {allPosts.map((post) => (
-        <PostCard
-          title={post.data.title}
-          slug={post.data.slug}
-          date={post.data.date}
-          source={post.data.source || 'takien.com'}
-          categories={post.data.categories}
-          tags={post.data.tags}
-          isTimeline={post.data.isTimeline}
-          isFresh={post.data.isFresh}
-          commentsCount={post.data.comments?.length || 0}
-        />
+    <!-- Feed Grouped by Year -->
+    <div id="home-feed-timeline" style="display: flex; flex-direction: column; gap: 2.75rem;">
+      {sortedYears.map((year) => (
+        <section id={`year-${year}`} class="home-year-section" data-year={year} style="scroll-margin-top: 5rem;">
+          <!-- Year Header -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
+              <h3 style="font-size: 1.75rem; font-weight: 800; color: var(--accent); margin: 0; line-height: 1;">
+                {year}
+              </h3>
+              <div style="display: inline-flex; align-items: center; gap: 0.35rem;" title={`Blog & Timeline aktif di tahun ${year}`}>
+                {yearSources[year] && yearSources[year].map((src) => {
+                  const info = getSourceInfo(src);
+                  return (
+                    <a
+                      href={`/source/${info.slug}/`}
+                      class="source-dot-link"
+                      title={`Blog ${year}: ${info.name}`}
+                      aria-label={`Blog ${year}: ${info.name}`}
+                    >
+                      <span class={`source-dot ${info.dotClass}`}></span>
+                    </a>
+                  );
+                })}
+                {yearHasTimeline[year] && (
+                  <span class="source-dot-link" title={`Terdapat catatan Timeline di tahun ${year}`} aria-label={`Timeline ${year}`}>
+                    <span class="source-dot dot-timeline"></span>
+                  </span>
+                )}
+              </div>
+              <span style="font-size: 0.82rem; color: var(--text-muted); background-color: var(--bg-hover); padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-weight: 500;">
+                {postsByYear[year].length} entri
+              </span>
+            </div>
+
+            <a href={`/archives/#year-${year}`} style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-decoration: none;" class="hover:text-[var(--accent)]">
+              Buka Arsip {year} &rarr;
+            </a>
+          </div>
+
+          <!-- Posts Grid for this Year -->
+          <div class="posts-grid home-year-posts">
+            {postsByYear[year].map((post) => (
+              <PostCard
+                title={post.data.title}
+                slug={post.data.slug}
+                date={post.data.date}
+                source={post.data.source || 'takien.com'}
+                categories={post.data.categories}
+                tags={post.data.tags}
+                isTimeline={post.data.isTimeline}
+                isFresh={post.data.isFresh}
+                commentsCount={post.data.comments?.length || 0}
+              />
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   </div>
+
+  <script is:inline>
+    (function () {
+      const container = document.getElementById('home-feed-timeline');
+      const btnDesc = document.getElementById('home-sort-desc-btn');
+      const btnAsc = document.getElementById('home-sort-asc-btn');
+
+      if (!container || !btnDesc || !btnAsc) return;
+
+      function setHomeOrder(order, updateUrl = true) {
+        const isAsc = order === 'asc';
+
+        // Update button states
+        if (isAsc) {
+          btnAsc.classList.add('active');
+          btnAsc.setAttribute('aria-pressed', 'true');
+          btnDesc.classList.remove('active');
+          btnDesc.setAttribute('aria-pressed', 'false');
+        } else {
+          btnDesc.classList.add('active');
+          btnDesc.setAttribute('aria-pressed', 'true');
+          btnAsc.classList.remove('active');
+          btnAsc.setAttribute('aria-pressed', 'false');
+        }
+
+        // Reorder year sections
+        const yearSections = Array.from(container.querySelectorAll('.home-year-section'));
+        yearSections.sort((a, b) => {
+          const yearA = a.getAttribute('data-year') || '';
+          const yearB = b.getAttribute('data-year') || '';
+          return isAsc ? yearA.localeCompare(yearB) : yearB.localeCompare(yearA);
+        });
+
+        // Reorder post cards inside each year
+        yearSections.forEach((section) => {
+          const postsContainer = section.querySelector('.home-year-posts');
+          if (postsContainer) {
+            const postCards = Array.from(postsContainer.querySelectorAll('.post-card'));
+            postCards.sort((a, b) => {
+              const dateA = a.getAttribute('data-date') || '';
+              const dateB = b.getAttribute('data-date') || '';
+              return isAsc ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
+            });
+            postCards.forEach((card) => postsContainer.appendChild(card));
+          }
+          container.appendChild(section);
+        });
+
+        // Update URL parameter
+        if (updateUrl) {
+          try {
+            const url = new URL(window.location.href);
+            if (!isAsc) {
+              url.searchParams.set('order', 'desc');
+            } else {
+              url.searchParams.delete('order');
+            }
+            window.history.replaceState(null, '', url.toString());
+          } catch (e) {}
+        }
+      }
+
+      btnDesc.addEventListener('click', () => setHomeOrder('desc'));
+      btnAsc.addEventListener('click', () => setHomeOrder('asc'));
+
+      // Check initial URL param
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialOrder = urlParams.get('order');
+        if (initialOrder === 'desc' || initialOrder === 'newest') {
+          setHomeOrder('desc', false);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </BaseLayout>

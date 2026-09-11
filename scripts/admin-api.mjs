@@ -39,6 +39,11 @@ function parseMarkdown(raw) {
   if (!Array.isArray(frontmatter.comments)) {
     frontmatter.comments = [];
   }
+  if (!Array.isArray(frontmatter.photos)) {
+    frontmatter.photos = [];
+  }
+  frontmatter.album = frontmatter.album || '';
+  frontmatter.coverImage = frontmatter.coverImage || '';
   frontmatter.format = frontmatter.format || frontmatter.type || 'post';
 
   return { frontmatter, content };
@@ -69,6 +74,11 @@ function stringifyMarkdown(fm, content) {
   if (fm.source) lines.push(`source: "${fm.source}"`);
   if (fm.author) lines.push(`author: "${escapeStr(fm.author)}"`);
   if (fm.group) lines.push(`group: "${escapeStr(fm.group)}"`);
+  if (fm.album) lines.push(`album: "${escapeStr(fm.album)}"`);
+  if (fm.coverImage) lines.push(`coverImage: "${fm.coverImage}"`);
+  if (Array.isArray(fm.photos) && fm.photos.length > 0) {
+    lines.push(`photos: ${JSON.stringify(fm.photos)}`);
+  }
   
   if (fm.isTimeline) {
     lines.push('isTimeline: true');
@@ -209,6 +219,9 @@ export function adminApiMiddleware(req, res, next) {
             source: frontmatter.source || 'takien.com',
             author: frontmatter.author || 'takien',
             group: frontmatter.group || '',
+            album: frontmatter.album || '',
+            coverImage: frontmatter.coverImage || '',
+            photosCount: Array.isArray(frontmatter.photos) ? frontmatter.photos.length : 0,
             hasNowNote: Boolean(frontmatter.nowNote),
             nowNote: frontmatter.nowNote || '',
             nowDate: frontmatter.nowDate || '',
@@ -266,6 +279,9 @@ export function adminApiMiddleware(req, res, next) {
           source,
           author,
           group,
+          album,
+          coverImage,
+          photos,
           nowNote,
           nowDate,
           isTimeline,
@@ -328,6 +344,15 @@ export function adminApiMiddleware(req, res, next) {
           })).filter(c => c.text.length > 0 || c.author.length > 0);
         }
 
+        let finalPhotos = existingFm.photos || [];
+        if (Array.isArray(photos)) {
+          finalPhotos = photos.map(p => ({
+            url: String(p.url || '').trim(),
+            caption: String(p.caption || '').trim(),
+            alt: String(p.alt || p.caption || '').trim()
+          })).filter(p => p.url.length > 0);
+        }
+
         const updatedFm = {
           ...existingFm,
           title,
@@ -340,6 +365,9 @@ export function adminApiMiddleware(req, res, next) {
           source: source || existingFm.source || 'takien.com',
           author: author || existingFm.author || 'takien',
           group: group !== undefined ? group : (existingFm.group || ''),
+          album: album !== undefined ? album : (existingFm.album || ''),
+          coverImage: coverImage !== undefined ? coverImage : (existingFm.coverImage || (finalPhotos[0]?.url || '')),
+          photos: finalPhotos,
           nowNote: nowNote ? nowNote.trim() : undefined,
           nowDate: nowDate ? nowDate.trim() : undefined,
           isTimeline: Boolean(isTimeline),
@@ -570,44 +598,63 @@ export function adminApiMiddleware(req, res, next) {
     (async () => {
       try {
         const body = await readBody();
-        const { dataUrl, filename, targetPath } = body;
+        const { dataUrl, filename, targetPath, files } = body;
 
-        if (!dataUrl) return sendError('Data gambar tidak ditemukan');
-
-        let buffer;
-        try {
-          const commaIdx = dataUrl.indexOf(',');
-          const base64Str = commaIdx !== -1 ? dataUrl.slice(commaIdx + 1) : dataUrl;
+        const saveSingleImage = async (imgData, imgName, imgTarget) => {
+          let buffer;
+          const commaIdx = imgData.indexOf(',');
+          const base64Str = commaIdx !== -1 ? imgData.slice(commaIdx + 1) : imgData;
           buffer = Buffer.from(base64Str.replace(/\s+/g, ''), 'base64');
           if (!buffer || buffer.length === 0) {
-            return sendError('Data gambar kosong atau tidak valid');
-          }
-        } catch (e) {
-          return sendError('Format data gambar tidak valid: ' + e.message);
-        }
-
-        let destRelPath = '';
-        if (targetPath && !targetPath.startsWith('http://') && !targetPath.startsWith('https://')) {
-          const cleanTarget = targetPath.split('?')[0].split('#')[0].replace(/^\/+/, '');
-          const absTarget = path.join(publicDir, cleanTarget);
-          
-          if (!absTarget.startsWith(publicDir)) {
-            return sendError('Jalur file target tidak diizinkan');
+            throw new Error('Data gambar kosong');
           }
 
-          await fs.mkdir(path.dirname(absTarget), { recursive: true });
-          await fs.writeFile(absTarget, buffer);
-          destRelPath = '/' + cleanTarget;
-        } else {
-          let cleanName = (filename || 'image.png').toLowerCase().replace(/[^a-z0-9.-]/g, '-');
-          if (!path.extname(cleanName)) cleanName += '.png';
-          const time = Date.now();
-          const savedName = `${time}_${cleanName}`;
-          const uploadsDir = path.join(publicDir, 'images', 'uploads');
-          await fs.mkdir(uploadsDir, { recursive: true });
-          await fs.writeFile(path.join(uploadsDir, savedName), buffer);
-          destRelPath = `/images/uploads/${savedName}`;
+          let destRelPath = '';
+          if (imgTarget && !imgTarget.startsWith('http://') && !imgTarget.startsWith('https://')) {
+            const cleanTarget = imgTarget.split('?')[0].split('#')[0].replace(/^\/+/, '');
+            const absTarget = path.join(publicDir, cleanTarget);
+            if (!absTarget.startsWith(publicDir)) {
+              throw new Error('Jalur file target tidak diizinkan');
+            }
+            await fs.mkdir(path.dirname(absTarget), { recursive: true });
+            await fs.writeFile(absTarget, buffer);
+            destRelPath = '/' + cleanTarget;
+          } else {
+            let cleanName = (imgName || 'image.png').toLowerCase().replace(/[^a-z0-9.-]/g, '-');
+            if (!path.extname(cleanName)) cleanName += '.png';
+            const time = Date.now() + Math.floor(Math.random() * 1000);
+            const savedName = `${time}_${cleanName}`;
+            const uploadsDir = path.join(publicDir, 'images', 'uploads');
+            await fs.mkdir(uploadsDir, { recursive: true });
+            await fs.writeFile(path.join(uploadsDir, savedName), buffer);
+            destRelPath = `/images/uploads/${savedName}`;
+          }
+          return destRelPath;
+        };
+
+        // Multi-file batch upload support
+        if (Array.isArray(files) && files.length > 0) {
+          const results = [];
+          for (const item of files) {
+            if (item && item.dataUrl) {
+              const url = await saveSingleImage(item.dataUrl, item.filename, item.targetPath);
+              results.push({
+                url,
+                filename: item.filename || path.basename(url),
+                caption: item.caption || ''
+              });
+            }
+          }
+          return sendJson({
+            success: true,
+            uploaded: results,
+            message: `Berhasil mengunggah ${results.length} foto!`
+          });
         }
+
+        // Single file upload
+        if (!dataUrl) return sendError('Data gambar tidak ditemukan');
+        const destRelPath = await saveSingleImage(dataUrl, filename, targetPath);
 
         sendJson({
           success: true,
