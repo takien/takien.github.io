@@ -1,17 +1,17 @@
 ---
 title: "Word Replacer WordPress Plugin"
-date: "2010-02-01T00:00:00Z"
-categories: ["Plugins"]
-tags: ["Plugins", "Wordpress", "comment replace", "content replace", "str_replace", "text replace", "word replace", "wordpress plugins"]
+date: "2010-02-01T00:00:00.000Z"
+categories: ["WordPress Plugins"]
+tags: ["Plugins","Wordpress","comment replace","content replace","str_replace","text replace","word replace","wordpress plugins"]
 slug: "2010/02/01/word-replacer-wordpress-plugin"
 legacyUrl: "/2010/02/01/word-replacer-wordpress-plugin/"
-comments: [{"author": "Jan Ik", "date": "2012-03-15", "text": "BUG REPORT (v0.2.3)\n\n\n1) Line $action_url = $_SERVER[PHP_SELF] . ‘?page=’ . $word_replacer[‘base_name’];  should be$action_url = site_url().$_SERVER[PHP_SELF] . ‘?page=’ . $word_replacer[‘base_name’];so that the plugin works with subdomain blogs.\n\n2) The regex is pretty useless because it doesn’t match newlines. Now, I understand that the plugin started as a _WORD_ replacer, but nevertheless you should add /s (either hardcoded or as an option like “case insensitive”)\n\n\n3) backslashes are prepended everytime one clicks “update”. \n\n\nHence “foo” becomes “foo” becomes \\”foo\\” becomes \\\\\\”foo\\\\\\”\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\tReply ↓"}]
+legacyUrls: ["2011/01/01/word-replacer-plugins-version-0-2-1-released","blog/2011/01/01/word-replacer-plugins-version-0-2-1-released"]
+source: "takien.com"
+author: "takien"
+comments: [{"author":"Jan Ik","date":"2012-03-15","text":"BUG REPORT (v0.2.3)\n\n\n1) Line $action_url = $_SERVER[PHP_SELF] . ‘?page=’ . $word_replacer[‘base_name’];  should be$action_url = site_url().$_SERVER[PHP_SELF] . ‘?page=’ . $word_replacer[‘base_name’];so that the plugin works with subdomain blogs.\n\n2) The regex is pretty useless because it doesn’t match newlines. Now, I understand that the plugin started as a _WORD_ replacer, but nevertheless you should add /s (either hardcoded or as an option like “case insensitive”)\n\n\n3) backslashes are prepended everytime one clicks “update”. \n\n\nHence “foo” becomes “foo” becomes \\”foo\\” becomes \\\\\\”foo\\\\\\”\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\tReply ↓"}]
 ---
 
-<div style="float:left;margin-right:10px;margin-bottom:10px;">
-
-</div>
-						<p><div class="panel panel-info"><div class="panel-heading"><h3 class="panel-title">Update</h3></div><div class="panel-content" style="padding:5px 10px"><br/>
+<p><div class="panel panel-info"><div class="panel-heading"><h3 class="panel-title">Update</h3></div><div class="panel-content" style="padding:5px 10px"><br/>
 Version 0.2.3 is available at WordPress.org<br/>
 Please install/upgrade from your wp-admin or <a href="https://web.archive.org/web/20150101194337/http://wordpress.org/extend/plugins/word-replacer/" target="_blank">download from WordPress.org</a><br/>
 Thank you.</p>
@@ -90,3 +90,10 @@ Word Replacer is a WordPress plugins to replace any desired text/word with your 
 <div class="panel panel-info"><div class="panel-content" style="padding:5px 10px"></p>
 <p><a href="https://web.archive.org/web/20150101194337/http://wordpress.org/extend/plugins/word-replacer/" target="_blank">Download from WordPress.org</a></p>
 <p></div></div>
+
+## Word Replacer Plugins Version 0.2.1 Released
+
+<div style="float:left;margin-right:10px;margin-bottom:10px;">
+
+</div>
+						<p>Post merged here:  <a href="/587/word-replacer-wordpress-plugin.php">/587/word-replacer-wordpress-plugin.php</a></p>

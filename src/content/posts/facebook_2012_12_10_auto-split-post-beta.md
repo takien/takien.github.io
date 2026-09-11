@@ -1,7 +1,7 @@
 ---
 title: "Auto Split Post - Beta"
 date: "2012-12-10T09:05:00.000Z"
-categories: ["WordPress"]
+categories: ["WordPress Plugins"]
 tags: ["facebook","wordpress","plugin","theme"]
 slug: "2012/12/10/auto-split-post-beta"
 legacyUrl: "/2012/12/10/auto-split-post-beta/"

@@ -1,7 +1,7 @@
 ---
 title: "WordPress Spry Menu Plugins"
 date: "2009-07-01T00:00:00.000Z"
-categories: ["Plugins","WordPress"]
+categories: ["WordPress Plugins"]
 tags: []
 slug: "2009/07/01/wordpress-spry-menu-plugins"
 legacyUrl: "/2009/07/01/wordpress-spry-menu-plugins/"

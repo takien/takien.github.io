@@ -1,8 +1,8 @@
 ---
 title: "Wordpress Custom Admin Page, by Me"
-date: "2011-01-30T10:00:00Z"
-categories: ["WordPress", "Showcase"]
-tags: ["wordpress", "custom admin", "facebook", "w3 kaskus"]
+date: "2011-01-30T10:00:00.000Z"
+categories: ["WordPress Plugins","Showcase"]
+tags: ["wordpress","custom admin","facebook","w3 kaskus"]
 slug: "2011/01/30/wordpress-custom-admin-page-by-me"
 legacyUrl: "/2011/01/30/wordpress-custom-admin-page-by-me/"
 source: "facebook.com"

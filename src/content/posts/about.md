@@ -61,9 +61,9 @@ Aku lupa apakah websitenya jadi sampai online atau tidak, karena aku keburu resi
 
 Ya, kesempatan kerja di warnet tidak bisa aku abaikan begitu saja, mengingat aku lagi semangat-semangatnya dengan dunia online dan website kala itu. Walaupun kerja di studio foto juga merupakan kesenangan aku, karena aku suka desain dan fotografi. Aku banyak belajar dari situ, termasuk mengasah kemampuan desain dengan Photoshop dan juga video editing. Tapi itu semua masih kalah sama passsion aku dengan dunia online.
 
-<div style="display:flex">
-<img class="lg:w-[50%]" src="/images/uploads/1788760576060_pic-0009.webp" />
-<img class="lg:w-[50%]" src="/images/uploads/1788760623479_picture001.jpg" />
+<div class="flex flex-col md:flex-row not-prose md:space-x-3">
+<img class="md:w-1/2" src="/images/uploads/1788760576060_pic-0009.webp" />
+<img class="md:w-1/2" src="/images/uploads/1788760623479_picture001.jpg" />
 </div>
 
 
@@ -82,15 +82,16 @@ Karena kebutuhan traffic forum yang terus meningkat dan aku bakalan membuat bany
 Karena itu paket reseller, aku jadi punya ide untuk bisa menjual kembali layanan hostingku ke orang lain. Maka terbelilah domain `BLISSHOSTING.COM`, ya aku juga membuat layanan webhosting. Meski kebanyakan dibeli oleh teman-teman dan client yang aku develop webnya.
 
 
- <div>
-<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788752064770_blisshosting-large.jpeg" />
-</div>
-
 Masih di tahun 2007, webku semakin banyak sekali dan forumku semakin ramai. Bahkan aku membuat forum baru lagi `DESIGNKILLERS.COM` (wadah diskusi desain grafis) dan juga `INDOWEBMASTERS.COM` (wadah diskusi web developer). 
 
 Hal ini tentu membutuhkan kapasitas hosting yang cukup besar, dan sayangnya hostingnya Rudy tidak bisa menampung itu. Soalnya ketika aku tanya VPS, dia bilang tidak ada.
 
-<img class="lg:w-[50%] mx-auto py-10" src="/images/uploads/1788752521085_vps-ask.png" />
+ <div class="flex flex-col md:flex-row not-prose md:space-x-3">
+<img class="lg:w-1/2 max-w-full" src="/images/uploads/1788752064770_blisshosting-large.jpeg" />
+ 
+
+<img class="lg:w-1/2 max-w-full" src="/images/uploads/1788752521085_vps-ask.png" />
+</div>
  
 
 Akhirnya aku memindahkan hostingku ke `HOSTGATOR.COM` walaupun shared hosting, bukan VPS, tapi kapasitasnya besar, dan harga perbulannya sekitar $35 USD. Cukup mahal memang. Tapi sangat mumpuni untuk menampung web-web aku dan web clientku sampai sekitar 6 tahun ke depan (2015). Sebelum akhirnya pindah ke VPS di `DIGITALOCEAN` sampai tahun 2025 (10 tahun). Dan akhirnya aku tidak menggunakan VPS lagi tapi menggunakan serverless `CLOUDFLARE` sampai sekarang.
@@ -104,13 +105,19 @@ Long story short, setelah malang melintang di dunia website, desain dan dunia wa
 
 
 
-<img class="lg:w-[50%] mx-auto pt-10" src="/images/uploads/1788759314076_panasonic.jpg" />
+<div class="flex flex-col md:flex-row md:space-x-2 mb-10">
+<div class="lg:w-1/2">
+<img class="w-[200px] max-w-full" src="/images/uploads/1788759314076_panasonic.jpg" />
+<div><em>kamera bagong</em></div>
 
-*kamera bagong*
+</div>
+<div class="lg:w-1/2">
+<img   src="/images/uploads/1788759327476_render.jpg" />
+<div><em>Lagi render video, bisa sambil tidur soalnya malamnya begadang di warnet, di situ aku pakai baju kaos WARNETFORUM wkkwkw</em></div>
+</div>
+</div>
 
-<img class="lg:w-[50%] mx-auto pt-10" src="/images/uploads/1788759327476_render.jpg" />
 
-*Lagi render video, bisa sambil tidur soalnya malamnya begadang di warnet, di situ aku pakai baju kaos WARNETFORUM wkkwkw*
 
 
 Walaupun fokus kerjaanku di situ memegang kamera dan editing video (lagi). Tapi akhirnya perusahaan itu jadi clientku karena aku tawarin untuk membuat website (lagi), wkkwkw. 

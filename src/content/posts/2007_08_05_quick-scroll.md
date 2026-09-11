@@ -1,14 +1,14 @@
 ---
 title: "Browser Tips"
-date: "2007-08-05T00:00:00.000Z"
-categories: ["Uncategorized","Computer"]
-tags: ["Internet Explorer"]
-slug: "2007/08/05/quick-scroll"
-legacyUrl: "/2007/08/05/quick-scroll/"
-legacyUrls: ["2007/08/07/open-link-in-new-windowtab","455/open-link-in-new-windowtab.php","455/open-link-in-new-windowtab","blog/2007/08/07/open-link-in-new-windowtab","open-link-in-new-windowtab","2007/08/16/quick-google-search","456/quick-google-search.php","456/quick-google-search","blog/2007/08/16/quick-google-search","quick-google-search","2007/08/17/quick-google-search-again","457/quick-google-search-again.php","457/quick-google-search-again","blog/2007/08/17/quick-google-search-again","quick-google-search-again","2007/09/27/mouse-gestures-on-opera-browser","459/mouse-gestures-on-opera-browser.php","459/mouse-gestures-on-opera-browser","blog/2007/09/27/mouse-gestures-on-opera-browser","mouse-gestures-on-opera-browser","2007/10/24/paste-and-go","463/paste-and-go.php","463/paste-and-go","blog/2007/10/24/paste-and-go","paste-and-go","2007/10/24/show-only-this-frame","462/show-only-this-frame.php","462/show-only-this-frame","blog/2007/10/24/show-only-this-frame","show-only-this-frame","2007/10/24/hard-refresh","464/hard-refresh.php","464/hard-refresh","blog/2007/10/24/hard-refresh","hard-refresh"]
+date: "2007-08-05T00:01:00.000Z"
+categories: ["Browser","Computer"]
+tags: ["Internet Explorer","Browser","mozilla firefox","opera"]
+slug: "2007/08/05/browser-tips"
+legacyUrl: "/2007/08/05/browser-tips/"
+legacyUrls: ["2007/08/07/open-link-in-new-windowtab","455/open-link-in-new-windowtab.php","455/open-link-in-new-windowtab","blog/2007/08/07/open-link-in-new-windowtab","open-link-in-new-windowtab","2007/08/16/quick-google-search","456/quick-google-search.php","456/quick-google-search","blog/2007/08/16/quick-google-search","quick-google-search","2007/08/17/quick-google-search-again","457/quick-google-search-again.php","457/quick-google-search-again","blog/2007/08/17/quick-google-search-again","quick-google-search-again","2007/09/27/mouse-gestures-on-opera-browser","459/mouse-gestures-on-opera-browser.php","459/mouse-gestures-on-opera-browser","blog/2007/09/27/mouse-gestures-on-opera-browser","mouse-gestures-on-opera-browser","2007/10/24/paste-and-go","463/paste-and-go.php","463/paste-and-go","blog/2007/10/24/paste-and-go","paste-and-go","2007/10/24/show-only-this-frame","462/show-only-this-frame.php","462/show-only-this-frame","blog/2007/10/24/show-only-this-frame","show-only-this-frame","2007/10/24/hard-refresh","464/hard-refresh.php","464/hard-refresh","blog/2007/10/24/hard-refresh","hard-refresh","2007/09/27/another-tips-of-open-in-new-tab","458/another-tips-of-open-in-new-tab.php","458/another-tips-of-open-in-new-tab","blog/2007/09/27/another-tips-of-open-in-new-tab","another-tips-of-open-in-new-tab","2007/08/05/quick-full-screen-browser","2007/08/05/quick-text-re-sizing","2007/08/05/text-size"]
 source: "takien.com"
 author: "takien"
-comments: [{"author":"Xrvel","date":"","text":"Untuk firefox, Shift+Ctrl+RDijamin cache kabur&#8230;"},{"author":"Anonymous","date":"","text":"AIGHT"}]
+comments: [{"author":"Xrvel","date":"","text":"Untuk firefox, Shift+Ctrl+RDijamin cache kabur&#8230;"},{"author":"Anonymous","date":"","text":"AIGHT"},{"author":"Facial Cleanser","date":"","text":"Great post.Thanks for sharing such a useful information with us."}]
 ---
 
 ## Quick Scroll
@@ -47,3 +47,21 @@ comments: [{"author":"Xrvel","date":"","text":"Untuk firefox, Shift+Ctrl+RDijami
 ## Hard Refresh
 
 <p>Sometime you have to &#8216;hard refresh&#8217; the browser to view new changes in your website contents. Holding Ctrl key at the same time you hit the Refresh button or when pressing F5. Works on all browsers.</p>
+
+## Another Tips of Open in New Tab
+
+<div class="postbody">This is assume that you&#8217;re using Firefox Browser.<br/>You can do double click on an empty space on the Tab Bar, it will open and empty New Tab. I&#8217;ts easier than pressing Ctrl + T since your hand is far away from keyboard.</p>
+<p>Also try:<br/>Middleclick on a Bookmark on your Personal Toolbar will open your bookmark in a New Tab<br/> MiddleClick on a folder that will open all the bookmarks in the folder in a new Tab (not recommended if you have numerous bookmarks)<br/> Hold down the Shift/Ctrl and right click on the &#8220;View Image&#8221; or &#8220;View Backround Image&#8221; to open the image in New Tab or New Window. <a href="http://www.extensionsmirror.nl/index.php" target="_blank"><br/></a></div>
+<p>       <span class="postdetails"><br/></span></p>
+
+## quick full screen browser
+
+<p>Either Internet Explorer, Firefox or Opera  has the useful facility allowing you to view a web page in  full screen mode by clicking Full Screen on the View menu or the full screen  button on the Toolbar or hitting the F11 key. This facility is also available in  Windows Explorer, although not available on the View menu hitting the F11 key  switches between windowed and full-screen modes.</p>
+
+## quick text re-sizing
+
+<p>Still having problems reading the text in Internet Explorer or another browser when browsing the  Internet because the font is too small?<br/>Here is the another tips from minitips: Simply hold the Ctrl button on your keyboard and scroll the mouse forward or backward. Scroll forward to reduce the text while scroll backward to enlarge the text size. This tips only applicable if your mouse has scroller on it. <img src="/images/misc/icon_smile.gif" alt=":)" title="" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" /> </p>
+
+## text size
+
+<div>Having problems reading the text in Internet Explorer when browsing the  Internet because the font is too small? Click on the View menu, then select Text  Size and then you can increase the size of the text on the page up to two sizes  above the default size of Medium. </div>

@@ -1,13 +1,13 @@
 ---
 title: "Here is my tips for new plugin developer"
-date: "2013-08-03T02:15:00Z"
-categories: ["WordPress"]
-tags: ["facebook", "wordpress", "plugin"]
+date: "2013-08-03T02:15:00.000Z"
+categories: ["WordPress Plugins"]
+tags: ["facebook","wordpress","plugin"]
 slug: "2013/08/03/here-is-my-tips-for-new-plugin-developer"
 legacyUrl: "/2013/08/03/here-is-my-tips-for-new-plugin-developer/"
 source: "facebook.com"
 author: "Wak Jek"
-comments: [{"author": "Anonim", "date": "Saturday 3 August 2013 at 02:30", "text": "mas, jgn pakek bahasa jawa kuno dong,,, ane ndak ngerti :-("}, {"author": "Wak Jek", "date": "Saturday 3 August 2013 at 02:31", "text": "sama lah, asal nulis aja tu, gk tau artinya :v"}, {"author": "Jeffry Gunawan", "date": "Saturday 3 August 2013 at 13:21", "text": "Namanya wordpress buatan orang jawa ya paling bener belajarnya pake bahasa jawa lah oom"}, {"author": "Gerald Cahya Prambudi", "date": "Friday 9 August 2013 at 10:29", "text": "Wah makasih gan share nya, penting nih untuk awal membangun wordpress"}]
+comments: [{"author":"Anonim","date":"Saturday 3 August 2013 at 02:30","text":"mas, jgn pakek bahasa jawa kuno dong,,, ane ndak ngerti :-("},{"author":"Wak Jek","date":"Saturday 3 August 2013 at 02:31","text":"sama lah, asal nulis aja tu, gk tau artinya :v"},{"author":"Jeffry Gunawan","date":"Saturday 3 August 2013 at 13:21","text":"Namanya wordpress buatan orang jawa ya paling bener belajarnya pake bahasa jawa lah oom"},{"author":"Gerald Cahya Prambudi","date":"Friday 9 August 2013 at 10:29","text":"Wah makasih gan share nya, penting nih untuk awal membangun wordpress"}]
 ---
 
 <p>Here is my tips for new plugin developer</p>

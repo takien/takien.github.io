@@ -1,7 +1,7 @@
 ---
 title: "Display WordPress Archive Lists By Specific Year or Month"
 date: "2012-02-05T00:00:00.000Z"
-categories: ["Wordpress"]
+categories: ["Wordpress Plugins"]
 tags: []
 slug: "2012/02/05/display-wordpress-archive-lists-by-specific-year-or-month"
 legacyUrl: "/2012/02/05/display-wordpress-archive-lists-by-specific-year-or-month/"

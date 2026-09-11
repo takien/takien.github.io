@@ -1,5 +1,16 @@
 ---
-import { getBlogSources } from '../utils/sourceHelper';
+import navItemsData from '../data/navigation.json';
+
+interface NavSubItem {
+  title: string;
+  url: string;
+}
+
+interface NavItem {
+  title: string;
+  url: string;
+  children?: NavSubItem[];
+}
 
 interface Props {
   currentPath?: string;
@@ -7,109 +18,78 @@ interface Props {
 
 const { currentPath = '/' } = Astro.props;
 
-const blogSources = getBlogSources();
-const isSourceActive = currentPath.startsWith('/source/');
+const navItems: NavItem[] = navItemsData as NavItem[];
 ---
 
 <header class="site-header px-4 sm:px-6 lg:px-8">
   <div class="container nav-wrap">
     <div class="brand">
       <a href="/" class="brand-title">
-        <span>napak tilas jejak digital</span>
+        <span>takien.github.io</span>
       </a>
       <span class="brand-tagline">don't cover a judge by its book</span>
     </div>
 
     <nav aria-label="Navigasi Utama">
       <ul class="nav-links">
-        <li>
-          <a 
-            href="/" 
-            class={`nav-link ${currentPath === '/' ? 'active' : ''}`}
-          >
-            Home
-          </a>
-        </li>
-
-        <!-- Dropdown Sumber -->
-        <li class="nav-dropdown-item">
-          <button 
-            type="button"
-            class={`nav-link nav-dropdown-btn ${isSourceActive ? 'active' : ''}`} 
-            id="nav-sources-btn" 
-            aria-expanded="false" 
-            aria-haspopup="true"
-          >
-            <span>Sumber</span>
-            <svg class="dropdown-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          
-          <div class="nav-dropdown-menu" id="nav-sources-menu">
-            <div class="dropdown-header-label">Koleksi Blog & Sumber</div>
-            <div class="dropdown-grid">
-              {blogSources.map((item) => (
+        {navItems.map((item, idx) => {
+          const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+          if (!hasChildren) {
+            const isActive = item.url === '/' 
+              ? currentPath === '/' 
+              : (currentPath === item.url || (item.url !== '#' && currentPath.startsWith(item.url)));
+            return (
+              <li>
                 <a 
-                  href={`/source/${item.slug}/`} 
-                  class={`dropdown-source-link ${currentPath === `/source/${item.slug}/` ? 'active' : ''}`}
+                  href={item.url} 
+                  class={`nav-link ${isActive ? 'active' : ''}`}
                 >
-                  <span class={`source-dot ${item.dotClass}`}></span>
-                  <div class="dropdown-source-info">
-                    <span class="dropdown-source-name">{item.name}</span>
-                    <span class="dropdown-source-period">{item.period}</span>
-                  </div>
+                  {item.title}
                 </a>
-              ))}
-            </div>
-            <div class="dropdown-footer">
-              <a href="/archives/" class="dropdown-all-link">
-                Lihat Seluruh Timeline & Arsip &rarr;
-              </a>
-            </div>
-          </div>
-        </li>
+              </li>
+            );
+          }
 
-        <li>
-          <a 
-            href="/archives/" 
-            class={`nav-link ${currentPath === '/archives/' ? 'active' : ''}`}
-          >
-            Archives
-          </a>
-        </li>
-        <li>
-          <a 
-            href="/categories/" 
-            class={`nav-link ${currentPath.startsWith('/categories/') ? 'active' : ''}`}
-          >
-            Categories
-          </a>
-        </li>
-        <li>
-          <a 
-            href="/about/" 
-            class={`nav-link ${currentPath === '/about/' ? 'active' : ''}`}
-          >
-            About
-          </a>
-        </li>
-        <li>
-          <a 
-            href="/gabung-komunitas/" 
-            class={`nav-link ${currentPath === '/gabung-komunitas/' || currentPath.startsWith('/gabung-komunitas') ? 'active' : ''}`}
-          >
-            Gabung
-          </a>
-        </li>
-        <li>
-          <a 
-            href="/vibe-coding/" 
-            class={`nav-link ${currentPath === '/vibe-coding/' || currentPath.startsWith('/vibe-coding') ? 'active' : ''}`}
-          >
-            Vibe Coding
-          </a>
-        </li>
+          const isChildActive = item.children?.some(c => 
+            currentPath === c.url || (c.url !== '/' && c.url !== '#' && currentPath.startsWith(c.url))
+          );
+          const dropdownId = `nav-dropdown-${idx}`;
+
+          return (
+            <li class="nav-dropdown-item">
+              <button 
+                type="button"
+                class={`nav-link nav-dropdown-btn ${isChildActive ? 'active' : ''}`} 
+                id={`${dropdownId}-btn`}
+                aria-expanded="false" 
+                aria-haspopup="true"
+              >
+                <span>{item.title}</span>
+                <svg class="dropdown-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              
+              <div class="nav-dropdown-menu" id={`${dropdownId}-menu`} style="width: auto; min-width: 190px;">
+                <div class="dropdown-grid">
+                  {item.children?.map((sub) => {
+                    const isSubActive = currentPath === sub.url || (sub.url !== '/' && sub.url !== '#' && currentPath.startsWith(sub.url));
+                    return (
+                      <a 
+                        href={sub.url} 
+                        class={`dropdown-source-link ${isSubActive ? 'active' : ''}`}
+                      >
+                        <div class="dropdown-source-info">
+                          <span class="dropdown-source-name">{sub.title}</span>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </nav>
 
@@ -168,59 +148,55 @@ const isSourceActive = currentPath.startsWith('/source/');
   <div id="mobile-nav-panel" class="mobile-nav-panel" style="display: none;">
     <div class="container mobile-nav-content">
       <ul class="mobile-nav-list">
-        <li>
-          <a href="/" class={`mobile-nav-link ${currentPath === '/' ? 'active' : ''}`}>
-            Home
-          </a>
-        </li>
-        <li class="mobile-dropdown-section">
-          <button type="button" id="mobile-sources-btn" class="mobile-nav-link mobile-dropdown-toggle" aria-expanded="false">
-            <span>Koleksi Sumber ({blogSources.length})</span>
-            <svg class="dropdown-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <div id="mobile-sources-menu" class="mobile-sources-subgrid" style="display: none;">
-            {blogSources.map((item) => (
-              <a 
-                href={`/source/${item.slug}/`} 
-                class={`mobile-source-item ${currentPath === `/source/${item.slug}/` ? 'active' : ''}`}
+        {navItems.map((item, idx) => {
+          const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+          if (!hasChildren) {
+            const isActive = item.url === '/' 
+              ? currentPath === '/' 
+              : (currentPath === item.url || (item.url !== '#' && currentPath.startsWith(item.url)));
+            return (
+              <li>
+                <a href={item.url} class={`mobile-nav-link ${isActive ? 'active' : ''}`}>
+                  {item.title}
+                </a>
+              </li>
+            );
+          }
+
+          const isChildActive = item.children?.some(c => 
+            currentPath === c.url || (c.url !== '/' && c.url !== '#' && currentPath.startsWith(c.url))
+          );
+          const mobileDropdownId = `mobile-dropdown-${idx}`;
+
+          return (
+            <li class="mobile-dropdown-section">
+              <button 
+                type="button" 
+                id={`${mobileDropdownId}-btn`} 
+                class={`mobile-nav-link mobile-dropdown-toggle ${isChildActive ? 'active' : ''}`} 
+                aria-expanded="false"
               >
-                <span class={`source-dot ${item.dotClass}`}></span>
-                <span class="mobile-source-name">{item.name}</span>
-                <span class="mobile-source-period">{item.period}</span>
-              </a>
-            ))}
-            <a href="/archives/" class="mobile-source-all">
-              Lihat Seluruh Timeline & Arsip &rarr;
-            </a>
-          </div>
-        </li>
-        <li>
-          <a href="/archives/" class={`mobile-nav-link ${currentPath === '/archives/' ? 'active' : ''}`}>
-            Archives
-          </a>
-        </li>
-        <li>
-          <a href="/categories/" class={`mobile-nav-link ${currentPath.startsWith('/categories/') ? 'active' : ''}`}>
-            Categories
-          </a>
-        </li>
-        <li>
-          <a href="/about/" class={`mobile-nav-link ${currentPath === '/about/' ? 'active' : ''}`}>
-            About
-          </a>
-        </li>
-        <li>
-          <a href="/gabung-komunitas/" class={`mobile-nav-link ${currentPath === '/gabung-komunitas/' || currentPath.startsWith('/gabung-komunitas') ? 'active' : ''}`}>
-            Gabung
-          </a>
-        </li>
-        <li>
-          <a href="/vibe-coding/" class={`mobile-nav-link ${currentPath === '/vibe-coding/' || currentPath.startsWith('/vibe-coding') ? 'active' : ''}`}>
-            Vibe Coding
-          </a>
-        </li>
+                <span>{item.title}</span>
+                <svg class="dropdown-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div id={`${mobileDropdownId}-menu`} class="mobile-sources-subgrid" style="display: none;">
+                {item.children?.map((sub) => {
+                  const isSubActive = currentPath === sub.url || (sub.url !== '/' && sub.url !== '#' && currentPath.startsWith(sub.url));
+                  return (
+                    <a 
+                      href={sub.url} 
+                      class={`mobile-source-item ${isSubActive ? 'active' : ''}`}
+                    >
+                      <span class="mobile-source-name">{sub.title}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   </div>
@@ -256,14 +232,27 @@ const isSourceActive = currentPath.startsWith('/source/');
     updateIcons(newTheme);
   });
 
-  // Desktop Dropdown Sumber Toggle
-  const sourcesBtn = document.getElementById('nav-sources-btn');
-  const dropdownItem = sourcesBtn?.closest('.nav-dropdown-item');
+  // Desktop Dropdowns Toggle
+  document.querySelectorAll('.nav-dropdown-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parent = btn.closest('.nav-dropdown-item');
+      if (!parent) return;
 
-  sourcesBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = dropdownItem?.classList.toggle('is-open');
-    sourcesBtn.setAttribute('aria-expanded', String(isOpen));
+      const isAlreadyOpen = parent.classList.contains('is-open');
+
+      // Close other open dropdowns
+      document.querySelectorAll('.nav-dropdown-item.is-open').forEach((p) => {
+        if (p !== parent) {
+          p.classList.remove('is-open');
+          p.querySelector('.nav-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const nextState = !isAlreadyOpen;
+      parent.classList.toggle('is-open', nextState);
+      btn.setAttribute('aria-expanded', String(nextState));
+    });
   });
 
   // Mobile Menu Burger Toggle
@@ -295,24 +284,30 @@ const isSourceActive = currentPath.startsWith('/source/');
     toggleMobileMenu();
   });
 
-  // Mobile Sources Sublist Toggle
-  const mobileSourcesBtn = document.getElementById('mobile-sources-btn');
-  const mobileSourcesMenu = document.getElementById('mobile-sources-menu');
-  mobileSourcesBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (!mobileSourcesMenu) return;
-    const isHidden = mobileSourcesMenu.style.display === 'none';
-    mobileSourcesMenu.style.display = isHidden ? 'flex' : 'none';
-    mobileSourcesBtn.setAttribute('aria-expanded', String(isHidden));
-    mobileSourcesBtn.classList.toggle('is-open', isHidden);
+  // Mobile Submenus Toggle
+  document.querySelectorAll('.mobile-dropdown-toggle').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parent = btn.closest('.mobile-dropdown-section');
+      const subgrid = parent?.querySelector('.mobile-sources-subgrid');
+      if (!subgrid) return;
+
+      const isHidden = subgrid.style.display === 'none';
+      subgrid.style.display = isHidden ? 'flex' : 'none';
+      btn.setAttribute('aria-expanded', String(isHidden));
+      btn.classList.toggle('is-open', isHidden);
+    });
   });
 
   // Close menus when clicking outside
   document.addEventListener('click', (e) => {
-    if (dropdownItem?.classList.contains('is-open') && !dropdownItem.contains(e.target)) {
-      dropdownItem.classList.remove('is-open');
-      sourcesBtn?.setAttribute('aria-expanded', 'false');
-    }
+    document.querySelectorAll('.nav-dropdown-item.is-open').forEach((item) => {
+      if (!item.contains(e.target)) {
+        item.classList.remove('is-open');
+        item.querySelector('.nav-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     if (mobileNavPanel && mobileNavPanel.style.display !== 'none' && !mobileNavPanel.contains(e.target) && !mobileMenuBtn?.contains(e.target)) {
       toggleMobileMenu(false);
     }
@@ -320,10 +315,11 @@ const isSourceActive = currentPath.startsWith('/source/');
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (dropdownItem?.classList.contains('is-open')) {
-        dropdownItem.classList.remove('is-open');
-        sourcesBtn?.setAttribute('aria-expanded', 'false');
-      }
+      document.querySelectorAll('.nav-dropdown-item.is-open').forEach((item) => {
+        item.classList.remove('is-open');
+        item.querySelector('.nav-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      });
+
       if (mobileNavPanel && mobileNavPanel.style.display !== 'none') {
         toggleMobileMenu(false);
         mobileMenuBtn?.focus();

@@ -1,5 +1,5 @@
 ---
-title: "Gabung Komunitas"
+title: "Kuy Ngopai"
 date: "2026-09-07T04:25:00.000Z"
 categories: ["Komunitas"]
 tags: ["komunitas","gabung","diskusi"]
@@ -11,10 +11,15 @@ author: "takien"
 comments: []
 ---
 
-Blog archive ini aku buat menggunakan teknologi AI. Kalau ada yang mau didiskusikan boleh gabung aja di grup.
+Di era AI ini, programmer bakalan jadi makin introvert. Forum sepi, grup sepi. Tapi sesekali ngopi bareng boleh lah ya?
 
-[GABUNG KE GRUP TELEGRAM](https://t.me/+YF-0zbQF4C0xY2Nl)
+Gimana kalau ngopi bareng aku di **NGOPAI.COM**
 
-
-
-![diskusi-grup-web-ai](/images/uploads/1788756621745_diskusi-grup-web-ai.jpg)
+<div class="text-center">
+<a href="https://ngopai.com/" title="Klik pada logo ini, tidak membuatmu miskin">
+<img class="w-[300px] max-w-full" src="/images/uploads/1789132594855_favicon.jpg" />
+</a>
+<a href="https://ngopai.com/">
+<img src="https://ngopai.com/images/ngopi-crop.png" alt="Ngopai.com" />
+</a>
+</div>

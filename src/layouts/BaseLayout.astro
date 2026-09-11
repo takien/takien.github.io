@@ -22,10 +22,24 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://takien.github.io');
+
+// Determine article era: modern (>= 2026) vs vintage (< 2026)
+let isModernArticle = false;
+let articleEra: 'modern' | 'vintage' | undefined;
+
+if (articleDate) {
+  const year = parseInt(articleDate.slice(0, 4), 10);
+  if (!isNaN(year) && year >= 2026) {
+    isModernArticle = true;
+    articleEra = 'modern';
+  } else {
+    articleEra = 'vintage';
+  }
+}
 ---
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-era={articleEra}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,7 +83,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://takien.g
       } catch (e) {}
     </script>
   </head>
-  <body>
+  <body class={isModernArticle ? 'is-modern-article' : (articleEra === 'vintage' ? 'is-vintage-article' : '')}>
     <Header currentPath={Astro.url.pathname} />
     
     <main style="flex: 1; padding: 2.5rem 0;">

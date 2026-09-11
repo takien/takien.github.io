@@ -1,11 +1,13 @@
 ---
 title: "How to Create Simple jQuery Tooltip"
-date: "2010-11-30T00:00:00Z"
-categories: ["Web Design"]
+date: "2010-11-30T00:00:00.000Z"
+categories: ["jQuery Plugins"]
 tags: ["jQuery"]
 slug: "2010/11/30/how-to-create-simple-jquery-tooltip"
-legacyUrl: "/blog/2010/11/30/how-to-create-simple-jquery-tooltip/"
-comments: [{"author": "Anonymous", "date": "", "text": "buset ini post jadul gak ada yang komen"}]
+legacyUrl: "/2010/11/30/how-to-create-simple-jquery-tooltip/"
+source: "takien.com"
+author: "takien"
+comments: [{"author":"Anonymous","date":"","text":"buset ini post jadul gak ada yang komen"}]
 ---
 
 <p><div id="attachment_754" style="width: 267px" class="wp-caption alignleft"><a href="/wp-content/uploads/2010/11/tooltip.gif"><img src="/images/2010/11/tooltip.gif" alt="" title="tooltip" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" /></a><p class="wp-caption-text">Tooltip on desktop application</p></div>There are so many jQuery Tooltip we can find on Google.  However, sometimes we just need something simple. So, why don&#8217;t you create your own?</p>

@@ -1,17 +1,15 @@
 ---
 title: "Turns HTML SELECT Into Bootstrap Dropdown using FakeSelect jQuery Plugin"
-date: "2014-08-16T00:00:00Z"
-categories: ["Uncategorized"]
+date: "2014-08-16T00:00:00.000Z"
+categories: ["jQuery Plugins"]
 tags: []
 slug: "2014/08/16/turns-html-select-into-bootstrap-dropdown-using-fakeselect-jquery-plugin"
 legacyUrl: "/2014/08/16/turns-html-select-into-bootstrap-dropdown-using-fakeselect-jquery-plugin/"
+source: "takien.com"
+author: "takien"
 comments: []
 ---
 
-<div class="content-wrap">
-					<div class="add">
-
-</div>
 <p>Styling HTML SELECT could be frustating. Like a scrollbar, SELECT has it&#8217;s own style and depends on what browser you&#8217;re using. Alright, there are some library out there to style select into styleable DIV element like <em>Chosen </em>and <em>Select2</em>. But if you&#8217;re need the simple one, here is the answer.</p>
 <figure class="image-missing-placeholder" role="img" aria-label="takien-fake-select">
   <div class="placeholder-inner">
@@ -33,9 +31,9 @@ comments: []
 <p><strong>Mobile support?</strong></p>
 <p>Don&#8217;t know. Not tested.</p>
 <p><strong>Demo please?</strong></p>
-<p><a href="https://web.archive.org/web/20160211012000/http://takien.github.io/FakeSelect/" target="_blank">http://takien.github.io/FakeSelect/</a></p>
+<p><a href="http://takien.github.io/FakeSelect/" target="_blank">http://takien.github.io/FakeSelect/</a></p>
 <p><strong>Where&#8217;s the source code?</strong></p>
-<p><a href="https://web.archive.org/web/20160211012000/https://github.com/takien/FakeSelect" target="_blank">https://github.com/takien/FakeSelect</a></p>
+<p><a href="https://github.com/takien/FakeSelect" target="_blank">https://github.com/takien/FakeSelect</a></p>
 <p><strong>Your code is ugly, I can make it better.</strong></p>
 <p>Please fork and contribute.</p>
 <div id="bawah-artikel" style="clear:both"> 

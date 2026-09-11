@@ -1,7 +1,7 @@
 ---
 title: "WP Editarea WordPress Plugin"
 date: "2010-02-11T13:54:00.000Z"
-categories: ["Plugins"]
+categories: ["WordPress Plugins"]
 tags: ["WordPress"]
 slug: "2010/02/11/wp-editarea-wordpress-plugin"
 legacyUrl: "/2010/02/11/wp-editarea-wordpress-plugin/"

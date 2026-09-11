@@ -9,6 +9,7 @@ const rootDir = path.resolve(__dirname, '..');
 const postsDir = path.join(rootDir, 'src', 'content', 'posts');
 const publicDir = path.join(rootDir, 'public');
 const blogsJsonPath = path.join(rootDir, 'src', 'data', 'blogs.json');
+const navigationJsonPath = path.join(rootDir, 'src', 'data', 'navigation.json');
 
 /**
  * Parse frontmatter and content from markdown text
@@ -654,6 +655,63 @@ export function adminApiMiddleware(req, res, next) {
       }
     })();
     return;
+  }
+
+  if (pathname === '/navigation' || pathname === '/nav') {
+    if (req.method === 'GET') {
+      (async () => {
+        try {
+          const raw = await fs.readFile(navigationJsonPath, 'utf-8');
+          const nav = JSON.parse(raw);
+          sendJson(nav);
+        } catch (err) {
+          sendError('Gagal membaca data navigasi: ' + err.message, 500);
+        }
+      })();
+      return;
+    }
+  }
+
+  if (pathname === '/navigation/save' || pathname === '/nav/save') {
+    if (req.method === 'POST') {
+      (async () => {
+        try {
+          const body = await readBody();
+          const { items, navigation } = body;
+          const navArray = Array.isArray(items) ? items : (Array.isArray(navigation) ? navigation : (Array.isArray(body) ? body : null));
+          if (!navArray) {
+            return sendError('Data navigasi harus berupa array item menu');
+          }
+
+          // Sanitize items
+          const cleaned = navArray.map(item => {
+            const cleanItem = {
+              title: String(item.title || '').trim() || 'Menu',
+              url: String(item.url || '').trim() || '#'
+            };
+            if (Array.isArray(item.children) && item.children.length > 0) {
+              cleanItem.children = item.children.map(child => ({
+                title: String(child.title || '').trim() || 'Sub Menu',
+                url: String(child.url || '').trim() || '#'
+              }));
+            }
+            return cleanItem;
+          });
+
+          await fs.mkdir(path.dirname(navigationJsonPath), { recursive: true });
+          await fs.writeFile(navigationJsonPath, JSON.stringify(cleaned, null, 2), 'utf-8');
+
+          sendJson({
+            success: true,
+            navigation: cleaned,
+            message: 'Menu navigasi berhasil disimpan!'
+          });
+        } catch (err) {
+          sendError('Gagal menyimpan menu navigasi: ' + err.message, 500);
+        }
+      })();
+      return;
+    }
   }
 
   next();

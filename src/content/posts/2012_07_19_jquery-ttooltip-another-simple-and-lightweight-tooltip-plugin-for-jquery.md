@@ -1,10 +1,12 @@
 ---
 title: "jQuery tTooltip, Another Simple and Lightweight Tooltip Plugin for jQuery"
-date: "2012-07-19T00:00:00Z"
-categories: ["jQuery"]
-tags: ["jQuery", "javascript"]
+date: "2012-07-19T00:00:00.000Z"
+categories: ["jQuery Plugins"]
+tags: ["jQuery","javascript"]
 slug: "2012/07/19/jquery-ttooltip-another-simple-and-lightweight-tooltip-plugin-for-jquery"
-legacyUrl: "/blog/2012/07/19/jquery-ttooltip-another-simple-and-lightweight-tooltip-plugin-for-jquery/"
+legacyUrl: "/2012/07/19/jquery-ttooltip-another-simple-and-lightweight-tooltip-plugin-for-jquery/"
+source: "takien.com"
+author: "takien"
 comments: []
 ---
 
@@ -29,4 +31,4 @@ comments: []
 <div id="attachment_1168" style="width: 310px" class="wp-caption aligncenter"><a href="https://web.archive.org/web/20150818061045/http://img.takien.com/2012/07/jquery-ttooltip-plugin.png"><img src="/images/2012/07/jquery-ttooltip-plugin-300x290.png" alt="jQuery ttooltip plugin" title="jquery-ttooltip-plugin" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" /></a><p class="wp-caption-text">jQuery ttooltip plugin in action</p></div>
 <p>However, this plugin is still version 0.1, probably still a lot of mistakes and bugs. So the purpose of this post is to get feedback from you and I am very happy if anyone would take part to develop it.</p>
 <h2>Example usage, Demo, and Download</h2>
-<p><strong><a href="https://web.archive.org/web/20150818061045/http://takien.github.com/tTooltip/" target="_blank">http://takien.github.com/tTooltip/</a></strong></p>
+<p><strong><a href="http://takien.github.com/tTooltip/" target="_blank">http://takien.github.com/tTooltip/</a></strong></p>

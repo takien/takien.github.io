@@ -98,7 +98,7 @@ export function isFreshPost(postData: any): boolean {
   if (postData.isFresh) return true;
   if (postData.date) {
     const y = parseInt(postData.date.slice(0, 4), 10);
-    if (!isNaN(y) && y >= 2025) return true;
+    if (!isNaN(y) && y >= 2026) return true;
   }
   return false;
 }

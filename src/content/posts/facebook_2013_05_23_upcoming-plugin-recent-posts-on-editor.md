@@ -1,14 +1,14 @@
 ---
 title: "Upcoming plugin \"Recent Posts on Editor"
-date: "2013-05-23T16:45:00Z"
-categories: ["WordPress"]
-tags: ["facebook", "Belajar WordPress", "wordpress", "plugin"]
+date: "2013-05-23T16:45:00.000Z"
+categories: ["WordPress Plugins"]
+tags: ["facebook","Belajar WordPress","wordpress","plugin"]
 slug: "2013/05/23/upcoming-plugin-recent-posts-on-editor"
 legacyUrl: "/2013/05/23/upcoming-plugin-recent-posts-on-editor/"
 source: "facebook.com"
 author: "Wak Jek"
 group: "Belajar WordPress"
-comments: [{"author": "Dodi San", "date": "Thursday 23 May 2013 at 16:45", "text": "wah mantap pake meta box icip dulu om"}, {"author": "Wak Jek", "date": "Friday 24 May 2013 at 11:16", "text": "released, blom ada yang download http://wordpress.org/plugins/recent-posts-on-editor"}, {"author": "Semut Saurus", "date": "Friday 24 May 2013 at 16:16", "text": "biar ane yang dongload bang ..he he"}]
+comments: [{"author":"Dodi San","date":"Thursday 23 May 2013 at 16:45","text":"wah mantap pake meta box icip dulu om"},{"author":"Wak Jek","date":"Friday 24 May 2013 at 11:16","text":"released, blom ada yang download http://wordpress.org/plugins/recent-posts-on-editor"},{"author":"Semut Saurus","date":"Friday 24 May 2013 at 16:16","text":"biar ane yang dongload bang ..he he"}]
 ---
 
 <p>Upcoming plugin "Recent Posts on Editor"</p>

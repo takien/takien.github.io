@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Home",
+    "url": "/"
+  },
+  {
+    "title": "My Works",
+    "url": "#",
+    "children": [
+      {
+        "title": "WordPress Plugins",
+        "url": "/categories/wordpress-plugins/"
+      },
+      {
+        "title": "jQuery Plugins",
+        "url": "/categories/jquery-plugins/"
+      }
+    ]
+  },
+  {
+    "title": "Archives",
+    "url": "/archives/"
+  },
+  {
+    "title": "Categories",
+    "url": "/categories/"
+  },
+  {
+    "title": "Community",
+    "url": "/gabung-komunitas/"
+  },
+  {
+    "title": "Vibe Coding",
+    "url": "/vibe-coding/"
+  },
+  {
+    "title": "About",
+    "url": "/about/"
+  }
+]

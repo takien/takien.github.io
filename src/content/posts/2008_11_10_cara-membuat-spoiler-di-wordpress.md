@@ -1,7 +1,7 @@
 ---
 title: "Cara Membuat Spoiler di Wordpress | Wordpress Spoiler Plugins"
 date: "2008-11-10T02:41:00.000Z"
-categories: ["WordPress"]
+categories: ["WordPress Plugins"]
 tags: ["wordpress","plugim"]
 slug: "2008/11/10/cara-membuat-spoiler-di-wordpress"
 legacyUrl: "/2008/11/10/cara-membuat-spoiler-di-wordpress/"

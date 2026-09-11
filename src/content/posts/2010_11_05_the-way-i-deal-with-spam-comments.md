@@ -1,17 +1,16 @@
 ---
 title: "The Way I Deal with Spam Comments"
-date: "2010-11-05T00:00:00Z"
-categories: ["Plugins"]
+date: "2010-11-05T00:00:00.000Z"
+categories: ["WordPress Plugins"]
 tags: ["spam"]
 slug: "2010/11/05/the-way-i-deal-with-spam-comments"
-legacyUrl: "/blog/2010/11/05/the-way-i-deal-with-spam-comments/"
-comments: [{"author": "jejen", "date": "", "text": "pertamax………."}, {"author": "Brian Gottier", "date": "", "text": "I’ve been using Defensio, but I just don’t want to deal with the spam comments que, and most spams are easily targeted. I’m going to try your plugin. It looks like it will work perfectly. Thanks!"}, {"author": "Presiden IDIOTNESIA", "date": "", "text": "Lhah, sama aja Mastah, make plugins juga, cuman Plugins punya Mastah Takien gak pake capcay ama api..\n\nI will try this at home.. 😀\n\n\n*ada list backlist keyword gak Mastah?"}, {"author": "David", "date": "", "text": "I want to thank you for your little plugin. I discovered that over 80% of my spam was from yahoo.com and gmail.com. I blacklisted both domains and presto – huge drop in spam comments BUT huge spam folder. Your plugin lets me check my site every week or so now instead of daily.  One question – how could I change the plugin to delete spam daily? \n\nWith gratitude\n\nDavid"}]
+legacyUrl: "/2010/11/05/the-way-i-deal-with-spam-comments/"
+source: "takien.com"
+author: "takien"
+comments: [{"author":"jejen","date":"","text":"pertamax………."},{"author":"Brian Gottier","date":"","text":"I’ve been using Defensio, but I just don’t want to deal with the spam comments que, and most spams are easily targeted. I’m going to try your plugin. It looks like it will work perfectly. Thanks!"},{"author":"Presiden IDIOTNESIA","date":"","text":"Lhah, sama aja Mastah, make plugins juga, cuman Plugins punya Mastah Takien gak pake capcay ama api..\n\nI will try this at home.. 😀\n\n\n*ada list backlist keyword gak Mastah?"},{"author":"David","date":"","text":"I want to thank you for your little plugin. I discovered that over 80% of my spam was from yahoo.com and gmail.com. I blacklisted both domains and presto – huge drop in spam comments BUT huge spam folder. Your plugin lets me check my site every week or so now instead of daily.  One question – how could I change the plugin to delete spam daily? \n\nWith gratitude\n\nDavid"}]
 ---
 
-<div style="float:left;margin-right:10px;margin-bottom:10px;">
-
-</div>
-						<div id="attachment_728" style="width: 254px" class="wp-caption alignleft"><a href="/wp-content/uploads/2010/11/spammer.gif"><img src="/images/2010/11/spammer.gif" alt="Spammer" title="spammer" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" /></a><p class="wp-caption-text">Spammer</p></div>
+<div id="attachment_728" style="width: 254px" class="wp-caption alignleft"><a href="/wp-content/uploads/2010/11/spammer.gif"><img src="/images/2010/11/spammer.gif" alt="Spammer" title="spammer" class="rounded-lg my-6 max-w-full h-auto shadow-md" loading="lazy" /></a><p class="wp-caption-text">Spammer</p></div>
 <p>There are so many WordPress plugins tagged <em>spam </em>published in <a href="https://web.archive.org/web/20150509174609/http://wordpress.org/extend/plugins/tags/spam" target="_blank">WordPress plugins directory</a>. Most of the plugins is to combat spam comment in WordPress blog. However, I am not use one of those plugins, because of several reasons:  they are captcha based (eg. re-Captcha) and they are using API (eg. Akismet). In my experience, using both type of anti spam could decrease my blog performance.</p>
 <p><div style="float:right;width:300px;height:250px;margin-left:20px">
 

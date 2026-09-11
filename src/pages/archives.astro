@@ -12,7 +12,7 @@ const allPosts = (await getCollection('posts'))
     return !isPage && !excludedSlugs.has(cleanSlug);
   })
   .sort((a, b) => {
-    return (b.data.date || '').localeCompare(a.data.date || '');
+    return (a.data.date || '').localeCompare(b.data.date || '');
   });
 
 // Group posts by Year
@@ -25,7 +25,7 @@ allPosts.forEach((post) => {
   postsByYear[year].push(post);
 });
 
-const sortedYears = Object.keys(postsByYear).sort((a, b) => b.localeCompare(a));
+const sortedYears = Object.keys(postsByYear).sort((a, b) => a.localeCompare(b));
 
 // Sources present per year
 const yearSources: Record<string, string[]> = {};
@@ -50,7 +50,7 @@ sortedYears.forEach((year) => {
   description="Daftar lengkap seluruh artikel blog takien.com dan timeline hidup terorganisir per tahun."
 >
   <div class="content-container">
-    <div style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+    <div style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
       <div class="prose max-w-none">
         <h1>
           Arsip Kronologis
@@ -59,6 +59,43 @@ sortedYears.forEach((year) => {
       <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;">
         Menampilkan <strong>{allPosts.length}</strong> artikel dan catatan timeline yang diterbitkan secara kronologis.
       </p>
+
+      <!-- Archive Controls & Sorting Toggle -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+        <div class="archive-controls">
+          <span style="font-size: 0.84rem; font-weight: 600; color: var(--text-muted);">Urutan:</span>
+          <div class="archive-sort-group" role="group" aria-label="Urutan Arsip">
+            <button
+              type="button"
+              id="sort-asc-btn"
+              class="archive-sort-btn active"
+              data-order="asc"
+              aria-pressed="true"
+              title="Urutkan dari artikel terlama ke terbaru (Older First)"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+              <span>Terlama Dulu</span>
+            </button>
+            <button
+              type="button"
+              id="sort-desc-btn"
+              class="archive-sort-btn"
+              data-order="desc"
+              aria-pressed="false"
+              title="Urutkan dari artikel terbaru ke terlama"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+              <span>Terbaru Dulu</span>
+            </button>
+          </div>
+        </div>
+      </div>
 
       <!-- macOS Finder Style Source Legend -->
       <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted);">
@@ -126,9 +163,9 @@ sortedYears.forEach((year) => {
       </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 3rem;">
+    <div id="archive-timeline" style="display: flex; flex-direction: column; gap: 3rem;">
       {sortedYears.map((year) => (
-        <section id={`year-${year}`} style="scroll-margin-top: 5rem;">
+        <section id={`year-${year}`} class="archive-year-section" data-year={year} style="scroll-margin-top: 5rem;">
           <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
             <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--accent);">
               {year}
@@ -158,7 +195,7 @@ sortedYears.forEach((year) => {
             </span>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 0.85rem; border-left: 2px solid var(--border); padding-left: 1.25rem; margin-left: 0.5rem;">
+          <div class="archive-year-posts" style="display: flex; flex-direction: column; gap: 0.85rem; border-left: 2px solid var(--border); padding-left: 1.25rem; margin-left: 0.5rem;">
             {postsByYear[year].map((post) => {
               const formattedDate = post.data.date ? post.data.date.slice(5, 10) : '';
               const commentCount = post.data.comments?.length || 0;
@@ -168,7 +205,7 @@ sortedYears.forEach((year) => {
               const dotClass = isTimeline ? 'dot-timeline' : (isFresh ? 'dot-fresh' : sourceInfo.dotClass);
 
               return (
-                <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                <div class="archive-post-item" data-date={post.data.date || ''} style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
                   {formattedDate && (
                     <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); min-width: 48px;">
                       {formattedDate}
@@ -207,4 +244,79 @@ sortedYears.forEach((year) => {
       ))}
     </div>
   </div>
+
+  <script is:inline>
+    (function () {
+      const container = document.getElementById('archive-timeline');
+      const btnDesc = document.getElementById('sort-desc-btn');
+      const btnAsc = document.getElementById('sort-asc-btn');
+
+      if (!container || !btnDesc || !btnAsc) return;
+
+      function setArchiveOrder(order, updateUrl = true) {
+        const isAsc = order === 'asc';
+
+        // Update button states
+        if (isAsc) {
+          btnAsc.classList.add('active');
+          btnAsc.setAttribute('aria-pressed', 'true');
+          btnDesc.classList.remove('active');
+          btnDesc.setAttribute('aria-pressed', 'false');
+        } else {
+          btnDesc.classList.add('active');
+          btnDesc.setAttribute('aria-pressed', 'true');
+          btnAsc.classList.remove('active');
+          btnAsc.setAttribute('aria-pressed', 'false');
+        }
+
+        // Reorder year sections
+        const yearSections = Array.from(container.querySelectorAll('.archive-year-section'));
+        yearSections.sort((a, b) => {
+          const yearA = a.getAttribute('data-year') || '';
+          const yearB = b.getAttribute('data-year') || '';
+          return isAsc ? yearA.localeCompare(yearB) : yearB.localeCompare(yearA);
+        });
+
+        // Reorder posts inside each year
+        yearSections.forEach((section) => {
+          const postsContainer = section.querySelector('.archive-year-posts');
+          if (postsContainer) {
+            const postItems = Array.from(postsContainer.querySelectorAll('.archive-post-item'));
+            postItems.sort((a, b) => {
+              const dateA = a.getAttribute('data-date') || '';
+              const dateB = b.getAttribute('data-date') || '';
+              return isAsc ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
+            });
+            postItems.forEach((item) => postsContainer.appendChild(item));
+          }
+          container.appendChild(section);
+        });
+
+        // Update URL parameter (default is now asc, so if desc set ?order=desc)
+        if (updateUrl) {
+          try {
+            const url = new URL(window.location.href);
+            if (!isAsc) {
+              url.searchParams.set('order', 'desc');
+            } else {
+              url.searchParams.delete('order');
+            }
+            window.history.replaceState(null, '', url.toString());
+          } catch (e) {}
+        }
+      }
+
+      btnDesc.addEventListener('click', () => setArchiveOrder('desc'));
+      btnAsc.addEventListener('click', () => setArchiveOrder('asc'));
+
+      // Check initial URL param
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialOrder = urlParams.get('order');
+        if (initialOrder === 'desc' || initialOrder === 'newest') {
+          setArchiveOrder('desc', false);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </BaseLayout>
